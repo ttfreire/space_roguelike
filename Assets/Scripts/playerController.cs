@@ -3,10 +3,11 @@ using System.Collections;
 
 public class playerController : MonoBehaviour {
 	[HideInInspector] public bool facingRight = true;
-	[HideInInspector] public bool isUsingJoystick = true;
+	bool isUsingJoystick = false;
 	public float speed;
 	public float airResistance;
 	public float shootForce;
+	public float recoilForce;
 	public float shootsPerSecond;
 	float shootCooldown;
 	float rotationSpeed = 10;
@@ -79,6 +80,7 @@ public class playerController : MonoBehaviour {
 	}
 
 	void Shoot(){
+
 		Vector3 direction = Vector3.zero;
 		Vector3 joyDir = Vector3.zero;
 		if (isUsingJoystick) {
@@ -91,12 +93,13 @@ public class playerController : MonoBehaviour {
 			direction = m_camera.ScreenToWorldPoint (Input.mousePosition);
 
 		direction.z = 0;
-		Vector3 shootDirection = direction - transform.position;
+		Vector3 shootDirection = (direction - transform.position).normalized;
 		if (Mathf.Floor(direction.magnitude) != 0) {
-			Debug.Log (Mathf.Floor(direction.magnitude));
 			GameObject proj = (GameObject)Instantiate (projectile, this.transform.position, Quaternion.identity);
 			proj.transform.TransformDirection (shootDirection);
 			proj.GetComponent<Rigidbody> ().AddForce (shootDirection * shootForce, ForceMode.Impulse);
+			m_rigidbody.AddForce(-(shootDirection*recoilForce), ForceMode.Impulse);
+			Debug.Log (-(shootDirection*shootForce));
 		}
 	}
 
