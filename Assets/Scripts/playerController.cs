@@ -5,6 +5,7 @@ public class playerController : MonoBehaviour {
 	[HideInInspector] public bool facingRight = true;
 	bool isUsingJoystick = false;
 	public float speed;
+	public float maxSpeed;
 	public float airResistance;
 	public float shootForce;
 	public float recoilForce;
@@ -36,6 +37,9 @@ public class playerController : MonoBehaviour {
 			shootCooldown = 1 / shootsPerSecond;
 			Shoot ();
 		}
+		if (Input.GetKeyUp (KeyCode.Space)) {
+			HardStop();
+		}
 	}
 
 	void FixedUpdate(){
@@ -44,7 +48,8 @@ public class playerController : MonoBehaviour {
 		} else {
 			MoveWithoutAirResistance ();	
 		}
-		//Debug.Log ("Facing right?: " + facingRight);
+		CapOnMaxSpeed ();
+		Debug.Log ("Velocity Vector: " + m_rigidbody.velocity + " Speed: " + m_rigidbody.velocity.magnitude);
 	}
 
 	void MoveWithoutAirResistance(){
@@ -109,5 +114,14 @@ public class playerController : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	void HardStop(){
+		m_rigidbody.velocity = Vector3.zero;
+	}
+
+	void CapOnMaxSpeed(){
+		if (m_rigidbody.velocity.magnitude > maxSpeed)
+			m_rigidbody.velocity = m_rigidbody.velocity.normalized * maxSpeed;
 	}
 }
