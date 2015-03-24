@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class playerController : MonoBehaviour {
@@ -17,6 +18,9 @@ public class playerController : MonoBehaviour {
 	public GameObject projectile;
 	Camera m_camera;
 
+	public Text b_air;
+	public Text theInput;
+
 	// Use this for initialization
 	void Start () {
 		m_rigidbody = GetComponent<Rigidbody> ();
@@ -26,18 +30,19 @@ public class playerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		InterfaceFeedback ();
+
 		shootCooldown -= Time.deltaTime;
 		if (Input.GetKeyUp (KeyCode.J))
 			isUsingJoystick = !isUsingJoystick;
 		if (Input.GetKeyUp (KeyCode.R)) {
-			Debug.Log ("R");
 			hasAirResistance = !hasAirResistance;
 		}
 		if (shootCooldown <= 0.0f & Input.GetButtonUp ("Fire1")) {
 			shootCooldown = 1 / shootsPerSecond;
 			Shoot ();
 		}
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetButton ("Stop")) {
 			HardStop();
 		}
 	}
@@ -49,7 +54,6 @@ public class playerController : MonoBehaviour {
 			MoveWithoutAirResistance ();	
 		}
 		CapOnMaxSpeed ();
-		Debug.Log ("Velocity Vector: " + m_rigidbody.velocity + " Speed: " + m_rigidbody.velocity.magnitude);
 	}
 
 	void MoveWithoutAirResistance(){
@@ -104,7 +108,6 @@ public class playerController : MonoBehaviour {
 			proj.transform.TransformDirection (shootDirection);
 			proj.GetComponent<Rigidbody> ().AddForce (shootDirection * shootForce, ForceMode.Impulse);
 			m_rigidbody.AddForce(-(shootDirection*recoilForce), ForceMode.Impulse);
-			Debug.Log (-(shootDirection*shootForce));
 		}
 	}
 
@@ -123,5 +126,13 @@ public class playerController : MonoBehaviour {
 	void CapOnMaxSpeed(){
 		if (m_rigidbody.velocity.magnitude > maxSpeed)
 			m_rigidbody.velocity = m_rigidbody.velocity.normalized * maxSpeed;
+	}
+
+	void InterfaceFeedback(){
+		b_air.text = hasAirResistance.ToString ();
+		if (isUsingJoystick)
+			theInput.text = "Joystick";
+		else
+			theInput.text = "Mouse";
 	}
 }
