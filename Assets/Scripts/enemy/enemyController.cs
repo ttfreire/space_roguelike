@@ -17,6 +17,7 @@ public class enemyController : MonoBehaviour {
 	void Start () {
 		m_shootCooldown = 1 / m_shootsPerSecond;
 		m_camera = FindObjectOfType<Camera> ();
+
 	}
 	
 	// Update is called once per frame
@@ -35,6 +36,8 @@ public class enemyController : MonoBehaviour {
 			m_isPlayerOnView = true;
 			m_targetToShoot = other.transform;
 		}
+		else
+			m_isPlayerOnView = false;
 	}
 
 	void OnTriggerExit(Collider other){
@@ -56,6 +59,7 @@ public class enemyController : MonoBehaviour {
 
 	void ShootTarget(Transform target){
 		GameObject proj = (GameObject)Instantiate (m_projectile, this.transform.position, Quaternion.identity);
+		proj.GetComponent<projectileController>().SetTargetTag("Player");
 		Vector3 shootDir = (target.position - transform.position).normalized;
 		proj.transform.TransformDirection (shootDir);
 		proj.GetComponent<Rigidbody> ().AddForce (shootDir * m_shootForce, ForceMode.Impulse);

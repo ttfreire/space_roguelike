@@ -73,6 +73,7 @@ public class playerShoot : MonoBehaviour {
 		Vector3 shootDirection = this.GetShootDirection ();
 
 		GameObject proj = (GameObject)Instantiate (m_projectile, this.transform.position, Quaternion.identity);
+		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
 		proj.transform.TransformDirection (shootDirection);
 		proj.GetComponent<Rigidbody> ().AddForce (shootDirection * m_shootForce, ForceMode.Impulse);
 
