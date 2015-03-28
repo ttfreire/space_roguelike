@@ -52,18 +52,20 @@ public class playerShoot : MonoBehaviour {
 	Vector3 GetShootDirection(){
 		Vector3 direction = Vector3.zero;
 		Vector3 joyDir = Vector3.zero;
+		Vector3 mouseDir = Vector3.zero;
 
 		if (isUsingJoystick) {
 			float joyX = Input.GetAxis ("Joy X");
 			float joyY = Input.GetAxis ("Joy Y");
 			joyDir = new Vector3 (joyX, joyY, 0);
-			direction = joyDir;
+			direction = (this.transform.position + joyDir) - this.transform.position;
+		} else {
+			mouseDir = m_camera.ScreenToWorldPoint (Input.mousePosition);
+			direction = mouseDir - this.transform.position;
 		}
-		else
-			direction = m_camera.ScreenToWorldPoint (Input.mousePosition);
 
 		direction.z = 0;
-
+		Debug.Log ("Joy: " + joyDir + "\n" + "Mouse: " + mouseDir + "\n" + "Dir: " + direction + "\n" + "Pos: " + transform.position);
 
 		return direction.normalized;
 	}
