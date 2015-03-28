@@ -78,5 +78,11 @@ public class playerShoot : MonoBehaviour {
 
 		//Recoil
 		m_rigidbody.AddForce (-(shootDirection * m_recoilForce), ForceMode.Impulse);
+
+		CameraShake ();
+	}
+
+	void CameraShake(){
+		m_camera.GetComponent<CameraShake> ().enabled = true;
 	}
 }
