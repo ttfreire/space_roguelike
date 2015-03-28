@@ -28,7 +28,7 @@ public class playerShoot : MonoBehaviour {
 			isUsingJoystick = !isUsingJoystick;
 		
 		if (m_shootCooldown <= 0.0f & Input.GetButtonUp ("Fire1")) {
-			m_shootCooldown = 1 / m_shootsPerSecond;
+			m_shootCooldown = ResetShootCooldown();
 			Shoot ();
 		}
 	}
@@ -74,6 +74,7 @@ public class playerShoot : MonoBehaviour {
 
 		GameObject proj = (GameObject)Instantiate (m_projectile, this.transform.position, Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
+		proj.GetComponent<projectileController> ().m_shooter = gameObject;
 		proj.transform.TransformDirection (shootDirection);
 		proj.GetComponent<Rigidbody> ().AddForce (shootDirection * m_shootForce, ForceMode.Impulse);
 

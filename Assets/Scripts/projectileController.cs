@@ -4,6 +4,7 @@ using System.Collections;
 public class projectileController : MonoBehaviour {
 	public float m_maxSpeed;
 	string m_targetTag;
+	public GameObject m_shooter;
 
 	Rigidbody m_rigidbody;
 	// Use this for initialization
@@ -26,11 +27,11 @@ public class projectileController : MonoBehaviour {
 		DestroyObject(gameObject);
 	}
 
-	void OnTriggerEnter(Collider other){
+	void OnTriggerStay(Collider other){
 		Debug.Log ("Tag: "+m_targetTag);
-		if (other.tag.Equals (m_targetTag)) {
+		if (other.tag.Equals (m_targetTag))
 			Destroy (other.gameObject);
+		if(other.gameObject != m_shooter && other.gameObject.tag != "FOV")
 			Destroy (this.gameObject);
-		}
 	}
 }
