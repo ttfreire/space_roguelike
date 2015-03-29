@@ -10,7 +10,15 @@ public class playerShoot : MonoBehaviour {
 	public float m_shootForce;
 	public float m_recoilForce;
 	public float m_shootsPerSecond;
+	public float m_MaxHeatingTime;
+	public float m_MaxCooldownTime;
+	float m_nextShot;
 	float m_shootCooldown;
+	bool m_canShoot = true;
+	float m_heatingTime;
+
+	float m_blinkingTime;
+	float m_blinkingTimeMax = 0.25f;
 		
 	public GameObject m_projectile;
 
@@ -20,20 +28,43 @@ public class playerShoot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		m_blinkingTime = 0;
 		m_rigidbody = rigidbody;
 		m_camera = FindObjectOfType<Camera> ();
-		m_shootCooldown = ResetShootCooldown ();
 		m_gameController = FindObjectOfType<gameController> ();
+		m_heatingTime = Time.deltaTime * m_MaxHeatingTime;
+		m_shootCooldown = Time.deltaTime * m_MaxCooldownTime * 60.0f;
+		gameObject.renderer.material.color = Color.white;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		m_shootCooldown -= Time.deltaTime;
-				
-		if (m_shootCooldown <= 0.0f && Input.GetButton ("Fire1")) {
-			m_shootCooldown = ResetShootCooldown();
-			Shoot ();
+
+		if (m_heatingTime < 0.0f)
+			m_canShoot = false;
+
+		if (m_canShoot) {
+			if (Time.time > m_nextShot && Input.GetButton ("Fire1")) {
+				m_nextShot = Time.time + ResetShootCooldown ();
+				m_heatingTime -= Time.deltaTime;
+				Shoot ();
+
+				if (m_heatingTime < 0.0f) {
+					m_canShoot = false;
+				}
+			}
+			else if(Input.GetButtonUp("Fire1"))
+				m_heatingTime = Time.deltaTime * m_MaxHeatingTime;
+		} else if (m_shootCooldown <= 0.0f) {
+			m_shootCooldown = Time.deltaTime * m_MaxCooldownTime * 60.0f;
+			m_canShoot = true;
+			m_heatingTime = Time.deltaTime * m_MaxHeatingTime;
+			gameObject.renderer.material.color = Color.white;
+		} else {
+			m_shootCooldown -= Time.deltaTime;
+			Heating ();
 		}
+		
 	}
 
 	float ResetShootCooldown ()
@@ -44,7 +75,7 @@ public class playerShoot : MonoBehaviour {
 	bool IsShooting ()
 	{
 		shootDirection = this.GetShootDirection();
-		return Mathf.Floor (shootDirection.sqrMagnitude) != 0;
+		return Mathf.Round (shootDirection.sqrMagnitude) != 0;
 	}
 
 	void Shoot(){
@@ -90,5 +121,24 @@ public class playerShoot : MonoBehaviour {
 
 	void PlayerShake(){
 		this.gameObject.GetComponent<CameraShake> ().enabled = true;
+	}
+
+	void Heating(){
+		if(gameObject.renderer.material.color == Color.white)
+			if(m_blinkingTime < m_blinkingTimeMax){
+				m_blinkingTime += Time.deltaTime;
+			}
+			else{
+			gameObject.renderer.material.color = Color.red;
+				m_blinkingTime = 0.0f;
+			}
+		if(gameObject.renderer.material.color == Color.red)
+			if(m_blinkingTime < m_blinkingTimeMax){
+				m_blinkingTime += Time.deltaTime;
+			}
+			else{
+				m_blinkingTime = 0.0f;
+				gameObject.renderer.material.color = Color.white;
+			}
 	}
 }
