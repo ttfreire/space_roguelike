@@ -24,9 +24,6 @@ public class gameController : MonoBehaviour {
 			isUsingJoystick = !isUsingJoystick;
 		InterfaceFeedback ();
 
-		theDirection.text = m_pShoot.shootDirection.ToString()+" (sqrMagnitude: )"+m_pShoot.shootDirection.sqrMagnitude.ToString();
-		theJoy.text = m_pShoot.joyDir.ToString();
-		theMouse.text = m_pShoot.mouseDir.ToString();
 	}
 
 	void InterfaceFeedback(){

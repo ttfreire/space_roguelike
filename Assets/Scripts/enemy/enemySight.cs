@@ -22,7 +22,7 @@ public class enemySight : MonoBehaviour {
 		if (other.gameObject == m_player) {
 			m_isPlayerOnView = true;
 		}
-		else
+		else if(other.gameObject.tag != "FOV")
 			m_isPlayerOnView = false;
 	}
 	

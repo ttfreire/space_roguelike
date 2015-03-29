@@ -9,9 +9,12 @@ public class playerMovement : MonoBehaviour {
 	public float m_maxSpeed;
 	public float m_airResistance;
 
+	private playerHealth m_pHealth;
+
 	// Use this for initialization
 	void Start () {
 		m_rigidbody = rigidbody;
+		m_pHealth = gameObject.GetComponent<playerHealth> ();
 	}
 
 	void Update(){
@@ -38,11 +41,14 @@ public class playerMovement : MonoBehaviour {
 		else {
 			m_rigidbody.AddForceAtPosition(direction, this.transform.position, ForceMode.VelocityChange);
 			m_rigidbody.drag = 0.0F;
+			m_pHealth.ConsumeOxygenperSecond (m_pHealth.m_OxygenLossRate);
 		}
+
+
 	}
 
 	void HardStop(){
-		m_rigidbody.velocity = Vector3.zero;
+		m_rigidbody.velocity = m_rigidbody.velocity * 0.5f;
 	}
 	
 	void CapOnMaxSpeed(){

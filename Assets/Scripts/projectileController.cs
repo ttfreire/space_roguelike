@@ -29,7 +29,7 @@ public class projectileController : MonoBehaviour {
 
 	void OnTriggerStay(Collider other){
 
-		if (other.tag.Equals (m_targetTag))
+		if (other.tag.Equals (m_targetTag) && !other.tag.Equals("Player"))
 			Destroy (other.gameObject);
 		if(other.gameObject != m_shooter && other.gameObject.tag != "FOV")
 			Destroy (this.gameObject);
