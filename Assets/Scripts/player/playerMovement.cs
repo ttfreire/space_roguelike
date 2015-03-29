@@ -36,7 +36,7 @@ public class playerMovement : MonoBehaviour {
 		if (h_translation.Equals (0.0f) && v_translation.Equals (0.0f))
 			m_rigidbody.drag = m_airResistance;
 		else {
-			m_rigidbody.AddForceAtPosition(direction, this.transform.position, ForceMode.Acceleration);
+			m_rigidbody.AddForceAtPosition(direction, this.transform.position, ForceMode.VelocityChange);
 			m_rigidbody.drag = 0.0F;
 		}
 	}
