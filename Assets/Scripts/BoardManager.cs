@@ -34,7 +34,7 @@ public class BoardManager : MonoBehaviour {
 	float chunkHeight;
 
 	private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
-	private List <Vector3> gridPositions = new List <Vector3> ();   //A list of possible locations to place tiles.
+	private List <GameObject> gridPositions = new List <GameObject> ();   //A list of possible locations to place tiles.
 	
 	
 	//Clears our list gridPositions and prepares it to generate a new board.
@@ -42,7 +42,7 @@ public class BoardManager : MonoBehaviour {
 	{
 		//Clear our list gridPositions.
 		gridPositions.Clear ();
-		
+		/**
 		//Loop through x axis (columns).
 		for(int x = 0; x < columns; x++)
 		{
@@ -50,9 +50,10 @@ public class BoardManager : MonoBehaviour {
 			for(int y = 0; y < rows; y++)
 			{
 				//At each index add a new Vector3 to our list with the x and y coordinates of that position.
-				gridPositions.Add (new Vector3(x*chunkWidth/2, y*chunkHeight/2, 0f));
+				gridPositions.Add (new GameObject());
 			}
 		}
+		**/
 	}
 	
 	
@@ -83,19 +84,24 @@ public class BoardManager : MonoBehaviour {
 				
 				//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 				instance.transform.SetParent (boardHolder);
+				instance.AddComponent("chunkController");
+				instance.GetComponent<chunkController>().InitialiseList();
+
+				if(x != -1 && x != columns && y != -1 && y != rows)
+					gridPositions.Add(instance);
 			}
 		}
 	}
 	
 	
 	//RandomPosition returns a random position from our list gridPositions.
-	Vector3 RandomChunk ()
+	GameObject RandomChunk ()
 	{
 		//Declare an integer randomIndex, set it's value to a random number between 0 and the count of items in our List gridPositions.
 		int randomIndex = Random.Range (0, gridPositions.Count);
 		
 		//Declare a variable of type Vector3 called randomPosition, set it's value to the entry at randomIndex from our List gridPositions.
-		Vector3 randomPosition = gridPositions[randomIndex];
+		GameObject randomPosition = gridPositions[randomIndex];
 		
 		//Remove the entry at randomIndex from the list so that it can't be re-used.
 		gridPositions.RemoveAt (randomIndex);
@@ -111,26 +117,29 @@ public class BoardManager : MonoBehaviour {
 		BoardSetup ();
 		
 		//Reset our list of gridpositions.
-		InitialiseList ();
+		//InitialiseList ();
 
 		//Remove the chunk where player starts the game
 		gridPositions.RemoveAt (0);
 
 		int chunksWithEnemies = Random.Range (gridPositions.Count / 2, gridPositions.Count);
 		for (int i = 0; i < chunksWithEnemies; i++) {
-			Vector3 randChunk = RandomChunk();
+			GameObject randChunk = RandomChunk();
 			SetupEnemies(randChunk);
 		}
 
 	}
 
-	public void SetupEnemies(Vector3 chunkPosition){
-		int numEnemies = Random.Range (1, 2);
+	public void SetupEnemies(GameObject chunk){
+		chunkController chunkcontrol = chunk.GetComponent<chunkController> ();
+		List<Vector3> chunkPositions = chunkcontrol.gridPositions;
+		int numEnemies = Random.Range (1, 5);
 		for (int i = 0; i < numEnemies; i++) {
 			GameObject toInstantiate = enemies[Random.Range (0,enemies.Length)];
-			float horizontalDelta = Random.Range(-chunkWidth/2, chunkWidth/2);
-			float verticalDelta = Random.Range(-chunkHeight/2, chunkHeight/2);
-			Instantiate (toInstantiate, chunkPosition+new Vector3(horizontalDelta, verticalDelta, 0.0f), Quaternion.identity);
+			Vector3 randPos = chunkcontrol.RandomPosition();
+			Vector3 instancePos = chunk.transform.position+randPos;
+			instancePos.z = 0;
+			Instantiate (toInstantiate,instancePos, Quaternion.identity);
 		}
 
 	}

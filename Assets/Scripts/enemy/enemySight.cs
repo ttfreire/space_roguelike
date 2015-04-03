@@ -22,8 +22,6 @@ public class enemySight : MonoBehaviour {
 		if (other.gameObject == m_player) {
 			m_isPlayerOnView = true;
 		}
-		else if(other.gameObject.tag != "FOV")
-			m_isPlayerOnView = false;
 	}
 	
 	void OnTriggerExit(Collider other){

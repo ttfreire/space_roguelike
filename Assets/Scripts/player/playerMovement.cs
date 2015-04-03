@@ -43,7 +43,6 @@ public class playerMovement : MonoBehaviour {
 		else {
 			m_rigidbody.AddForceAtPosition(direction.normalized*m_acceleration, this.transform.position, ForceMode.Acceleration);
 			Vector3 noiseDirection = (Vector3.up*Random.Range(-1.1f,1.1f)*m_randomForce);
-			Debug.Log(noiseDirection);
 			//m_rigidbody.AddForceAtPosition(direction+noiseDirection, this.transform.position, ForceMode.Acceleration);
 			m_rigidbody.drag = 0.0F;
 			m_pHealth.ConsumeOxygenperSecond (m_pHealth.m_OxygenLossRate);
