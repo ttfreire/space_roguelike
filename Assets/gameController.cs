@@ -12,9 +12,15 @@ public class gameController : MonoBehaviour {
 
 	playerShoot m_pShoot;
 
+	private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
+	private int level = 3;                                  //Current level number, expressed in game as "Day 1".
+
 	// Use this for initialization
 	void Awake () {
 		m_pShoot = GameObject.FindGameObjectWithTag("Player").GetComponent<playerShoot> ();
+
+		boardScript = GetComponent<BoardManager>();
+		boardScript.SetupScene(level);
 	}
 	
 	// Update is called once per frame
