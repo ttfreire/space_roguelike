@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum ShootState {NOTSHOOTING, SHOOTING, OVERHEAT};
+
 public class playerShoot : MonoBehaviour {
 
+	ShootState m_state;
 	gameController m_gameController;
 	Camera m_camera;
 	Rigidbody m_rigidbody;
@@ -16,10 +19,12 @@ public class playerShoot : MonoBehaviour {
 	float m_shootCooldown;
 	bool m_canShoot = true;
 	float m_heatingTime;
+	public float m_heatingRecovery;
+	public float m_heatingDecrease;
 
 	float m_blinkingTime;
 	float m_blinkingTimeMax = 0.25f;
-		
+
 	public GameObject m_projectile;
 
 	public Vector3 shootDirection;
@@ -28,6 +33,7 @@ public class playerShoot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		m_state = ShootState.NOTSHOOTING;
 		m_blinkingTime = 0;
 		m_rigidbody = rigidbody;
 		m_camera = FindObjectOfType<Camera> ();
@@ -40,6 +46,47 @@ public class playerShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		switch (m_state) {
+		case ShootState.NOTSHOOTING:{
+			if (Input.GetButton ("Fire1"))	
+				m_state = ShootState.SHOOTING;
+			else
+				if(m_heatingTime <= m_MaxHeatingTime*Time.deltaTime)
+					m_heatingTime += Time.deltaTime * m_heatingRecovery;
+			}
+			break;
+		case ShootState.SHOOTING:{
+			if (Time.time > m_nextShot && Input.GetButton ("Fire1")) {
+				m_nextShot = Time.time + ResetShootCooldown ();
+				m_heatingTime -= Time.deltaTime * m_heatingDecrease;
+				Shoot ();
+				
+				if (m_heatingTime < 0.0f) {
+					m_state = ShootState.OVERHEAT;
+				}
+			}
+			else if(!Input.GetButton ("Fire1"))
+			{
+				if(m_heatingTime <= m_MaxHeatingTime*Time.deltaTime)
+					m_heatingTime += Time.deltaTime * m_heatingRecovery;
+				m_state = ShootState.NOTSHOOTING;
+			}
+		}
+			break;
+		case ShootState.OVERHEAT:{
+			m_shootCooldown -= Time.deltaTime;
+			Heating ();
+			if (m_shootCooldown <= 0.0f) {
+				m_shootCooldown = Time.deltaTime * m_MaxCooldownTime * 60.0f;
+				m_heatingTime = Time.deltaTime * m_MaxHeatingTime;
+				gameObject.renderer.material.color = Color.white;
+				m_state = ShootState.NOTSHOOTING;
+			}
+
+			}
+			break;
+		}
+		/**
 		if (m_heatingTime < 0.0f)
 			m_canShoot = false;
 
@@ -64,6 +111,8 @@ public class playerShoot : MonoBehaviour {
 			m_shootCooldown -= Time.deltaTime;
 			Heating ();
 		}
+
+**/
 		
 	}
 
@@ -140,5 +189,9 @@ public class playerShoot : MonoBehaviour {
 				m_blinkingTime = 0.0f;
 				gameObject.renderer.material.color = Color.white;
 			}
+	}
+
+	public float getHeatingTime(){
+		return m_heatingTime;
 	}
 }

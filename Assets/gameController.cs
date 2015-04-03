@@ -8,6 +8,7 @@ public class gameController : MonoBehaviour {
 	public Text theDirection;
 	public Text theJoy;
 	public Text theMouse;
+	public Text heating;
 
 	playerShoot m_pShoot;
 
@@ -31,5 +32,6 @@ public class gameController : MonoBehaviour {
 			theInput.text = "Joystick";
 		else
 			theInput.text = "Mouse";
+		heating.text = m_pShoot.getHeatingTime().ToString();
 	}
 }
