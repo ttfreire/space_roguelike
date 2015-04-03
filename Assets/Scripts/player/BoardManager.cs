@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,9 +26,13 @@ public class BoardManager : MonoBehaviour {
 	public int columns;                                         //Number of columns in our game board.
 	public int rows;                                            //Number of rows in our game board.
 
-	public GameObject[] floorTiles;                                 //Array of floor prefabs.
+	public GameObject[] chunkTiles;                                 //Array of floor prefabs.
 	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
-	
+	public GameObject[] enemies;
+
+	float chunkWidth;
+	float chunkHeight;
+
 	private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
 	private List <Vector3> gridPositions = new List <Vector3> ();   //A list of possible locations to place tiles.
 	
@@ -40,13 +44,13 @@ public class BoardManager : MonoBehaviour {
 		gridPositions.Clear ();
 		
 		//Loop through x axis (columns).
-		for(int x = 1; x < columns-1; x++)
+		for(int x = 0; x < columns; x++)
 		{
 			//Within each column, loop through y axis (rows).
-			for(int y = 1; y < rows-1; y++)
+			for(int y = 0; y < rows; y++)
 			{
 				//At each index add a new Vector3 to our list with the x and y coordinates of that position.
-				gridPositions.Add (new Vector3(x, y, 0f));
+				gridPositions.Add (new Vector3(x*chunkWidth/2, y*chunkHeight/2, 0f));
 			}
 		}
 	}
@@ -57,7 +61,9 @@ public class BoardManager : MonoBehaviour {
 	{
 		//Instantiate Board and set boardHolder to its transform.
 		boardHolder = new GameObject ("Board").transform;
-		
+		chunkWidth = chunkTiles [0].transform.localScale.x * 10f;
+		chunkHeight = chunkTiles [0].transform.localScale.z * 10f;
+
 		//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
 		for(int x = -1; x < columns + 1; x++)
 		{
@@ -65,7 +71,7 @@ public class BoardManager : MonoBehaviour {
 			for(int y = -1; y < rows + 1; y++)
 			{
 				//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
-				GameObject toInstantiate = floorTiles[Random.Range (0,floorTiles.Length)];
+				GameObject toInstantiate = chunkTiles[Random.Range (0,chunkTiles.Length)];
 				
 				//Check if we current position is at board edge, if so choose a random outer wall prefab from our array of outer wall tiles.
 				if(x == -1 || x == columns || y == -1 || y == rows)
@@ -73,7 +79,7 @@ public class BoardManager : MonoBehaviour {
 				
 				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 				GameObject instance =
-					Instantiate (toInstantiate, new Vector3 (x*toInstantiate.transform.localScale.x*10, y*toInstantiate.transform.localScale.y*10, 5f), toInstantiate.transform.rotation) as GameObject;
+					Instantiate (toInstantiate, new Vector3 (x*chunkWidth, y*chunkHeight, 5f), toInstantiate.transform.rotation) as GameObject;
 				
 				//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 				instance.transform.SetParent (boardHolder);
@@ -83,7 +89,7 @@ public class BoardManager : MonoBehaviour {
 	
 	
 	//RandomPosition returns a random position from our list gridPositions.
-	Vector3 RandomPosition ()
+	Vector3 RandomChunk ()
 	{
 		//Declare an integer randomIndex, set it's value to a random number between 0 and the count of items in our List gridPositions.
 		int randomIndex = Random.Range (0, gridPositions.Count);
@@ -97,10 +103,7 @@ public class BoardManager : MonoBehaviour {
 		//Return the randomly selected Vector3 position.
 		return randomPosition;
 	}
-	
-	
 
-	
 	//SetupScene initializes our level and calls the previous functions to lay out the game board
 	public void SetupScene (int level)
 	{
@@ -110,5 +113,26 @@ public class BoardManager : MonoBehaviour {
 		//Reset our list of gridpositions.
 		InitialiseList ();
 
+		//Remove the chunk where player starts the game
+		gridPositions.RemoveAt (0);
+
+		int chunksWithEnemies = Random.Range (gridPositions.Count / 2, gridPositions.Count);
+		for (int i = 0; i < chunksWithEnemies; i++) {
+			Vector3 randChunk = RandomChunk();
+			SetupEnemies(randChunk);
+		}
+
 	}
+
+	public void SetupEnemies(Vector3 chunkPosition){
+		int numEnemies = Random.Range (1, 2);
+		for (int i = 0; i < numEnemies; i++) {
+			GameObject toInstantiate = enemies[Random.Range (0,enemies.Length)];
+			float horizontalDelta = Random.Range(-chunkWidth/2, chunkWidth/2);
+			float verticalDelta = Random.Range(-chunkHeight/2, chunkHeight/2);
+			Instantiate (toInstantiate, chunkPosition+new Vector3(horizontalDelta, verticalDelta, 0.0f), Quaternion.identity);
+		}
+
+	}
+
 }
