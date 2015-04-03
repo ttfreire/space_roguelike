@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour {
 	public float m_speed;
 	public float m_maxSpeed;
 	public float m_airResistance;
+	public float m_randomForce;
 
 	private playerHealth m_pHealth;
 
@@ -40,6 +41,9 @@ public class playerMovement : MonoBehaviour {
 			m_rigidbody.drag = m_airResistance;
 		else {
 			m_rigidbody.AddForceAtPosition(direction, this.transform.position, ForceMode.VelocityChange);
+			Vector3 noiseDirection = (Vector3.up*Random.Range(-1.1f,1.1f)*m_randomForce);
+			Debug.Log(noiseDirection);
+			m_rigidbody.AddForceAtPosition(direction+noiseDirection, this.transform.position, ForceMode.VelocityChange);
 			m_rigidbody.drag = 0.0F;
 			m_pHealth.ConsumeOxygenperSecond (m_pHealth.m_OxygenLossRate);
 		}
