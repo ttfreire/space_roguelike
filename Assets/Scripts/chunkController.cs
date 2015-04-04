@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class chunkController : MonoBehaviour {
 
 	[HideInInspector] public List <Vector3> gridPositions = new List <Vector3> ();   
-	int columns = 5;                                         
-	int rows = 5;  
+	int columns = 7;                                         
+	int rows = 7;  
 	float chunkWidth;
 	float chunkHeight;
 
@@ -17,15 +17,17 @@ public class chunkController : MonoBehaviour {
 
 		chunkWidth = gameObject.transform.localScale.x * 10;
 		chunkHeight = gameObject.transform.localScale.z * 10;
+		int initialX = Mathf.RoundToInt (columns / 2) - columns +1;
+		int initialY = Mathf.RoundToInt (rows / 2) - rows +1;
 		
 		//Loop through x axis (columns).
-		for(int x = -2; x < 3; x++)
+		for(int x = initialX; x < columns + initialX; x++)
 		{
 			//Within each column, loop through y axis (rows).
-			for(int y = -2; y < 3; y++)
+			for(int y = initialY; y < rows + initialY; y++)
 			{
 				//At each index add a new Vector3 to our list with the x and y coordinates of that position.
-				gridPositions.Add (new Vector3(x*chunkWidth/5, y*chunkHeight/5, 0f));
+				gridPositions.Add (new Vector3(x*chunkWidth/columns, y*chunkHeight/rows, 0f));
 			}
 		}
 	}
