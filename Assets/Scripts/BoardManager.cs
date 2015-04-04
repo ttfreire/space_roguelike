@@ -122,7 +122,7 @@ public class BoardManager : MonoBehaviour {
 		//Remove the chunk where player starts the game
 		gridPositions.RemoveAt (0);
 
-		int chunksWithEnemies = Random.Range (gridPositions.Count / 2, gridPositions.Count);
+		int chunksWithEnemies = Random.Range (gridPositions.Count / 4, Mathf.RoundToInt(gridPositions.Count / 1.5f));
 		for (int i = 0; i < chunksWithEnemies; i++) {
 			GameObject randChunk = RandomChunk();
 			SetupEnemies(randChunk);
@@ -133,7 +133,7 @@ public class BoardManager : MonoBehaviour {
 	public void SetupEnemies(GameObject chunk){
 		chunkController chunkcontrol = chunk.GetComponent<chunkController> ();
 		List<Vector3> chunkPositions = chunkcontrol.gridPositions;
-		int numEnemies = Random.Range (1, 5);
+		int numEnemies = Random.Range (1, 3);
 		for (int i = 0; i < numEnemies; i++) {
 			GameObject toInstantiate = enemies[Random.Range (0,enemies.Length)];
 			Vector3 randPos = chunkcontrol.RandomPosition();
