@@ -42,6 +42,7 @@ public class playerMovement : MonoBehaviour {
 			m_rigidbody.drag = m_airResistance;
 		else {
 			m_rigidbody.AddForceAtPosition(direction.normalized*m_acceleration, this.transform.position, ForceMode.Acceleration);
+			//m_rigidbody.AddForceAtPosition(direction.normalized*m_acceleration, this.transform.position, ForceMode.VelocityChange);
 			Vector3 noiseDirection = (Vector3.up*Random.Range(-1.1f,1.1f)*m_randomForce);
 			//m_rigidbody.AddForceAtPosition(direction+noiseDirection, this.transform.position, ForceMode.Acceleration);
 			m_rigidbody.drag = 0.0F;

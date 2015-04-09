@@ -7,10 +7,14 @@ public class enemyController : MonoBehaviour {
 	bool shake = false;
 	Camera m_camera;
 	Transform m_targetToShoot;
+	GameObject player;
+	public float m_speed;
+	bool canFollowPlayer = false;
 	// Use this for initialization
 	void Start () {
 
 		m_camera = FindObjectOfType<Camera> ();
+		player = GameObject.FindGameObjectWithTag ("Player");
 
 	}
 	
@@ -18,12 +22,14 @@ public class enemyController : MonoBehaviour {
 	void Update () {
 		if(shake)
 			CameraShake ();
+		if(renderer.isVisible)
+			FollowPlayer ();
 	}
 
 
 
 	void OnCollisionStay(Collision other){
-		if (other.gameObject.tag.Equals ("Player")) {
+		if (other.gameObject.Equals (player)) {
 			RepelPlayer (other.rigidbody);
 			shake = true;
 		}
@@ -42,5 +48,11 @@ public class enemyController : MonoBehaviour {
 
 	void CameraShake(){
 		m_camera.GetComponent<CameraShake> ().enabled = true;
+	}
+
+	void FollowPlayer(){
+		Transform target = player.transform;
+		Vector3 direction = target.position - this.transform.position;
+		transform.Translate (direction * Time.deltaTime * m_speed);
 	}
 }
