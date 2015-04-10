@@ -26,7 +26,7 @@ public class playerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		Move ();
+		newMove ();
 		CapOnMaxSpeed ();
 	}
 
@@ -59,5 +59,15 @@ public class playerMovement : MonoBehaviour {
 	void CapOnMaxSpeed(){
 		if (m_rigidbody.velocity.magnitude > m_maxSpeed)
 			m_rigidbody.velocity = m_rigidbody.velocity.normalized * m_maxSpeed;
+	}
+
+	void newMove(){
+		float h_translation = Input.GetAxisRaw("Horizontal") * m_speed;
+		float v_translation = Input.GetAxisRaw("Vertical") * m_speed;
+		
+		
+		Vector3 direction = new Vector3(h_translation, v_translation, 0);
+		m_rigidbody.AddForceAtPosition(direction, this.transform.position, ForceMode.Force);
+		//m_rigidbody.MovePosition (this.transform.position + direction * Time.deltaTime);
 	}
 }
