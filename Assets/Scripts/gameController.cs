@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class gameController : MonoBehaviour {
+	public bool generateLevel;
 	public bool isUsingJoystick = false;
 	public Text theInput;
 	public Text theDirection;
@@ -20,7 +21,8 @@ public class gameController : MonoBehaviour {
 		m_pShoot = GameObject.FindGameObjectWithTag("Player").GetComponent<playerShoot> ();
 
 		boardScript = GetComponent<BoardManager>();
-		boardScript.SetupScene(level);
+		if(generateLevel)
+			boardScript.SetupScene(level);
 	}
 	
 	// Update is called once per frame
