@@ -27,7 +27,6 @@ public class projectileController : MonoBehaviour {
 	{
 		DestroyObject(gameObject);
 	}
-	
-		
-	
+			
+
 }
