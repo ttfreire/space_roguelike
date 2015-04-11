@@ -5,9 +5,14 @@ using System.Collections;
 public class playerController : MonoBehaviour {
 
 	playerHealth m_pHealth;
+	bool IsInsideRoom = false;
+	Camera p_camera;
+	float cameraSizeinRoom = 10;
+	float cameraSizeinSpace = 20;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		p_camera = transform.GetChild (0).camera;
 		m_pHealth = gameObject.GetComponent<playerHealth> ();
 	}
 	
@@ -23,6 +28,40 @@ public class playerController : MonoBehaviour {
 		}
 		if(other.gameObject.tag.Equals ("Enemy"))
 			m_pHealth.TakeDamage (0.05f);
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.tag.Equals ("Door")) {
+			//Time.timeScale = 0;
+			this.collider.isTrigger = false;
+			if(!IsInsideRoom){
+				EnterRoom();
+				Application.LoadLevelAdditive("sala02");
+			}
+			else
+				LeaveRoom();
+
+		}
+	}
+
+	public void EnterRoom(){
+		if (!IsInsideRoom) {
+			IsInsideRoom = true;
+			p_camera.orthographicSize = cameraSizeinRoom;
+			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 50);
+			gameObject.transform.position = pos;
+		}
+	}
+
+	public void LeaveRoom(){
+		if (IsInsideRoom) {
+			IsInsideRoom = false;
+			GameObject sceneRoot = GameObject.Find("_ROOT");
+			Destroy(sceneRoot);
+			p_camera.orthographicSize = cameraSizeinSpace;
+			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+			gameObject.transform.position = pos;
+		}
 	}
 
 }

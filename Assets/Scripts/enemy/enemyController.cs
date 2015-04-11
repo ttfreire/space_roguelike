@@ -40,6 +40,9 @@ public class enemyController : MonoBehaviour {
 				Destroy (other.gameObject);
 			}
 		}
+		else
+			if(!other.gameObject.tag.Equals("Player"))
+				m_healthController.TakeDamage(99999);
 	}
 
 	void OnCollisionStay(Collision other){
@@ -48,6 +51,7 @@ public class enemyController : MonoBehaviour {
 			shake = true;
 		}
 	}
+	
 
 	void OnCollisionExit(Collision other){
 		shake = false;

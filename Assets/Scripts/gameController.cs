@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class gameController : MonoBehaviour {
+
+	public static gameController control;
 	public bool generateLevel;
 	public bool isUsingJoystick = false;
 	public Text theInput;
@@ -18,6 +20,11 @@ public class gameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		if (control == null) {
+			DontDestroyOnLoad (gameObject);
+			control = this;
+		} else if (control != this)
+			Destroy (gameObject);
 		m_pShoot = GameObject.FindGameObjectWithTag("Player").GetComponent<playerShoot> ();
 
 		boardScript = GetComponent<BoardManager>();
@@ -41,6 +48,10 @@ public class gameController : MonoBehaviour {
 			foreach(GameObject fov in FOVs){
 				MeshRenderer fovMesh = fov.gameObject.GetComponent<MeshRenderer>();
 				fovMesh.enabled = !fovMesh.enabled;
+			}
+			if (Input.GetKeyUp (KeyCode.L)){
+				GameObject sceneRoot = GameObject.Find("_ROOT");
+				Destroy(sceneRoot);
 			}
 		}
 		InterfaceFeedback ();

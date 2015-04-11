@@ -27,6 +27,12 @@ public class projectileController : MonoBehaviour {
 	{
 		DestroyObject(gameObject);
 	}
+
+	void OnCollisionStay(Collision other){
+		if(other.transform.parent != null)
+			if(other.gameObject.transform.parent.tag.Equals("LevelLimit"))
+			   Destroy(gameObject);
+	}
 			
 
 }
