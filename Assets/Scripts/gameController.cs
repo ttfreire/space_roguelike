@@ -8,9 +8,6 @@ public class gameController : MonoBehaviour {
 	public bool generateLevel;
 	public bool isUsingJoystick = false;
 	public Text theInput;
-	public Text theDirection;
-	public Text theJoy;
-	public Text theMouse;
 	public Text heating;
 
 	playerShoot m_pShoot;
@@ -55,13 +52,9 @@ public class gameController : MonoBehaviour {
 	}
 
 	void InterfaceFeedback(){
-		if (isUsingJoystick)
-			theInput.text = "Joystick";
-		else
-			theInput.text = "Mouse";
+
 		heating.text = m_pShoot.getHeatingTime().ToString();
 	}
-
 	void HideEnemiesFOV(){
 		GameObject[] FOVs = GameObject.FindGameObjectsWithTag("FOV");
 		foreach(GameObject fov in FOVs){
