@@ -36,6 +36,13 @@ public class gameController : MonoBehaviour {
 			foreach(GameObject enemy in enemies)
 				Destroy(enemy.gameObject);
 		}
+		if (Input.GetKeyUp (KeyCode.F)){
+			GameObject[] FOVs = GameObject.FindGameObjectsWithTag("FOV");
+			foreach(GameObject fov in FOVs){
+				MeshRenderer fovMesh = fov.gameObject.GetComponent<MeshRenderer>();
+				fovMesh.enabled = !fovMesh.enabled;
+			}
+		}
 		InterfaceFeedback ();
 
 	}

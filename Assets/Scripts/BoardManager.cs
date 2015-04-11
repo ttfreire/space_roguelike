@@ -119,8 +119,8 @@ public class BoardManager : MonoBehaviour {
 		//Reset our list of gridpositions.
 		//InitialiseList ();
 
-		//Remove the chunk where player starts the game
-		gridPositions.RemoveAt (0);
+		//Remove the chunk where player starts the game and adjascents
+		removeChunksFromList ();
 
 		int chunksWithEnemies = Random.Range (gridPositions.Count / 4, Mathf.RoundToInt(gridPositions.Count / 1.5f));
 		for (int i = 0; i < chunksWithEnemies; i++) {
@@ -142,6 +142,13 @@ public class BoardManager : MonoBehaviour {
 			Instantiate (toInstantiate,instancePos, Quaternion.identity);
 		}
 
+	}
+
+	void removeChunksFromList(){
+		gridPositions.RemoveAt (rows + 1);
+		gridPositions.RemoveAt (rows);
+		gridPositions.RemoveAt (1);
+		gridPositions.RemoveAt (0);
 	}
 
 }

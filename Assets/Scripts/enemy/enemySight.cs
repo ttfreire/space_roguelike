@@ -4,13 +4,14 @@ using System.Collections;
 public class enemySight : MonoBehaviour {
 	[HideInInspector] public bool m_isPlayerOnView = false;
 	GameObject m_player;
+	LayerMask ignoreFOVLayerMask = 1 << 8;
 	void Awake(){
 		m_player = FindObjectOfType<playerController> ().gameObject;
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		ignoreFOVLayerMask = ~ignoreFOVLayerMask;
 	}
 	
 	// Update is called once per frame
@@ -20,7 +21,16 @@ public class enemySight : MonoBehaviour {
 
 	void OnTriggerStay(Collider other){
 		if (other.gameObject == m_player) {
-			m_isPlayerOnView = true;
+			RaycastHit hit;
+			Transform shooterPos = transform.FindChild("shooter").transform;
+			m_player = FindObjectOfType<playerController> ().gameObject;
+			if(Physics.Raycast(shooterPos.position, m_player.transform.position-shooterPos.position, out hit, Mathf.Infinity, ignoreFOVLayerMask))
+				if(hit.transform.tag.Equals("Player"))
+					m_isPlayerOnView = true;
+				else
+					m_isPlayerOnView = false;
+			Debug.DrawLine(shooterPos.position, hit.point, Color.red);
+
 		}
 	}
 	
