@@ -21,6 +21,8 @@ public class playerController : MonoBehaviour {
 			m_pHealth.TakeDamage (10.0f);
 			Destroy (other.gameObject);
 		}
+		if(other.gameObject.tag.Equals ("Enemy"))
+			m_pHealth.TakeDamage (0.05f);
 	}
 
 }

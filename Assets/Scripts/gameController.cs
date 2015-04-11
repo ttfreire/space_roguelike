@@ -31,6 +31,11 @@ public class gameController : MonoBehaviour {
 			Application.LoadLevel (Application.loadedLevel);
 		if (Input.GetKeyUp (KeyCode.J))
 			isUsingJoystick = !isUsingJoystick;
+		if (Input.GetKeyUp (KeyCode.T)){
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+			foreach(GameObject enemy in enemies)
+				Destroy(enemy.gameObject);
+		}
 		InterfaceFeedback ();
 
 	}

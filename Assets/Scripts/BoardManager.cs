@@ -133,7 +133,7 @@ public class BoardManager : MonoBehaviour {
 	public void SetupEnemies(GameObject chunk){
 		chunkController chunkcontrol = chunk.GetComponent<chunkController> ();
 		List<Vector3> chunkPositions = chunkcontrol.gridPositions;
-		int numEnemies = Random.Range (5, 10);
+		int numEnemies = Random.Range (2, 6);
 		for (int i = 0; i < numEnemies; i++) {
 			GameObject toInstantiate = enemies[Random.Range (0,enemies.Length)];
 			Vector3 randPos = chunkcontrol.RandomPosition();
