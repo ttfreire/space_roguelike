@@ -24,6 +24,7 @@ public class playerHealth : MonoBehaviour {
 		m_currentOxygen.fillAmount = m_currentOxygenValue/m_playerTotalOxygen;
 		if (IsDead ())
 			Destroy (gameObject);
+		ConsumeOxygenperSecond (m_OxygenLossRate);
 	}
 
 	public void ConsumeOxygenperSecond(float rate){
