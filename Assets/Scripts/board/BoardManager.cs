@@ -29,6 +29,7 @@ public class BoardManager : MonoBehaviour {
 	public GameObject[] chunkTiles;                                 //Array of floor prefabs.
 	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
 	public GameObject[] enemies;
+	public GameObject[] items;
 
 	float chunkWidth;
 	float chunkHeight;
@@ -126,6 +127,11 @@ public class BoardManager : MonoBehaviour {
 		for (int i = 0; i < chunksWithEnemies; i++) {
 			GameObject randChunk = RandomChunk();
 			SetupEnemies(randChunk);
+			SetupItems(randChunk);
+		}
+		for (int i = 0; i < chunksWithEnemies; i++) {
+			GameObject randChunk = RandomChunk();
+			SetupItems(randChunk);
 		}
 
 
@@ -144,8 +150,23 @@ public class BoardManager : MonoBehaviour {
 			instancePos.z = 0;
 			Instantiate (toInstantiate,instancePos, Quaternion.identity);
 		}
-
+		
 	}
+
+	public void SetupItems(GameObject chunk){
+		chunkController chunkcontrol = chunk.GetComponent<chunkController> ();
+		List<Vector3> chunkPositions = chunkcontrol.gridPositions;
+		int numItems = Random.Range (1, 3);
+		for (int i = 0; i < numItems; i++) {
+			GameObject toInstantiate = items[Random.Range (0,items.Length)];
+			Vector3 randPos = chunkcontrol.RandomPosition();
+			Vector3 instancePos = chunk.transform.position+randPos;
+			instancePos.z = 0;
+			Instantiate (toInstantiate,instancePos, Quaternion.identity);
+		}
+		
+	}
+
 
 	void removeChunksFromList(){
 		gridPositions.RemoveAt (rows + 1);
