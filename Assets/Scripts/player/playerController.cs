@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour {
 	bool IsInsideRoom = false;
 	Camera p_camera;
 	float cameraSizeinRoom = 10;
-	float cameraSizeinSpace = 20;
+	float cameraSizeinSpace = 15;
 
 	// Use this for initialization
 	void Awake () {
@@ -32,15 +32,15 @@ public class playerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.tag.Equals ("Door")) {
-			//Time.timeScale = 0;
 			this.collider.isTrigger = false;
-			if(!IsInsideRoom){
-				EnterRoom();
-				Application.LoadLevelAdditive("sala02");
-			}
-			else
-				LeaveRoom();
-
+			if (!IsInsideRoom) {
+				EnterRoom ();
+				Application.LoadLevelAdditive ("sala02");
+			} else
+				LeaveRoom ();
+		} else if (other.tag.Equals ("Item")) {
+			itemController i_control = other.gameObject.GetComponent<itemController>();
+			i_control.PlayerCollectItem(gameObject);
 		}
 	}
 

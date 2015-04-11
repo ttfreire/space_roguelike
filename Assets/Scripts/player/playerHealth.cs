@@ -10,7 +10,7 @@ public class playerHealth : MonoBehaviour {
 
 	public Image m_currentOxygen;
 	Camera m_camera;
-	float m_currentOxygenValue;
+	public float m_currentOxygenValue;
 	float m_playerTotalOxygen;
 	// Use this for initialization
 	void Awake () {
