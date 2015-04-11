@@ -5,7 +5,8 @@ public class enemyHealth : MonoBehaviour {
 
 	public float m_health;
 	float m_blinkingTime = 0.0f ;
-	float m_blinkingTimeMax =21.25f;
+	float m_blinkingTimeMax = 0.25f;
+	bool isTakingDamage = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -13,12 +14,13 @@ public class enemyHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		DamageFeedback ();
 	}
 
 	public void TakeDamage(float damageTaken){
 		m_health -= damageTaken;
-		DamageFeedback ();
+		isTakingDamage = true;
+
 	}
 
 	public bool IsDead(){
@@ -29,10 +31,15 @@ public class enemyHealth : MonoBehaviour {
 	}
 
 	void DamageFeedback(){
-		gameObject.renderer.material.color = Color.red;
-		while (m_blinkingTime < m_blinkingTimeMax)
+		if(isTakingDamage){
+			gameObject.renderer.material.color = Color.red;
 			m_blinkingTime += Time.deltaTime;
-		m_blinkingTime = 0.0f;
-		gameObject.renderer.material.color = Color.white;
+			if(m_blinkingTime > m_blinkingTimeMax)
+				isTakingDamage = false;
+		}
+		if (!isTakingDamage) {
+			m_blinkingTime = 0.0f;
+			gameObject.renderer.material.color = Color.white;
+		}
 	}
 }

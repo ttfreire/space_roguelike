@@ -33,14 +33,18 @@ public class enemyController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		if(other.gameObject.tag.Equals("Projectile")){
-			projectileController proj = other.gameObject.GetComponent<projectileController>();
-			if(proj.m_shooter != this.gameObject){
-				m_healthController.TakeDamage(proj.m_damage);
-				Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
-				Vector3 shootForce = player.GetComponent<playerShoot>().m_pushForce * dirFromProjectile;
-				this.rigidbody.AddForceAtPosition(shootForce, this.transform.position, ForceMode.Impulse);
-				Destroy (other.gameObject);
+			if(!other.contacts[0].thisCollider.tag.Equals("Undamagable")){
+				projectileController proj = other.gameObject.GetComponent<projectileController>();
+				if(proj.m_shooter != this.gameObject){
+					m_healthController.TakeDamage(proj.m_damage);
+					Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
+					Vector3 shootForce = player.GetComponent<playerShoot>().m_pushForce * dirFromProjectile;
+					this.rigidbody.AddForceAtPosition(shootForce, this.transform.position, ForceMode.Impulse);
+					Destroy (other.gameObject);
+				}
 			}
+			else
+				Destroy (other.gameObject);
 		}
 		else
 			if(!other.gameObject.tag.Equals("Player"))
