@@ -33,10 +33,11 @@ public class enemyShoot : MonoBehaviour {
 	}
 
 	void ShootTarget(Transform target){
-		GameObject proj = (GameObject)Instantiate (m_projectile, this.transform.position, Quaternion.identity);
+		Vector3 shootDir = (target.position - transform.position).normalized;
+		GameObject proj = (GameObject)Instantiate (m_projectile, this.transform.position + shootDir , Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Player");
 		proj.GetComponent<projectileController> ().m_shooter = this.gameObject;
-		Vector3 shootDir = (target.position - transform.position).normalized;
+
 		proj.transform.TransformDirection (shootDir);
 		proj.GetComponent<Rigidbody> ().AddForce (shootDir * m_shootForce, ForceMode.Impulse);
 	}

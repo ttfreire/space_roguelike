@@ -10,6 +10,7 @@ public class playerShoot : MonoBehaviour {
 	Camera m_camera;
 	Rigidbody m_rigidbody;
 
+	public float m_damage;
 	public float m_shootForce;
 	public float m_recoilForce;
 	public float m_shootsPerSecond;
@@ -152,9 +153,11 @@ public class playerShoot : MonoBehaviour {
 
 	void ShootProjectile ()
 	{
-		GameObject proj = (GameObject)Instantiate (m_projectile, this.transform.position, Quaternion.identity);
+		Vector3 projSpawnPos = this.transform.position + shootDirection;
+		GameObject proj = (GameObject)Instantiate (m_projectile, projSpawnPos, Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
 		proj.GetComponent<projectileController> ().m_shooter = gameObject;
+		proj.GetComponent<projectileController> ().m_damage = m_damage;
 		proj.transform.TransformDirection (shootDirection);
 		proj.GetComponent<Rigidbody> ().AddForce (shootDirection * m_shootForce, ForceMode.Impulse);
 

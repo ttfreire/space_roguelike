@@ -5,6 +5,7 @@ public class projectileController : MonoBehaviour {
 	public float m_maxSpeed;
 	string m_targetTag;
 	public GameObject m_shooter;
+	public float m_damage;
 
 	Rigidbody m_rigidbody;
 	// Use this for initialization
@@ -26,12 +27,7 @@ public class projectileController : MonoBehaviour {
 	{
 		DestroyObject(gameObject);
 	}
-
-	void OnTriggerStay(Collider other){
-
-		if (other.tag.Equals (m_targetTag) && !other.tag.Equals("Player"))
-			Destroy (other.gameObject);
-		if(other.gameObject != m_shooter && other.gameObject.tag != "FOV")
-			Destroy (this.gameObject);
-	}
+	
+		
+	
 }

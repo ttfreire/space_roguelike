@@ -10,9 +10,10 @@ public class enemyController : MonoBehaviour {
 	GameObject player;
 	public float m_speed;
 	bool canFollowPlayer = false;
+	enemyHealth m_healthController;
 	// Use this for initialization
 	void Start () {
-
+		m_healthController = GetComponent<enemyHealth> ();
 		m_camera = FindObjectOfType<Camera> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 
@@ -22,11 +23,21 @@ public class enemyController : MonoBehaviour {
 	void Update () {
 		if(shake)
 			CameraShake ();
-		if(renderer.isVisible)
+		if(this.renderer.isVisible)
 			FollowPlayer ();
+		if (m_healthController.IsDead())
+			Destroy (gameObject);
 	}
 
-
+	void OnCollisionEnter(Collision other){
+		if(other.gameObject.tag.Equals("Projectile")){
+			projectileController proj = other.gameObject.GetComponent<projectileController>();
+			if(proj.m_shooter != this.gameObject){
+				m_healthController.TakeDamage(proj.m_damage);
+				Destroy (other.gameObject);
+			}
+		}
+	}
 
 	void OnCollisionStay(Collision other){
 		if (other.gameObject.Equals (player)) {

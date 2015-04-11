@@ -16,9 +16,11 @@ public class playerController : MonoBehaviour {
 
 	}
 
-	void OnTriggerStay(Collider other){
-		if(other.tag.Equals("Projectile") && other.gameObject.GetComponent<projectileController>().m_shooter != gameObject)
-		   m_pHealth.TakeDamage(10.0f);
+	void OnCollisionStay(Collision other){
+		if (other.gameObject.tag.Equals ("Projectile") && other.gameObject.GetComponent<projectileController> ().m_shooter != gameObject) {
+			m_pHealth.TakeDamage (10.0f);
+			Destroy (other.gameObject);
+		}
 	}
 
 }
