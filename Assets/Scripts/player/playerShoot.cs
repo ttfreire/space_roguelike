@@ -12,6 +12,7 @@ public class playerShoot : MonoBehaviour {
 
 	public float m_damage;
 	public float m_shootForce;
+	public float m_pushForce;
 	public float m_recoilForce;
 	public float m_shootsPerSecond;
 	public float m_MaxHeatingTime;

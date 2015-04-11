@@ -34,6 +34,9 @@ public class enemyController : MonoBehaviour {
 			projectileController proj = other.gameObject.GetComponent<projectileController>();
 			if(proj.m_shooter != this.gameObject){
 				m_healthController.TakeDamage(proj.m_damage);
+				Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
+				Vector3 shootForce = player.GetComponent<playerShoot>().m_pushForce * dirFromProjectile;
+				this.rigidbody.AddForceAtPosition(shootForce, this.transform.position, ForceMode.Impulse);
 				Destroy (other.gameObject);
 			}
 		}
