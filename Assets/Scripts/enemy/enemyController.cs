@@ -11,19 +11,21 @@ public class enemyController : MonoBehaviour {
 	public float m_speed;
 	bool canFollowPlayer = false;
 	enemyHealth m_healthController;
+	enemySight m_sightController;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		m_healthController = GetComponent<enemyHealth> ();
+		m_sightController = GetComponent<enemySight> ();
 		m_camera = FindObjectOfType<Camera> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
-
+		gameObject.renderer.material.color = Color.white;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(shake)
 			CameraShake ();
-		if(this.renderer.isVisible)
+		if(m_sightController.m_isPlayerOnView)
 			FollowPlayer ();
 		if (m_healthController.IsDead())
 			Destroy (gameObject);
@@ -73,4 +75,5 @@ public class enemyController : MonoBehaviour {
 		Vector3 direction = target.position - this.transform.position;
 		transform.Translate (direction * Time.deltaTime * m_speed);
 	}
+	
 }

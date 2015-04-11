@@ -128,6 +128,9 @@ public class BoardManager : MonoBehaviour {
 			SetupEnemies(randChunk);
 		}
 
+
+		//gameObject.AddComponent<NavMesh> ();
+
 	}
 
 	public void SetupEnemies(GameObject chunk){

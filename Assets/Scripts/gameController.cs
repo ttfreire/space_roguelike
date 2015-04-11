@@ -28,8 +28,8 @@ public class gameController : MonoBehaviour {
 		m_pShoot = GameObject.FindGameObjectWithTag("Player").GetComponent<playerShoot> ();
 
 		boardScript = GetComponent<BoardManager>();
-		if(generateLevel)
-			boardScript.SetupScene(level);
+		if (generateLevel)
+			boardScript.SetupScene (level);
 	}
 	
 	// Update is called once per frame
@@ -43,17 +43,13 @@ public class gameController : MonoBehaviour {
 			foreach(GameObject enemy in enemies)
 				Destroy(enemy.gameObject);
 		}
-		if (Input.GetKeyUp (KeyCode.F)){
-			GameObject[] FOVs = GameObject.FindGameObjectsWithTag("FOV");
-			foreach(GameObject fov in FOVs){
-				MeshRenderer fovMesh = fov.gameObject.GetComponent<MeshRenderer>();
-				fovMesh.enabled = !fovMesh.enabled;
-			}
+		if (Input.GetKeyUp (KeyCode.F))
+			HideEnemiesFOV();
+
 			if (Input.GetKeyUp (KeyCode.L)){
 				GameObject sceneRoot = GameObject.Find("_ROOT");
 				Destroy(sceneRoot);
 			}
-		}
 		InterfaceFeedback ();
 
 	}
@@ -64,5 +60,13 @@ public class gameController : MonoBehaviour {
 		else
 			theInput.text = "Mouse";
 		heating.text = m_pShoot.getHeatingTime().ToString();
+	}
+
+	void HideEnemiesFOV(){
+		GameObject[] FOVs = GameObject.FindGameObjectsWithTag("FOV");
+		foreach(GameObject fov in FOVs){
+			MeshRenderer fovMesh = fov.gameObject.GetComponent<MeshRenderer>();
+			fovMesh.enabled = !fovMesh.enabled;
+		}
 	}
 }

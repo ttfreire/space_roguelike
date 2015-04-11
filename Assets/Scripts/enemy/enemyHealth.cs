@@ -4,7 +4,8 @@ using System.Collections;
 public class enemyHealth : MonoBehaviour {
 
 	public float m_health;
-
+	float m_blinkingTime = 0.0f ;
+	float m_blinkingTimeMax =21.25f;
 	// Use this for initialization
 	void Start () {
 	
@@ -17,6 +18,7 @@ public class enemyHealth : MonoBehaviour {
 
 	public void TakeDamage(float damageTaken){
 		m_health -= damageTaken;
+		DamageFeedback ();
 	}
 
 	public bool IsDead(){
@@ -24,5 +26,13 @@ public class enemyHealth : MonoBehaviour {
 			return true;
 		else
 			return false;
+	}
+
+	void DamageFeedback(){
+		gameObject.renderer.material.color = Color.red;
+		while (m_blinkingTime < m_blinkingTimeMax)
+			m_blinkingTime += Time.deltaTime;
+		m_blinkingTime = 0.0f;
+		gameObject.renderer.material.color = Color.white;
 	}
 }
