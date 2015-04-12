@@ -10,15 +10,28 @@ public class playerController : MonoBehaviour {
 	float cameraSizeinRoom = 10;
 	float cameraSizeinSpace = 15;
 
+	public int scrap1Quantity = 0;
+	public int scrap2Quantity = 0;
+	public bool hasKey = false;
+
 	// Use this for initialization
 	void Awake () {
+
 		p_camera = transform.GetChild (0).camera;
 		m_pHealth = gameObject.GetComponent<playerHealth> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (hasKey) {
+			//Time.timeScale = 0;
+			gameController.control.victory.text = "Victory!";
+			gameController.control.KillAllEnemies();
+		}
+		if(m_pHealth.IsDead()){
+			//Time.timeScale = 0;
+			gameController.control.victory.text = "Defeat!";
+		}
 	}
 
 	void OnCollisionStay(Collision other){
