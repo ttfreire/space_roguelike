@@ -123,13 +123,14 @@ public class BoardManager : MonoBehaviour {
 		//Remove the chunk where player starts the game and adjascents
 		removeChunksFromList ();
 
-		int chunksWithEnemies = Random.Range (gridPositions.Count / 4, Mathf.RoundToInt(gridPositions.Count / 1.5f));
-		for (int i = 0; i < chunksWithEnemies; i++) {
+		int randonChunks = Random.Range (gridPositions.Count / 4, Mathf.RoundToInt(gridPositions.Count / 1.5f));
+		for (int i = 0; i < randonChunks; i++) {
 			GameObject randChunk = RandomChunk();
 			SetupEnemies(randChunk);
 			SetupItems(randChunk);
 		}
-		for (int i = 0; i < chunksWithEnemies; i++) {
+		randonChunks = Random.Range (gridPositions.Count / 4, Mathf.RoundToInt(gridPositions.Count / 1.5f));
+		for (int i = 0; i < randonChunks; i++) {
 			GameObject randChunk = RandomChunk();
 			SetupItems(randChunk);
 		}
