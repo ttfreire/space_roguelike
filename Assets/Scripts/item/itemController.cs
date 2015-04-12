@@ -10,7 +10,7 @@ public class itemController : MonoBehaviour {
 	public float m_value;
 	float m_oxygen;
 	int m_scrapQuantity;
-	bool m_gotKey = false;
+
 
 	// Use this for initialization
 	void Awake () {
@@ -25,8 +25,7 @@ public class itemController : MonoBehaviour {
 			m_scrapQuantity = Mathf.RoundToInt(m_value);
 			break;
 		case ItemType.KEY:
-			if(m_value > 0.0)
-				m_gotKey = true;
+
 			break;
 		}
 	}
@@ -45,11 +44,12 @@ public class itemController : MonoBehaviour {
 			break;
 		case ItemType.SCRAP1:
 			p_control.scrap1Quantity++;
-			gameController.control.scrap1.text = p_control.scrap1Quantity.ToString();
+			//gameController.control.scrap1.text = p_control.scrap1Quantity.ToString();
 			break;
 		case ItemType.SCRAP2:
 			p_control.scrap2Quantity++;
-			gameController.control.scrap2.text = p_control.scrap2Quantity.ToString();
+			//gameController.control.scrap2.text = p_control.scrap2Quantity.ToString();
+
 			break;
 		case ItemType.KEY:
 			p_control.hasKey = true;

@@ -8,22 +8,19 @@ public class playerHealth : MonoBehaviour {
 	public float m_OxygenLossRate;
 	public float m_OxygenDamageLoss;
 
-	public Image m_currentOxygen;
+
 	Camera m_camera;
 	public float m_currentOxygenValue;
-	float m_playerTotalOxygen;
+	public float m_playerTotalOxygen;
 	// Use this for initialization
 	void Awake () {
-		m_playerTotalOxygen = 100.0f;
 		m_currentOxygenValue = m_playerTotalOxygen;
 		m_camera = FindObjectOfType<Camera> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		m_currentOxygen.fillAmount = m_currentOxygenValue/m_playerTotalOxygen;
-		if (IsDead ())
-			Destroy (gameObject);
+
 		ConsumeOxygenperSecond (m_OxygenLossRate);
 	}
 

@@ -10,13 +10,14 @@ public class playerController : MonoBehaviour {
 	float cameraSizeinRoom = 10;
 	float cameraSizeinSpace = 15;
 
-	public int scrap1Quantity = 0;
-	public int scrap2Quantity = 0;
+	public int scrap1Quantity;
+	public int scrap2Quantity;
 	public bool hasKey = false;
 
 	// Use this for initialization
-	void Awake () {
-
+	void Start () {
+		scrap1Quantity = 0;
+		scrap2Quantity = 0;
 		p_camera = transform.GetChild (0).camera;
 		m_pHealth = gameObject.GetComponent<playerHealth> ();
 	}

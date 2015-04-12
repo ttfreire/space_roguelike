@@ -12,21 +12,29 @@ public class gameController : MonoBehaviour {
 	public Text scrap1;
 	public Text scrap2;
 	public Text victory;
+	public Image m_currentOxygen;
 
 	playerShoot m_pShoot;
+	playerController m_pControl;
+	playerHealth m_pHealth;
+	GameObject player;
 
 	private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
 	private int level = 3;                                  //Current level number, expressed in game as "Day 1".
 
 	// Use this for initialization
 	void Awake () {
+		/**
 		if (control == null) {
 			DontDestroyOnLoad (gameObject);
 			control = this;
 		} else if (control != this)
 			Destroy (gameObject);
-		m_pShoot = GameObject.FindGameObjectWithTag("Player").GetComponent<playerShoot> ();
-
+		**/
+		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+		m_pShoot = player.GetComponent<playerShoot> ();
+		m_pControl = player.GetComponent<playerController> ();
+		m_pHealth = player.GetComponent<playerHealth> ();
 		boardScript = GetComponent<BoardManager>();
 		if (generateLevel)
 			boardScript.SetupScene (level);
@@ -53,8 +61,22 @@ public class gameController : MonoBehaviour {
 	}
 
 	void InterfaceFeedback(){
-
+		m_currentOxygen.fillAmount = m_pHealth.m_currentOxygenValue/m_pHealth.m_playerTotalOxygen;
 		heating.text = m_pShoot.getHeatingTime().ToString();
+		scrap1.text = m_pControl.scrap1Quantity.ToString ();
+		scrap2.text = m_pControl.scrap2Quantity.ToString ();
+		if (m_pControl.hasKey) {
+			victory.text = "Victory!";
+			KillAllEnemies();
+		}
+		if(m_pHealth.IsDead()){
+			victory.text = "Defeat!";
+			KillAllEnemies();
+			Destroy (player);
+		}
+
+
+
 	}
 	void HideEnemiesFOV(){
 		GameObject[] FOVs = GameObject.FindGameObjectsWithTag("FOV");

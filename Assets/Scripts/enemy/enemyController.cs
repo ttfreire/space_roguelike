@@ -22,6 +22,8 @@ public class enemyController : MonoBehaviour {
 	List<GameObject> m_seenItems = new List <GameObject> ();
 	List<GameObject> m_scavangedItems = new List <GameObject> ();
 
+	public bool canScavenge;
+
 	// Use this for initialization
 	void Awake () {
 		m_healthController = GetComponent<enemyHealth> ();
@@ -147,10 +149,12 @@ public class enemyController : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider col){
-		if (col.tag.Equals ("Item"))
-			if(!m_seenItems.Contains(col.gameObject))
-				m_seenItems.Add (col.gameObject);
-		if (!m_sightController.m_isPlayerOnView)
+		if (col.tag.Equals ("Item")) {
+			//if (!m_seenItems.Contains (col.gameObject))
+			m_seenItems.Clear();
+			m_seenItems.Add (col.gameObject);
+		}
+		if (!m_sightController.m_isPlayerOnView && canScavenge)
 			EnterState (EnemyState.GETTINGITENS);
 	}
 
