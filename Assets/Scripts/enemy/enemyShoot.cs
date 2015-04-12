@@ -8,12 +8,14 @@ public class enemyShoot : MonoBehaviour {
 	public float m_shootsPerSecond;
 	GameObject m_player;
 	enemySight m_sight;
+	enemyHealth m_health;
 	float m_shootCooldown;
 
 
 	void Awake () {
 		m_shootCooldown = ResetShootCooldown();
 		m_sight = GetComponent<enemySight> ();
+		m_health = GetComponent<enemyHealth> ();
 		m_player = FindObjectOfType<playerController> ().gameObject;
 	}
 	
@@ -39,8 +41,8 @@ public class enemyShoot : MonoBehaviour {
 		GameObject proj = (GameObject)Instantiate (m_projectile, shotRootPos.position + shootDir , Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Player");
 		proj.GetComponent<projectileController> ().m_shooter = this.gameObject;
-
+		proj.renderer.material.color = m_health.m_materialColor;
 		proj.transform.TransformDirection (shootDir);
-		proj.GetComponent<Rigidbody> ().AddForce (shootDir * m_shootForce, ForceMode.Impulse);
+	proj.GetComponent<Rigidbody> ().AddForce (shootDir * m_shootForce, ForceMode.Impulse);
 	}
 }

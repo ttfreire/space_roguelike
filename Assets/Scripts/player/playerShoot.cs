@@ -33,6 +33,8 @@ public class playerShoot : MonoBehaviour {
 	public Vector3 joyDir = Vector3.zero;
 	public Vector3 mouseDir = Vector3.zero;
 
+	Color m_materialColor;
+
 	// Use this for initialization
 	void Start () {
 		m_state = ShootState.NOTSHOOTING;
@@ -42,7 +44,7 @@ public class playerShoot : MonoBehaviour {
 		m_gameController = FindObjectOfType<gameController> ();
 		m_heatingTime = Time.deltaTime * m_MaxHeatingTime;
 		m_shootCooldown = Time.deltaTime * m_MaxCooldownTime * 60.0f;
-		gameObject.renderer.material.color = Color.white;
+		m_materialColor = gameObject.renderer.material.color;
 	}
 	
 	// Update is called once per frame
@@ -177,7 +179,7 @@ public class playerShoot : MonoBehaviour {
 	}
 
 	void Heating(){
-		if(gameObject.renderer.material.color == Color.white)
+		if(gameObject.renderer.material.color == m_materialColor)
 			if(m_blinkingTime < m_blinkingTimeMax){
 				m_blinkingTime += Time.deltaTime;
 			}
@@ -191,7 +193,7 @@ public class playerShoot : MonoBehaviour {
 			}
 			else{
 				m_blinkingTime = 0.0f;
-				gameObject.renderer.material.color = Color.white;
+				gameObject.renderer.material.color = m_materialColor;
 			}
 	}
 

@@ -28,7 +28,6 @@ public class enemyController : MonoBehaviour {
 		m_sightController = GetComponent<enemySight> ();
 		m_camera = FindObjectOfType<Camera> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
-		gameObject.renderer.material.color = Color.white;
 		m_seenItems.Clear ();
 		m_scavangedItems.Clear ();
 	}

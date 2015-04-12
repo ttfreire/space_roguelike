@@ -7,9 +7,10 @@ public class enemyHealth : MonoBehaviour {
 	float m_blinkingTime = 0.0f ;
 	float m_blinkingTimeMax = 0.25f;
 	bool isTakingDamage = false;
+	public Color m_materialColor;
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () {
+		m_materialColor = gameObject.renderer.material.color;
 	}
 	
 	// Update is called once per frame
@@ -39,7 +40,7 @@ public class enemyHealth : MonoBehaviour {
 		}
 		if (!isTakingDamage) {
 			m_blinkingTime = 0.0f;
-			gameObject.renderer.material.color = Color.white;
+			gameObject.renderer.material.color = m_materialColor;
 		}
 	}
 }
