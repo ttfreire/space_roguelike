@@ -50,8 +50,11 @@ public class playerController : MonoBehaviour {
 			if (!IsInsideRoom) {
 				EnterRoom ();
 				loadRoom load = other.gameObject.GetComponent<loadRoom>();
-				string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
-				Application.LoadLevelAdditive (roomScene);
+				if(!load.isLoaded){
+					load.isLoaded = true;
+					string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
+					Application.LoadLevelAdditiveAsync (roomScene);
+				}
 			} else
 				LeaveRoom ();
 		}
@@ -74,7 +77,7 @@ public class playerController : MonoBehaviour {
 		if (IsInsideRoom) {
 			IsInsideRoom = false;
 			GameObject sceneRoot = GameObject.Find("_ROOT");
-			Destroy(sceneRoot);
+			//Destroy(sceneRoot);
 			p_camera.orthographicSize = cameraSizeinSpace;
 			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 			gameObject.transform.position = pos;

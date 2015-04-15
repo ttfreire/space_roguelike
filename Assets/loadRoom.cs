@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class loadRoom : MonoBehaviour {
-	playerController m_pControl;
 	public int m_room;
+	public bool isLoaded;
 	// Use this for initialization
 	void Awake () {
-		m_pControl = FindObjectOfType<playerController> ();
+		isLoaded = false;
 	}
 	
 	// Update is called once per frame
