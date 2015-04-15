@@ -5,7 +5,7 @@ using System.Collections;
 public class playerController : MonoBehaviour {
 
 	playerHealth m_pHealth;
-	bool IsInsideRoom = false;
+	public bool IsInsideRoom = false;
 	Camera p_camera;
 	float cameraSizeinRoom = 10;
 	float cameraSizeinSpace = 15;
@@ -49,10 +49,13 @@ public class playerController : MonoBehaviour {
 			this.collider.isTrigger = false;
 			if (!IsInsideRoom) {
 				EnterRoom ();
-				Application.LoadLevelAdditive ("sala02");
+				loadRoom load = other.gameObject.GetComponent<loadRoom>();
+				string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
+				Application.LoadLevelAdditive (roomScene);
 			} else
 				LeaveRoom ();
-		} else if (other.tag.Equals ("Item")) {
+		}
+		if (other.tag.Equals ("Item")) {
 			itemController i_control = other.gameObject.GetComponent<itemController>();
 			i_control.PlayerCollectItem(gameObject);
 		}
