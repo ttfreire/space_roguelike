@@ -53,7 +53,7 @@ public class playerController : MonoBehaviour {
 				if(!load.isLoaded){
 					load.isLoaded = true;
 					string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
-					Application.LoadLevelAdditiveAsync (roomScene);
+					Application.LoadLevelAdditive (roomScene);
 				}
 			} else
 				LeaveRoom ();

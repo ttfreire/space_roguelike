@@ -7,6 +7,7 @@ public class enemyHealth : MonoBehaviour {
 	float m_blinkingTime = 0.0f ;
 	float m_blinkingTimeMax = 0.25f;
 	bool isTakingDamage = false;
+	public float m_collisionDamageMultiplier;
 	public Color m_materialColor;
 	// Use this for initialization
 	void Awake () {

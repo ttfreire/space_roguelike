@@ -115,23 +115,25 @@ public class enemyController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other){
-		if(other.gameObject.tag.Equals("Projectile")){
-			if(!other.contacts[0].thisCollider.tag.Equals("Undamagable")){
-				projectileController proj = other.gameObject.GetComponent<projectileController>();
-				if(proj.m_shooter != this.gameObject){
-					m_healthController.TakeDamage(proj.m_damage);
+		if (other.gameObject.tag.Equals ("Projectile")) {
+			if (!other.contacts [0].thisCollider.tag.Equals ("Undamagable")) {
+				projectileController proj = other.gameObject.GetComponent<projectileController> ();
+				if (proj.m_shooter != this.gameObject) {
+					if(!canScavenge && proj.m_shooter.Equals("Player"))
+						m_healthController.TakeDamage (proj.m_damage);
 					Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
-					Vector3 shootForce = player.GetComponent<playerShoot>().m_pushForce * dirFromProjectile;
-					this.rigidbody.AddForceAtPosition(shootForce, this.transform.position, ForceMode.Impulse);
+					Vector3 shootForce = player.GetComponent<playerShoot> ().m_pushForce * dirFromProjectile;
+					this.rigidbody.AddForceAtPosition (shootForce, this.transform.position, ForceMode.Impulse);
 					Destroy (other.gameObject);
 				}
-			}
-			else
+			} else
 				Destroy (other.gameObject);
+		} else
+			if (!other.gameObject.tag.Equals ("Player")) {
+			float damage = rigidbody.velocity.magnitude * m_healthController.m_collisionDamageMultiplier * 100;
+			Debug.Log(damage);
+			m_healthController.TakeDamage (damage);
 		}
-		else
-			if(!other.gameObject.tag.Equals("Player"))
-				m_healthController.TakeDamage(99999);
 	}
 
 	void OnCollisionStay(Collision other){

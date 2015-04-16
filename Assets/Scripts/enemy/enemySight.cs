@@ -4,14 +4,14 @@ using System.Collections;
 public class enemySight : MonoBehaviour {
 	[HideInInspector] public bool m_isPlayerOnView = false;
 	GameObject m_player;
-	LayerMask ignoreFOVLayerMask = 1 << 8;
+	LayerMask ignoreLayerMask = (1 << 8 | 1 << 10 | 1 << 11) ;
 	void Awake(){
 		m_player = FindObjectOfType<playerController> ().gameObject;
 	}
 
 	// Use this for initialization
 	void Start () {
-		ignoreFOVLayerMask = ~ignoreFOVLayerMask;
+		ignoreLayerMask = ~ignoreLayerMask;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class enemySight : MonoBehaviour {
 			RaycastHit hit;
 			Transform shooterPos = transform.FindChild("shooter").transform;
 			m_player = FindObjectOfType<playerController> ().gameObject;
-			if(Physics.Raycast(shooterPos.position, m_player.transform.position-shooterPos.position, out hit, Mathf.Infinity, ignoreFOVLayerMask))
+			if(Physics.Raycast(shooterPos.position, m_player.transform.position-shooterPos.position, out hit, Mathf.Infinity, ignoreLayerMask))
 				if(hit.transform.tag.Equals("Player"))
 					m_isPlayerOnView = true;
 				else
