@@ -38,9 +38,12 @@ public class enemyController : MonoBehaviour {
 	void Update () {
 		if(shake)
 			CameraShake ();
-
+	
+		if(transform.parent != null){
+		Vector3 localPos = new Vector3(transform.position.x, transform.position.y, transform.parent.position.z);
+		transform.position = localPos;
+		}
 		UpdateState (m_currentState);
-
 	}
 
 	public void EnterState(EnemyState state){
@@ -119,7 +122,7 @@ public class enemyController : MonoBehaviour {
 			if (!other.contacts [0].thisCollider.tag.Equals ("Undamagable")) {
 				projectileController proj = other.gameObject.GetComponent<projectileController> ();
 				if (proj.m_shooter != this.gameObject) {
-					if(!canScavenge && proj.m_shooter.Equals("Player"))
+					if(!canScavenge && proj.m_shooter.tag.Equals("Player"))
 						m_healthController.TakeDamage (proj.m_damage);
 					Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
 					Vector3 shootForce = player.GetComponent<playerShoot> ().m_pushForce * dirFromProjectile;

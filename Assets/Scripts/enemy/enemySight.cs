@@ -24,7 +24,8 @@ public class enemySight : MonoBehaviour {
 			RaycastHit hit;
 			Transform shooterPos = transform.FindChild("shooter").transform;
 			m_player = FindObjectOfType<playerController> ().gameObject;
-			if(Physics.Raycast(shooterPos.position, m_player.transform.position-shooterPos.position, out hit, Mathf.Infinity, ignoreLayerMask))
+			float distance = this.transform.FindChild("FOV").collider.bounds.extents.z;
+			if(Physics.Raycast(shooterPos.position, m_player.transform.position-shooterPos.position, out hit, distance, ignoreLayerMask))
 				if(hit.transform.tag.Equals("Player"))
 					m_isPlayerOnView = true;
 				else
