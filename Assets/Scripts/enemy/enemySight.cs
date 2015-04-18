@@ -4,7 +4,7 @@ using System.Collections;
 public class enemySight : MonoBehaviour {
 	[HideInInspector] public bool m_isPlayerOnView = false;
 	GameObject m_player;
-	LayerMask ignoreLayerMask = (1 << 8 | 1 << 10 | 1 << 11) ;
+	LayerMask ignoreLayerMask = (1 << 2 | 1 << 8 | 1 << 10 | 1 << 11 | 1 << 13) ;
 	void Awake(){
 		m_player = FindObjectOfType<playerController> ().gameObject;
 	}
@@ -24,7 +24,7 @@ public class enemySight : MonoBehaviour {
 			RaycastHit hit;
 			Transform shooterPos = transform.FindChild("shooter").transform;
 			m_player = FindObjectOfType<playerController> ().gameObject;
-			float distance = this.transform.FindChild("FOV").collider.bounds.extents.z;
+			float distance = 50;
 			if(Physics.Raycast(shooterPos.position, m_player.transform.position-shooterPos.position, out hit, distance, ignoreLayerMask))
 				if(hit.transform.tag.Equals("Player"))
 					m_isPlayerOnView = true;

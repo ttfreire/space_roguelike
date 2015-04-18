@@ -39,11 +39,12 @@ public class enemyController : MonoBehaviour {
 		if(shake)
 			CameraShake ();
 	
-		if(transform.parent != null){
-		Vector3 localPos = new Vector3(transform.position.x, transform.position.y, transform.parent.position.z);
-		transform.position = localPos;
-		}
+		//if(transform.parent != null){
+		//Vector3 localPos = new Vector3(transform.position.x, transform.position.y, transform.parent.position.z) + transform.localPosition;
+		//transform.position = localPos;
+		//}
 		UpdateState (m_currentState);
+
 	}
 
 	public void EnterState(EnemyState state){
@@ -134,7 +135,6 @@ public class enemyController : MonoBehaviour {
 		} else
 			if (!other.gameObject.tag.Equals ("Player")) {
 			float damage = rigidbody.velocity.magnitude * m_healthController.m_collisionDamageMultiplier * 100;
-			Debug.Log(damage);
 			m_healthController.TakeDamage (damage);
 		}
 	}
@@ -181,6 +181,7 @@ public class enemyController : MonoBehaviour {
 	void FollowPlayer(){
 		Transform target = player.transform;
 		Vector3 direction = target.position - this.transform.position;
+		direction.z = transform.position.z;
 		transform.Translate (direction * Time.deltaTime * m_speed);
 	}
 

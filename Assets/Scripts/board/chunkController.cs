@@ -9,6 +9,9 @@ public class chunkController : MonoBehaviour {
 	int rows = 7;  
 	float chunkWidth;
 	float chunkHeight;
+	public int chunkRow;
+	public int chunkColumn;
+	public bool hasPlayer = false; 
 
 	public void InitialiseList ()
 	{
@@ -47,5 +50,27 @@ public class chunkController : MonoBehaviour {
 		return randomPosition;
 	}
 
+	public void SetChunkRow(int row){
+		chunkRow = row;
+	}
+
+	public void SetChunkColumn(int column){
+		chunkColumn = column;
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Enemy"))
+			other.gameObject.transform.SetParent (gameObject.transform);
+		
+		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player")) {
+			other.gameObject.transform.SetParent (gameObject.transform);
+			hasPlayer = true;
+		}
+	}
+
+	void OnTriggerExit(Collider other){
+		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player"))
+			hasPlayer = false;
+	}
 
 }
