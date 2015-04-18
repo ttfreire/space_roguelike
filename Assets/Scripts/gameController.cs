@@ -31,7 +31,7 @@ public class gameController : MonoBehaviour {
 		} else if (control != this)
 			Destroy (gameObject);
 		**/
-		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.FindGameObjectWithTag ("Player");
 		m_pShoot = player.GetComponent<playerShoot> ();
 		m_pControl = player.GetComponent<playerController> ();
 		m_pHealth = player.GetComponent<playerHealth> ();
@@ -42,6 +42,13 @@ public class gameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyUp (KeyCode.U))
+			player.GetComponent<upgradeController> ().UpgradetoLevel (m_pControl.m_level);
+
+		if (Input.GetKeyUp (KeyCode.I)) {
+			m_pControl.scrap1Quantity += 5;
+			m_pControl.scrap2Quantity += 5;
+		}
 		if (Input.GetKeyUp (KeyCode.R))
 			Application.LoadLevel (Application.loadedLevel);
 		if (Input.GetKeyUp (KeyCode.J))

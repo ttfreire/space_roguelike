@@ -168,6 +168,7 @@ public class playerShoot : MonoBehaviour {
 		m_rigidbody.AddForce (-(shootDirection * m_recoilForce), ForceMode.Impulse);
 
 		PlayerShake ();
+		Debug.Log ("Damage: " + m_damage);
 	}
 
 	void CameraShake(){

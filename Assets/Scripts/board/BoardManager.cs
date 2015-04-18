@@ -233,7 +233,7 @@ public class BoardManager : MonoBehaviour {
 			if(chunk.GetComponent<chunkController>().hasPlayer){
 				chunkRowIndex = chunk.GetComponent<chunkController>().chunkRow;
 				chunkColumnIndex = chunk.GetComponent<chunkController>().chunkColumn;
-				Debug.Log ("Row: "+chunkRowIndex+" Column: "+chunkColumnIndex);
+
 				break;
 			}
 		}

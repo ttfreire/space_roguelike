@@ -13,7 +13,7 @@ public class playerController : MonoBehaviour {
 	public int scrap1Quantity;
 	public int scrap2Quantity;
 	public bool hasKey = false;
-
+	public int m_level = 1;
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
