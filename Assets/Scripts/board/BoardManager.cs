@@ -75,11 +75,14 @@ public class BoardManager : MonoBehaviour {
 			{
 				//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
 				GameObject toInstantiate;
+				if(gridPositions.Count == 0 || gridPositions.Count == 1 || gridPositions.Count == rows || gridPositions.Count == rows+1)
+					toInstantiate = chunkTiles[0];
+				else{
 				if(Random.Range(0,100) < 60)
 					toInstantiate = chunkTiles[0];
 				else
 					toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
-				
+				}
 				//Check if we current position is at board edge, if so choose a random outer wall prefab from our array of outer wall tiles.
 				if(x == -1 || x == columns || y == -1 || y == rows)
 					toInstantiate = outerWallTiles [Random.Range (0, outerWallTiles.Length)];
@@ -200,31 +203,6 @@ public class BoardManager : MonoBehaviour {
 		//gridPositions.RemoveAt (0);
 	}
 
-	void ShowOnlyChunksOnCamera(){
-		int chunkRowIndex = 0;
-		int chunkColumnIndex = 0;
-		foreach (GameObject chunk in gridPositions) {
-
-			if(chunk.GetComponent<chunkController>().hasPlayer){
-				chunkRowIndex = chunk.GetComponent<chunkController>().chunkRow;
-				chunkColumnIndex = chunk.GetComponent<chunkController>().chunkColumn;
-			}else
-			chunk.SetActive(false);
-		}
-		ActivateChunkRegion (chunkColumnIndex, chunkRowIndex);
-	}
-
-	void ActivateChunkRegion(int column, int row){
-		int initIndex = row + column * columns;
-		gridPositions [initIndex].SetActive (true);
-
-		for(int i = row - 1; i <= row + 1; i++)
-			for(int j = column - 1; j <= column + 1; j++){
-				int index = i+j*columns;
-			if((i >= 0 && i < rows) && (j >= 0 && j < columns))
-					gridPositions[index].SetActive(true);
-			}
-	}
 
 	void VisualizeActiveRows(){
 		int chunkRowIndex = 0;

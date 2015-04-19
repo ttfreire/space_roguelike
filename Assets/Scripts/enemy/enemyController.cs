@@ -181,7 +181,7 @@ public class enemyController : MonoBehaviour {
 	void FollowPlayer(){
 		Transform target = player.transform;
 		Vector3 direction = target.position - this.transform.position;
-		direction.z = transform.position.z;
+		direction.z = 0f;
 		transform.Translate (direction * Time.deltaTime * m_speed);
 	}
 
