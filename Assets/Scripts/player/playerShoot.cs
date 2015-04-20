@@ -52,7 +52,7 @@ public class playerShoot : MonoBehaviour {
 
 		switch (m_state) {
 		case ShootState.NOTSHOOTING:{
-			if (Input.GetButton ("Fire1"))	
+			if (Input.GetButton("Fire1"))	
 				m_state = ShootState.SHOOTING;
 			else
 				if(m_heatingTime <= m_MaxHeatingTime*Time.deltaTime)
@@ -60,7 +60,7 @@ public class playerShoot : MonoBehaviour {
 			}
 			break;
 		case ShootState.SHOOTING:{
-			if (Time.time > m_nextShot && Input.GetButton ("Fire1")) {
+			if (Time.time > m_nextShot && Input.GetButton("Fire1")) {
 				m_nextShot = Time.time + ResetShootCooldown ();
 				m_heatingTime -= Time.deltaTime * m_heatingDecrease;
 				Shoot ();
@@ -69,7 +69,7 @@ public class playerShoot : MonoBehaviour {
 					m_state = ShootState.OVERHEAT;
 				}
 			}
-			else if(!Input.GetButton ("Fire1"))
+			else if(!Input.GetButton("Fire1"))
 			{
 				if(m_heatingTime <= m_MaxHeatingTime*Time.deltaTime)
 					m_heatingTime += Time.deltaTime * m_heatingRecovery;
@@ -104,7 +104,7 @@ public class playerShoot : MonoBehaviour {
 					m_canShoot = false;
 				}
 			}
-			else if(Input.GetButtonUp("Fire1"))
+			else if(Input.GetButton("Fire1"))
 				m_heatingTime = Time.deltaTime * m_MaxHeatingTime;
 		} else if (m_shootCooldown <= 0.0f) {
 			m_shootCooldown = Time.deltaTime * m_MaxCooldownTime * 60.0f;
