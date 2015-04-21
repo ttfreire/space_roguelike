@@ -104,7 +104,7 @@ public class BoardManager : MonoBehaviour {
 
 
 				if(x != -1 && x != columns && y != -1 && y != rows){
-					//instance.SetActive(false);
+					instance.SetActive(false);
 					gridPositions.Add(instance);
 				}
 			}
@@ -245,7 +245,7 @@ public class BoardManager : MonoBehaviour {
 
 	void Update(){
 		//ShowOnlyChunksOnCamera ();
-		//VisualizeActiveRows ();
+		VisualizeActiveRows ();
 	}
 
 }
