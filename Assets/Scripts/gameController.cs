@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class gameController : MonoBehaviour {
@@ -19,8 +20,10 @@ public class gameController : MonoBehaviour {
 	playerHealth m_pHealth;
 	GameObject player;
 
-	private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
-	private int level = 3;                                  //Current level number, expressed in game as "Day 1".
+	private BoardManager boardScript;                       
+	private int level = 3;                                  
+
+	public List<int> availableRoomNumbers;
 
 	// Use this for initialization
 	void Awake () {

@@ -53,7 +53,7 @@ public class playerController : MonoBehaviour {
 				if(!load.isLoaded){
 					load.isLoaded = true;
 					string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
-					Application.LoadLevelAdditive (roomScene);
+					StartCoroutine(load.loadRoomOnContainerPosition(roomScene));
 				}
 			} else
 				LeaveRoom ();
@@ -68,7 +68,7 @@ public class playerController : MonoBehaviour {
 		if (!IsInsideRoom) {
 			IsInsideRoom = true;
 			p_camera.orthographicSize = cameraSizeinRoom;
-			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 200);
+			Vector3 pos = new Vector3(gameObject.transform.position.x+10, gameObject.transform.position.y, 200);
 			gameObject.transform.position = pos;
 		}
 	}
@@ -76,10 +76,10 @@ public class playerController : MonoBehaviour {
 	public void LeaveRoom(){
 		if (IsInsideRoom) {
 			IsInsideRoom = false;
-			GameObject sceneRoot = GameObject.Find("_ROOT");
+			//GameObject sceneRoot = GameObject.Find("_ROOT");
 			//Destroy(sceneRoot);
 			p_camera.orthographicSize = cameraSizeinSpace;
-			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+			Vector3 pos = new Vector3(gameObject.transform.position.x-10, gameObject.transform.position.y, 0);
 			gameObject.transform.position = pos;
 		}
 	}

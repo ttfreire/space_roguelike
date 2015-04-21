@@ -28,9 +28,12 @@ public class BoardManager : MonoBehaviour {
 
 	public GameObject[] chunkTiles;                                 //Array of floor prefabs.
 	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
+	public GameObject randomRoomTile; 
+	public GameObject lockedRoomTile; 
 	public GameObject[] enemies;
 	public GameObject[] items;
 	public GameObject key;
+	public int totalRoomsOnLevel;
 
 	float chunkWidth;
 	float chunkHeight;
@@ -100,9 +103,22 @@ public class BoardManager : MonoBehaviour {
 
 
 				if(x != -1 && x != columns && y != -1 && y != rows){
-					instance.SetActive(false);
+					//instance.SetActive(false);
 					gridPositions.Add(instance);
 				}
+			}
+		}
+		int spawnedRooms = 0;
+		while (spawnedRooms < totalRoomsOnLevel) {
+			int index = Random.Range(1,gridPositions.Count);
+			if(gridPositions[index].gameObject.name.Equals("chunkBase(Clone)")){
+				int row = gridPositions[index].gameObject.GetComponent<chunkController>().chunkRow;
+				int column = gridPositions[index].gameObject.GetComponent<chunkController>().chunkColumn;
+				Destroy(gridPositions[index].gameObject);
+				GameObject instance =
+					Instantiate (randomRoomTile, new Vector3 (column*chunkWidth, row*chunkHeight, 5.0f), randomRoomTile.transform.rotation) as GameObject;
+				gridPositions[index] = instance;
+				spawnedRooms++;
 			}
 		}
 		//gridPositions [0].SetActive (true);
@@ -228,7 +244,7 @@ public class BoardManager : MonoBehaviour {
 
 	void Update(){
 		//ShowOnlyChunksOnCamera ();
-		VisualizeActiveRows ();
+		//VisualizeActiveRows ();
 	}
 
 }
