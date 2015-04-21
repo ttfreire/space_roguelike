@@ -51,7 +51,6 @@ public class playerController : MonoBehaviour {
 				EnterRoom ();
 				loadRoom load = other.gameObject.GetComponent<loadRoom>();
 				if(!load.isLoaded){
-					load.isLoaded = true;
 					string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
 					StartCoroutine(load.loadRoomOnContainerPosition(roomScene));
 				}

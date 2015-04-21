@@ -34,6 +34,7 @@ public class BoardManager : MonoBehaviour {
 	public GameObject[] items;
 	public GameObject key;
 	public int totalRoomsOnLevel;
+	public int numberOfRoomsToUnlockKey;
 
 	float chunkWidth;
 	float chunkHeight;
