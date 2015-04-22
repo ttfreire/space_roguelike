@@ -81,13 +81,17 @@ public class BoardManager : MonoBehaviour {
 			{
 				//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
 				GameObject toInstantiate;
-				if(gridPositions.Count == 0 || gridPositions.Count == 1 || gridPositions.Count == rows || gridPositions.Count == rows+1)
-					toInstantiate = chunkTiles[0];
+				if(gridPositions.Count == 0 )
+					toInstantiate = lockedRoomTile;
 				else{
-				if(Random.Range(0,100) < 60)
-					toInstantiate = chunkTiles[0];
-				else
-					toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
+					if (gridPositions.Count == 1 || gridPositions.Count == rows || gridPositions.Count == rows+1)
+						toInstantiate = chunkTiles[0];
+					else{
+					if(Random.Range(0,100) < 60)
+						toInstantiate = chunkTiles[0];
+					else
+						toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
+					}
 				}
 				//Check if we current position is at board edge, if so choose a random outer wall prefab from our array of outer wall tiles.
 				if(x == -1 || x == columns || y == -1 || y == rows)

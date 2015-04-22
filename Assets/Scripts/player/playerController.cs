@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour {
 	public int scrap1Quantity;
 	public int scrap2Quantity;
 	public bool hasKey = false;
+	public bool endlevel = false;
 	public int m_level = 1;
 
 	public int currentChunkRow = 0;
@@ -33,15 +34,8 @@ public class playerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (hasKey) {
-			//Time.timeScale = 0;
-			gameController.control.victory.text = "Victory!";
-			gameController.control.KillAllEnemies();
-		}
-		if(m_pHealth.IsDead()){
-			//Time.timeScale = 0;
-			gameController.control.victory.text = "Defeat!";
-		}
+
+
 	}
 
 	void OnCollisionStay(Collision other){
@@ -51,6 +45,9 @@ public class playerController : MonoBehaviour {
 		}
 		if(other.gameObject.tag.Equals ("Enemy"))
 			m_pHealth.TakeDamage (0.05f);
+		if (other.gameObject.tag.Equals ("FinalRoom") && hasKey) {
+			endlevel = true;
+		}
 	}
 
 	void OnTriggerEnter(Collider other){

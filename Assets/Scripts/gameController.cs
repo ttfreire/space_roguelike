@@ -75,10 +75,12 @@ public class gameController : MonoBehaviour {
 		heating.text = m_pShoot.getHeatingTime().ToString();
 		scrap1.text = m_pControl.scrap1Quantity.ToString ();
 		scrap2.text = m_pControl.scrap2Quantity.ToString ();
-		if (m_pControl.hasKey) {
+
+		if (m_pControl.endlevel) {
 			victory.text = "Victory!";
 			KillAllEnemies();
 		}
+
 		if(m_pHealth.IsDead()){
 			victory.text = "Defeat!";
 			KillAllEnemies();
