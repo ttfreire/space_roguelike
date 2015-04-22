@@ -27,7 +27,7 @@ public class loadRoom : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isLoaded) {
-			enemies.Clear ();
+			enemies.RemoveAll(null);
 			Transform roomTransform = m_roomObject.transform;
 			foreach (Transform child in roomTransform) {
 				if(child.gameObject.tag.Equals("Item")){

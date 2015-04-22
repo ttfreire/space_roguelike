@@ -14,12 +14,21 @@ public class playerController : MonoBehaviour {
 	public int scrap2Quantity;
 	public bool hasKey = false;
 	public int m_level = 1;
+
+	public int currentChunkRow = 0;
+	public int currentChunkColumn = 0;
+
+	BoardManager board;
+
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
 		scrap2Quantity = 0;
 		p_camera = transform.GetChild (0).camera;
 		m_pHealth = gameObject.GetComponent<playerHealth> ();
+		currentChunkColumn = 0;
+		currentChunkRow = 0;
+		board = FindObjectOfType<BoardManager> ();
 	}
 	
 	// Update is called once per frame
@@ -80,7 +89,10 @@ public class playerController : MonoBehaviour {
 			p_camera.orthographicSize = cameraSizeinSpace;
 			Vector3 pos = new Vector3(gameObject.transform.position.x-10, gameObject.transform.position.y, 0);
 			gameObject.transform.position = pos;
+			board.gridPositions[board.FindPlayerChunkindex()].SetActive(true);	
 		}
 	}
+
+
 
 }

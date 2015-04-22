@@ -40,9 +40,11 @@ public class BoardManager : MonoBehaviour {
 	float chunkHeight;
 
 	private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
-	private List <GameObject> gridPositions = new List <GameObject> ();   //A list of possible locations to place tiles.
+	public List <GameObject> gridPositions = new List <GameObject> ();   //A list of possible locations to place tiles.
 	
-	
+	GameObject m_player;
+	int chunkRowIndex = 0;
+	int chunkColumnIndex = 0;
 	//Clears our list gridPositions and prepares it to generate a new board.
 	void InitialiseList ()
 	{
@@ -101,7 +103,8 @@ public class BoardManager : MonoBehaviour {
 				instance.GetComponent<chunkController>().InitialiseList();
 				instance.GetComponent<chunkController>().SetChunkRow(y);
 				instance.GetComponent<chunkController>().SetChunkColumn(x);
-
+				if(gridPositions.Count == 0)
+					instance.GetComponent<chunkController>().hasPlayer = true;
 
 				if(x != -1 && x != columns && y != -1 && y != rows){
 					instance.SetActive(false);
@@ -118,6 +121,12 @@ public class BoardManager : MonoBehaviour {
 				Destroy(gridPositions[index].gameObject);
 				GameObject instance =
 					Instantiate (randomRoomTile, new Vector3 (column*chunkWidth, row*chunkHeight, 5.0f), randomRoomTile.transform.rotation) as GameObject;
+				instance.transform.SetParent (boardHolder);
+				//instance.AddComponent("chunkController");
+				chunkController chunkCont = instance.GetComponent<chunkController>();
+				instance.GetComponent<chunkController>().InitialiseList();
+				instance.GetComponent<chunkController>().SetChunkRow(row);
+				instance.GetComponent<chunkController>().SetChunkColumn(column);
 				gridPositions[index] = instance;
 				spawnedRooms++;
 			}
@@ -222,8 +231,7 @@ public class BoardManager : MonoBehaviour {
 
 
 	void VisualizeActiveRows(){
-		int chunkRowIndex = 0;
-		int chunkColumnIndex = 0;
+
 		foreach (GameObject chunk in gridPositions) {
 			if(chunk.GetComponent<chunkController>().hasPlayer){
 				chunkRowIndex = chunk.GetComponent<chunkController>().chunkRow;
@@ -246,6 +254,15 @@ public class BoardManager : MonoBehaviour {
 	void Update(){
 		//ShowOnlyChunksOnCamera ();
 		VisualizeActiveRows ();
+	}
+
+	void awake(){
+		m_player = GameObject.Find("Player");
+	}
+	public int FindPlayerChunkindex(){
+		int playerRow = Mathf.FloorToInt(m_player.transform.position.y / chunkHeight);
+		int playerColumn = Mathf.FloorToInt(m_player.transform.position.x / chunkWidth);
+		return playerColumn + playerRow * columns;
 	}
 
 }

@@ -11,7 +11,11 @@ public class chunkController : MonoBehaviour {
 	float chunkHeight;
 	public int chunkRow;
 	public int chunkColumn;
-	public bool hasPlayer = false; 
+	public bool hasPlayer; 
+
+	void Awake(){
+		hasPlayer = false;
+	}
 
 	public void InitialiseList ()
 	{
@@ -63,7 +67,7 @@ public class chunkController : MonoBehaviour {
 			other.gameObject.transform.SetParent (gameObject.transform);
 		
 		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player")) {
-			other.gameObject.transform.SetParent (gameObject.transform);
+			//other.gameObject.transform.SetParent (gameObject.transform);
 			hasPlayer = true;
 		}
 	}
@@ -71,6 +75,10 @@ public class chunkController : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player"))
 			hasPlayer = false;
+	}
+
+	public bool isplayeronChunk(){
+		return hasPlayer;
 	}
 
 }
