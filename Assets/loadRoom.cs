@@ -7,8 +7,7 @@ public class loadRoom : MonoBehaviour {
 	public int m_room;
 	public bool isLoaded;
 	GameObject m_roomObject;
-	List<GameObject> itens;
-	List<GameObject> enemies;
+
 	GameObject key;
 	BoardManager board;
 	bool cleanedRoom = false;
@@ -19,36 +18,26 @@ public class loadRoom : MonoBehaviour {
 		int index = Random.Range (0, game.availableRoomNumbers.Count);
 		m_room = game.availableRoomNumbers[index];
 		game.availableRoomNumbers.RemoveAt (index);
-		itens = new List<GameObject> ();
-		enemies = new List<GameObject> ();
+
 		board = FindObjectOfType<BoardManager> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (isLoaded) {
-			enemies.RemoveAll(null);
-			Transform roomTransform = m_roomObject.transform;
-			foreach (Transform child in roomTransform) {
-				if(child.gameObject.tag.Equals("Item")){
-					if(child.gameObject.name.Equals("Key")){
-						key = child.gameObject;
-					}
-					else{
-						itens.Add(child.gameObject);
-					}
-				}
-				if (child.gameObject.tag.Equals ("Enemy"))
-					enemies.Add (child.gameObject);
-			}
-			if (enemies.Count == 0 && !cleanedRoom){
-				foreach (GameObject item in itens)
-					item.SetActive (true);
+			Transform enemies = m_roomObject.transform.FindChild("enemies");
+			int enemiesQuantity = enemies.childCount;
+			if (enemiesQuantity == 0 && !cleanedRoom){
+				Transform items = m_roomObject.transform.FindChild("items");
+				for(int i = 0; i < items.childCount; i++)
+					items.GetChild(i).gameObject.SetActive (true);
 				cleanedRoom = true;
 				board.numberOfRoomsToUnlockKey--;
 			}
-			if(cleanedRoom && board.numberOfRoomsToUnlockKey == 0)
+			if(cleanedRoom && board.numberOfRoomsToUnlockKey == 0){
+				key = m_roomObject.transform.FindChild("Key").GetChild(0).gameObject;
 				key.SetActive(true);
+			}
 		}
 	}
 
