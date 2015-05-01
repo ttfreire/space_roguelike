@@ -9,7 +9,6 @@ public class gameController : MonoBehaviour {
 	public bool generateLevel;
 	public bool isUsingJoystick = false;
 	public Text theInput;
-	public Text heating;
 	public Text scrap1;
 	public Text scrap2;
 	public Text victory;
@@ -72,7 +71,6 @@ public class gameController : MonoBehaviour {
 
 	void InterfaceFeedback(){
 		m_currentOxygen.fillAmount = m_pHealth.m_currentOxygenValue/m_pHealth.m_playerTotalOxygen;
-		heating.text = m_pShoot.getHeatingTime().ToString();
 		scrap1.text = m_pControl.scrap1Quantity.ToString ();
 		scrap2.text = m_pControl.scrap2Quantity.ToString ();
 
