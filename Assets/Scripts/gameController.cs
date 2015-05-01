@@ -26,13 +26,7 @@ public class gameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		/**
-		if (control == null) {
-			DontDestroyOnLoad (gameObject);
-			control = this;
-		} else if (control != this)
-			Destroy (gameObject);
-		**/
+	
 		player = GameObject.FindGameObjectWithTag ("Player");
 		m_pShoot = player.GetComponent<playerShoot> ();
 		m_pControl = player.GetComponent<playerController> ();
@@ -42,7 +36,7 @@ public class gameController : MonoBehaviour {
 			boardScript.SetupScene (level);
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 		if (Input.GetKeyUp (KeyCode.U))
 			player.GetComponent<upgradeController> ().UpgradetoLevel (m_pControl.m_level);

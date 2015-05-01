@@ -2,54 +2,42 @@ using UnityEngine;
 using System.Collections;
 
 public class playerShoot : MonoBehaviour {
-
-	Camera m_camera;
-	Rigidbody m_rigidbody;
+	public static playerShoot p_Shoot;
 
 	public float m_damage;
 	public float m_shootForce;
 	public float m_pushForce;
 	public float m_recoilForce;
 	public float m_shootsPerSecond;
-	float m_nextShot;
-
-
 	public GameObject m_projectile;
- Vector3 shootDirection;
+ 	
+	Vector3 shootDirection;
+	float m_nextShot;
+	Camera m_camera;
+	Rigidbody m_rigidbody;
 
-
-	Color m_materialColor;
-
-	// Use this for initialization
-	void Start () {
+	void Awake () {
+		p_Shoot = this;
 		m_rigidbody = rigidbody;
 		m_camera = FindObjectOfType<Camera> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-			if (Time.time > m_nextShot && Input.GetButtonUp("Fire1")) {
-				m_nextShot = Time.time + ResetShootCooldown ();
-				Shoot ();
-			}
-		
-	}
-
-	float ResetShootCooldown ()
-	{
+	float ResetShootCooldown (){
 		return 1 / m_shootsPerSecond;
 	}
 
-	bool IsShooting ()
-	{
+
+	bool ShootingDistanceIsGreaterThanZero (){
 		shootDirection = this.GetShootDirection();
 		return Mathf.Round (shootDirection.sqrMagnitude) != 0;
 	}
 
-	void Shoot(){
-		if (IsShooting ())
+
+	public void Shoot(){
+		if (Time.time > m_nextShot && ShootingDistanceIsGreaterThanZero ()) {
+			m_nextShot = Time.time + ResetShootCooldown ();
 			ShootProjectile ();
+		}
 	}
 
 	Vector3 GetShootDirection(){
@@ -59,8 +47,7 @@ public class playerShoot : MonoBehaviour {
 		return direction.normalized;
 	}
 
-	void ShootProjectile ()
-	{
+	void ShootProjectile (){
 		Vector3 projSpawnPos = this.transform.position + shootDirection;
 		GameObject proj = (GameObject)Instantiate (m_projectile, projSpawnPos, Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
@@ -72,12 +59,13 @@ public class playerShoot : MonoBehaviour {
 		//Recoil
 		m_rigidbody.AddForce (-(shootDirection * m_recoilForce), ForceMode.Impulse);
 		PlayerShake ();
-
 	}
+
 
 	void CameraShake(){
 		m_camera.GetComponent<CameraShake> ().enabled = true;
 	}
+
 
 	void PlayerShake(){
 		this.gameObject.GetComponent<CameraShake> ().enabled = true;

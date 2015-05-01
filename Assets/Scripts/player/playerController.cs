@@ -3,8 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 public class playerController : MonoBehaviour {
-
-	playerHealth m_pHealth;
+	
 	public bool IsInsideRoom = false;
 	Camera p_camera;
 	float cameraSizeinRoom = 10;
@@ -26,25 +25,28 @@ public class playerController : MonoBehaviour {
 		scrap1Quantity = 0;
 		scrap2Quantity = 0;
 		p_camera = transform.GetChild (0).camera;
-		m_pHealth = gameObject.GetComponent<playerHealth> ();
 		currentChunkColumn = 0;
 		currentChunkRow = 0;
 		board = FindObjectOfType<BoardManager> ();
 	}
 	
-	// Update is called once per frame
 	void Update () {
+		if (Input.GetButtonUp("Fire1")) 
+			playerShoot.p_Shoot.Shoot ();
+	}
 
-
+	void FixedUpdate(){
+		playerMovement.p_Movement.Move ();
 	}
 
 	void OnCollisionStay(Collision other){
 		if (other.gameObject.tag.Equals ("Projectile") && other.gameObject.GetComponent<projectileController> ().m_shooter != gameObject) {
-			m_pHealth.TakeDamage (10.0f);
+			playerHealth.p_Health.TakeDamage (10.0f);
 			Destroy (other.gameObject);
 		}
 		if(other.gameObject.tag.Equals ("Enemy"))
-			m_pHealth.TakeDamage (0.05f);
+			playerHealth.p_Health.TakeDamage (0.05f);
+
 		if (other.gameObject.tag.Equals ("FinalRoom") && hasKey) {
 			endlevel = true;
 		}
@@ -81,8 +83,6 @@ public class playerController : MonoBehaviour {
 	public void LeaveRoom(){
 		if (IsInsideRoom) {
 			IsInsideRoom = false;
-			//GameObject sceneRoot = GameObject.Find("_ROOT");
-			//Destroy(sceneRoot);
 			p_camera.orthographicSize = cameraSizeinSpace;
 			Vector3 pos = new Vector3(gameObject.transform.position.x-10, gameObject.transform.position.y, 0);
 			gameObject.transform.position = pos;
