@@ -134,8 +134,11 @@ public class enemyController : MonoBehaviour {
 				Destroy (other.gameObject);
 		} else
 			if (!other.gameObject.tag.Equals ("Player")) {
-			float damage = rigidbody.velocity.magnitude * m_healthController.m_collisionDamageMultiplier * 100;
-			m_healthController.TakeDamage (damage);
+			float collisionVelocity = other.relativeVelocity.magnitude;
+			if(collisionVelocity > 0.5f){
+				float damage = rigidbody.velocity.magnitude * m_healthController.m_collisionDamageMultiplier * 100;
+				m_healthController.TakeDamage (damage);
+			}
 		}
 	}
 
