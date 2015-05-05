@@ -35,9 +35,8 @@ public class BoardManager : MonoBehaviour {
 	public GameObject key;
 	public int totalRoomsOnLevel;
 	public int numberOfRoomsToUnlockKey;
-
-	float chunkWidth;
-	float chunkHeight;
+	public float chunkWidth;
+	public float chunkHeight;
 
 	private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
 	public List <GameObject> gridPositions = new List <GameObject> ();   //A list of possible locations to place tiles.
@@ -70,8 +69,8 @@ public class BoardManager : MonoBehaviour {
 	{
 		//Instantiate Board and set boardHolder to its transform.
 		boardHolder = new GameObject ("Board").transform;
-		chunkWidth = chunkTiles [0].transform.GetChild(0).transform.localScale.x * 10f;
-		chunkHeight = chunkTiles [0].transform.GetChild(0).transform.localScale.z * 10f;
+		chunkWidth *= 10f;
+		chunkHeight *=10f;
 
 		//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
 		for(int x = -1; x < columns + 1; x++)
