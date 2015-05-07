@@ -125,7 +125,7 @@ public class BoardManager : MonoBehaviour {
 				GameObject instance =
 					Instantiate (randomRoomTile, new Vector3 (column*chunkWidth, row*chunkHeight, 5.0f), randomRoomTile.transform.rotation) as GameObject;
 				instance.transform.SetParent (boardHolder);
-				//instance.AddComponent("chunkController");
+				instance.AddComponent("chunkController");
 				chunkController chunkCont = instance.GetComponent<chunkController>();
 				instance.GetComponent<chunkController>().InitialiseList();
 				instance.GetComponent<chunkController>().SetChunkRow(row);

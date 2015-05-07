@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class enemySight : MonoBehaviour {
-	[HideInInspector] public bool m_isPlayerOnView = false;
+	public bool m_isPlayerOnView = false;
 	GameObject m_player;
 	LayerMask ignoreLayerMask = (1 << 2 | 1 << 8 | 1 << 10 | 1 << 11 | 1 << 13) ;
 	void Awake(){

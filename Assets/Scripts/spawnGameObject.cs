@@ -6,7 +6,8 @@ public class spawnGameObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject spawned = Instantiate (objectToSpawn, this.transform.position, this.transform.rotation) as GameObject;
-		spawned.transform.parent = transform;
+		spawned.transform.parent = transform.parent;
+		Destroy (gameObject);
 	}
 	
 	// Update is called once per frame

@@ -12,7 +12,7 @@ public class chunkController : MonoBehaviour {
 	public int chunkRow;
 	public int chunkColumn;
 	public bool hasPlayer; 
-
+	Vector3 chunksize;
 	void Awake(){
 		hasPlayer = false;
 	}
@@ -21,12 +21,11 @@ public class chunkController : MonoBehaviour {
 	{
 		//Clear our list gridPositions.
 		gridPositions.Clear ();
-
 		chunkWidth = gameObject.transform.localScale.x * 10;
 		chunkHeight = gameObject.transform.localScale.z * 10;
 		int initialX = Mathf.RoundToInt (columns / 2) - columns +1;
 		int initialY = Mathf.RoundToInt (rows / 2) - rows +1;
-		
+
 		//Loop through x axis (columns).
 		for(int x = initialX; x < columns + initialX; x++)
 		{
@@ -63,17 +62,18 @@ public class chunkController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Enemy"))
-			other.gameObject.transform.SetParent (gameObject.transform);
+		Debug.Log ("entrou");
+		if (gameObject.transform.parent.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Enemy"))
+			other.gameObject.transform.SetParent (gameObject.transform.parent);
 		
-		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player")) {
+		if (gameObject.transform.parent.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player")) {
 			//other.gameObject.transform.SetParent (gameObject.transform);
 			hasPlayer = true;
 		}
 	}
 
 	void OnTriggerExit(Collider other){
-		if (gameObject.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player"))
+		if (gameObject.transform.parent.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player"))
 			hasPlayer = false;
 	}
 
