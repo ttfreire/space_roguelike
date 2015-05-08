@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine;
 using System.Collections;
 
@@ -24,14 +24,14 @@ public class playerController : MonoBehaviour {
 	void Start () {
 		scrap1Quantity = 0;
 		scrap2Quantity = 0;
-		p_camera = transform.GetChild (0).camera;
+		p_camera = transform.parent.FindChild("Camera").camera;
 		currentChunkColumn = 0;
 		currentChunkRow = 0;
 		board = FindObjectOfType<BoardManager> ();
 	}
 	
 	void Update () {
-		if (Input.GetButtonUp("Fire1")) 
+		if (Input.GetButtonUp("Fire1"))
 			playerShoot.p_Shoot.Shoot ();
 	}
 

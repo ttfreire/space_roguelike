@@ -10,7 +10,6 @@ public class playerShoot : MonoBehaviour {
 	public float m_recoilForce;
 	public float m_shootsPerSecond;
 	public GameObject m_projectile;
- 	
 	Vector3 shootDirection;
 	float m_nextShot;
 	Camera m_camera;
@@ -20,6 +19,11 @@ public class playerShoot : MonoBehaviour {
 		p_Shoot = this;
 		m_rigidbody = rigidbody;
 		m_camera = FindObjectOfType<Camera> ();
+	}
+
+	void Update(){
+		Vector3 mouseDir =  m_camera.ScreenToWorldPoint (Input.mousePosition);
+		playerMovement.p_Movement.SetFacingDirection (mouseDir.x - transform.position.x);
 	}
 	
 	float ResetShootCooldown (){
@@ -36,6 +40,7 @@ public class playerShoot : MonoBehaviour {
 	public void Shoot(){
 		if (Time.time > m_nextShot && ShootingDistanceIsGreaterThanZero ()) {
 			m_nextShot = Time.time + ResetShootCooldown ();
+			//playerMovement.p_Movement.SetFacingDirection((shootDirection-this.transform.position).x);
 			ShootProjectile ();
 		}
 	}
@@ -48,7 +53,7 @@ public class playerShoot : MonoBehaviour {
 	}
 
 	void ShootProjectile (){
-		Vector3 projSpawnPos = this.transform.position + shootDirection;
+		Vector3 projSpawnPos =  transform.position + shootDirection;
 		GameObject proj = (GameObject)Instantiate (m_projectile, projSpawnPos, Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
 		proj.GetComponent<projectileController> ().m_shooter = gameObject;
