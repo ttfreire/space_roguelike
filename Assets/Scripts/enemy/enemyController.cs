@@ -24,6 +24,8 @@ public class enemyController : MonoBehaviour {
 
 	public bool canScavenge;
 
+	public List<GameObject> ItemsDrop;
+
 	// Use this for initialization
 	void Awake () {
 		m_healthController = GetComponent<enemyHealth> ();
@@ -32,6 +34,7 @@ public class enemyController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		m_seenItems.Clear ();
 		m_scavangedItems.Clear ();
+
 	}
 	
 	// Update is called once per frame
@@ -113,6 +116,7 @@ public class enemyController : MonoBehaviour {
 				test.transform.position = transform.position;
 			}
 			m_scavangedItems.Clear();
+			DropItems();
 			Destroy (gameObject);
 			break;
 		}
@@ -204,6 +208,10 @@ public class enemyController : MonoBehaviour {
 			}
 
 		}
+	}
+
+	void DropItems(){
+		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
 	}
 	
 }

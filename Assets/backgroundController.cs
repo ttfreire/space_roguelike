@@ -2,11 +2,7 @@
 using System.Collections;
 
 public class backgroundController : MonoBehaviour {
-	GameObject parentobject;
 
-	void Awake(){
-		parentobject = transform.parent.gameObject;
-	}
 
 	void OnTriggerEnter(Collider other){
 		Debug.Log ("entrou");
