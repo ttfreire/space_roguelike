@@ -177,11 +177,7 @@ public class BoardManager : MonoBehaviour {
 			//GameObject randChunk = RandomChunk();
 			//SetupItems(randChunk);
 		}
-		GameObject otherRandChunk = RandomChunk();
-		SetupKey (otherRandChunk);
 
-
-		//gameObject.AddComponent<NavMesh> ();
 
 	}
 
