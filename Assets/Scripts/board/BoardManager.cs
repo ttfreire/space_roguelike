@@ -255,7 +255,7 @@ public class BoardManager : MonoBehaviour {
 		VisualizeActiveRows ();
 	}
 
-	void awake(){
+	void Awake(){
 		m_player = GameObject.Find("Player");
 	}
 	public int FindPlayerChunkindex(){

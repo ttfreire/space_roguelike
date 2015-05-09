@@ -62,8 +62,9 @@ public class playerController : MonoBehaviour {
 					string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
 					StartCoroutine(load.loadRoomOnContainerPosition(roomScene));
 				}
-			} else
+			} else{
 				LeaveRoom ();
+			}
 		}
 		if (other.tag.Equals ("Item")) {
 			itemController i_control = other.gameObject.GetComponent<itemController>();
@@ -77,6 +78,7 @@ public class playerController : MonoBehaviour {
 			p_camera.orthographicSize = cameraSizeinRoom;
 			Vector3 pos = new Vector3(gameObject.transform.position.x+10, gameObject.transform.position.y, 200);
 			gameObject.transform.position = pos;
+
 		}
 	}
 

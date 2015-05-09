@@ -11,6 +11,7 @@ public class loadRoom : MonoBehaviour {
 	GameObject key;
 	BoardManager board;
 	bool cleanedRoom = false;
+	public bool playerInRoom = false;
 	// Use this for initialization
 	void Awake () {
 		isLoaded = false;
@@ -35,8 +36,10 @@ public class loadRoom : MonoBehaviour {
 				board.numberOfRoomsToUnlockKey--;
 			}
 			if(cleanedRoom && board.numberOfRoomsToUnlockKey == 0){
-				key = m_roomObject.transform.FindChild("Key").GetChild(0).gameObject;
-				key.SetActive(true);
+				if(m_roomObject.transform.FindChild("Key").gameObject != null){
+					key = m_roomObject.transform.FindChild("Key").gameObject;
+					key.GetComponent<spawnGameObject>().enabled = true;
+				}
 			}
 		}
 	}
