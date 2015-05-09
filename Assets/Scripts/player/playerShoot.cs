@@ -55,6 +55,7 @@ public class playerShoot : MonoBehaviour {
 	void ShootProjectile (){
 		Vector3 projSpawnPos =  transform.position + shootDirection;
 		GameObject proj = (GameObject)Instantiate (m_projectile, projSpawnPos, Quaternion.identity);
+		proj.layer = 14;
 		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
 		proj.GetComponent<projectileController> ().m_shooter = gameObject;
 		proj.GetComponent<projectileController> ().m_damage = m_damage;
@@ -63,7 +64,7 @@ public class playerShoot : MonoBehaviour {
 
 		//Recoil
 		m_rigidbody.AddForce (-(shootDirection * m_recoilForce), ForceMode.Impulse);
-		PlayerShake ();
+		//PlayerShake ();
 	}
 
 
