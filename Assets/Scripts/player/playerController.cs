@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine;
 using System.Collections;
 
 public class playerController : MonoBehaviour {
@@ -19,12 +18,11 @@ public class playerController : MonoBehaviour {
 	public int currentChunkColumn = 0;
 
 	BoardManager board;
-
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
 		scrap2Quantity = 0;
-		p_camera = transform.parent.FindChild("Camera").camera;
+		p_camera = transform.parent.FindChild("PlayerCamera").camera;
 		currentChunkColumn = 0;
 		currentChunkRow = 0;
 		board = FindObjectOfType<BoardManager> ();
@@ -75,7 +73,7 @@ public class playerController : MonoBehaviour {
 	public void EnterRoom(){
 		if (!IsInsideRoom) {
 			IsInsideRoom = true;
-			p_camera.orthographicSize = cameraSizeinRoom;
+			p_camera.orthographicSize = cameraSizeinSpace;
 			Vector3 pos = new Vector3(gameObject.transform.position.x+10, gameObject.transform.position.y, 200);
 			gameObject.transform.position = pos;
 
