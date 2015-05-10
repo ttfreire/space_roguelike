@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine;
 using System.Collections;
 
 public class playerController : MonoBehaviour {
@@ -19,12 +18,11 @@ public class playerController : MonoBehaviour {
 	public int currentChunkColumn = 0;
 
 	BoardManager board;
-
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
 		scrap2Quantity = 0;
-		p_camera = transform.parent.FindChild("Camera").camera;
+		p_camera = transform.parent.FindChild("PlayerCamera").camera;
 		currentChunkColumn = 0;
 		currentChunkRow = 0;
 		board = FindObjectOfType<BoardManager> ();

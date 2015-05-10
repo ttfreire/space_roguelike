@@ -7,7 +7,6 @@ public class gameController : MonoBehaviour {
 
 	public static gameController control;
 	public bool generateLevel;
-	public Text scrap1;
 	public Text victory;
 	public Image m_currentOxygen;
 
@@ -23,7 +22,7 @@ public class gameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-	
+		Time.timeScale = 1;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		m_pShoot = player.GetComponent<playerShoot> ();
 		m_pControl = player.GetComponent<playerController> ();
@@ -60,16 +59,18 @@ public class gameController : MonoBehaviour {
 
 	void InterfaceFeedback(){
 		m_currentOxygen.fillAmount = m_pHealth.m_currentOxygenValue/m_pHealth.m_playerTotalOxygen;
-		scrap1.text = m_pControl.scrap1Quantity.ToString ();
 
 		if (m_pControl.endlevel) {
+			Time.timeScale = 0;
 			victory.text = "Victory!";
-			KillAllEnemies();
+			//KillAllEnemies();
 		}
 
 		if(m_pHealth.IsDead()){
+			Time.timeScale = 0;
 			victory.text = "Defeat!";
-			KillAllEnemies();
+			//KillAllEnemies();
+			GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
 			Destroy (player);
 		}
 
