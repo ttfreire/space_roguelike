@@ -75,7 +75,7 @@ public class playerController : MonoBehaviour {
 	public void EnterRoom(){
 		if (!IsInsideRoom) {
 			IsInsideRoom = true;
-			p_camera.orthographicSize = cameraSizeinRoom;
+			p_camera.orthographicSize = cameraSizeinSpace;
 			Vector3 pos = new Vector3(gameObject.transform.position.x+10, gameObject.transform.position.y, 200);
 			gameObject.transform.position = pos;
 
