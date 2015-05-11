@@ -22,6 +22,7 @@ public class gameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		control = this;
 		Time.timeScale = 1;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		m_pShoot = player.GetComponent<playerShoot> ();

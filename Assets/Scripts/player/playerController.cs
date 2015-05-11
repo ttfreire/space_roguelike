@@ -3,9 +3,9 @@ using System.Collections;
 
 public class playerController : MonoBehaviour {
 	
-	public bool IsInsideRoom = false;
+	public bool isInsideRoom = false;
 	Camera p_camera;
-	float cameraSizeinRoom = 10;
+	float cameraSizeinRoom = 20;
 	float cameraSizeinSpace = 15;
 
 	public int scrap1Quantity;
@@ -18,6 +18,8 @@ public class playerController : MonoBehaviour {
 	public int currentChunkColumn = 0;
 
 	BoardManager board;
+	public string room;
+
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
@@ -53,15 +55,15 @@ public class playerController : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if (other.tag.Equals ("Door")) {
 			this.collider.isTrigger = false;
-			if (!IsInsideRoom) {
+			if (!isInsideRoom) {
 				EnterRoom ();
 				loadRoom load = other.gameObject.GetComponent<loadRoom>();
-				if(!load.isLoaded){
-					string roomScene = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
-					StartCoroutine(load.loadRoomOnContainerPosition(roomScene));
-				}
+				room = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
+				if(!load.isLoaded)
+					StartCoroutine(load.loadRoomOnContainerPosition(room));
 			} else{
 				LeaveRoom ();
+
 			}
 		}
 		if (other.tag.Equals ("Item")) {
@@ -71,9 +73,9 @@ public class playerController : MonoBehaviour {
 	}
 
 	public void EnterRoom(){
-		if (!IsInsideRoom) {
-			IsInsideRoom = true;
-			p_camera.orthographicSize = cameraSizeinSpace;
+		if (!isInsideRoom) {
+			isInsideRoom = true;
+			p_camera.orthographicSize = cameraSizeinRoom;
 			Vector3 pos = new Vector3(gameObject.transform.position.x+10, gameObject.transform.position.y, 200);
 			gameObject.transform.position = pos;
 
@@ -81,8 +83,8 @@ public class playerController : MonoBehaviour {
 	}
 
 	public void LeaveRoom(){
-		if (IsInsideRoom) {
-			IsInsideRoom = false;
+		if (isInsideRoom) {
+			isInsideRoom = false;
 			p_camera.orthographicSize = cameraSizeinSpace;
 			Vector3 pos = new Vector3(gameObject.transform.position.x-10, gameObject.transform.position.y, 0);
 			gameObject.transform.position = pos;
