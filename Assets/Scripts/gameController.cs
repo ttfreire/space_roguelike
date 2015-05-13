@@ -91,4 +91,9 @@ public class gameController : MonoBehaviour {
 		foreach (GameObject enemy in enemies)
 			Destroy (enemy.gameObject);
 	}
+
+	public void PauseUnpauseGame(){
+		Time.timeScale = 1.0f - Time.timeScale;
+	}
+
 }
