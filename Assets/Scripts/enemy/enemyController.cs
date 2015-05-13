@@ -26,6 +26,10 @@ public class enemyController : MonoBehaviour {
 
 	public List<GameObject> ItemsDrop;
 
+
+	//Animation
+	Animator anim;
+
 	// Use this for initialization
 	void Awake () {
 		m_healthController = GetComponent<enemyHealth> ();
@@ -34,7 +38,7 @@ public class enemyController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		m_seenItems.Clear ();
 		m_scavangedItems.Clear ();
-
+		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -47,6 +51,7 @@ public class enemyController : MonoBehaviour {
 		//transform.position = localPos;
 		//}
 		UpdateState (m_currentState);
+		anim.Play ("idle");
 
 	}
 
