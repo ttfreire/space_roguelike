@@ -197,13 +197,14 @@ public class enemyController : MonoBehaviour {
 		Transform target = player.transform;
 		Vector3 direction = (target.position - this.transform.position).normalized;
 		direction.z = 0f;
-		if (transform.position.x < target.position.x && isFacingRight) {
-			transform.LookAt (transform.position - transform.forward);
-			isFacingRight = false;
-		}
-		else if (transform.position.x > target.position.x && !isFacingRight){
-			transform.LookAt (transform.position - transform.forward);
-			isFacingRight = true;
+		if (canScavenge) {
+			if (transform.position.x < target.position.x && isFacingRight) {
+				transform.LookAt (transform.position - transform.forward);
+				isFacingRight = false;
+			} else if (transform.position.x > target.position.x && !isFacingRight) {
+				transform.LookAt (transform.position - transform.forward);
+				isFacingRight = true;
+			}
 		}
 		transform.Translate (direction * Time.deltaTime * m_speed, Space.World);
 

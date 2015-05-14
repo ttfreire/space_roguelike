@@ -30,7 +30,9 @@ public class projectileController : MonoBehaviour {
 
 	void OnCollisionStay(Collision other){
 		if(other.transform.parent != null)
-			if(other.gameObject.transform.parent.tag.Equals("LevelLimit"))
+			if(other.gameObject.transform.parent.tag.Equals("LevelLimit") || other.gameObject.transform.tag.Equals("LevelLimit") || 
+			   other.gameObject.transform.tag.Equals("FinalRoom") || other.gameObject.transform.tag.Equals("Door") 
+			   || other.gameObject.transform.tag.Equals("Container"))
 			   Destroy(gameObject);
 	}
 			

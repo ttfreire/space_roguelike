@@ -62,8 +62,9 @@ public class chunkController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log ("entrou");
 		if (gameObject.transform.parent.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Enemy"))
+			other.gameObject.transform.SetParent (gameObject.transform.parent);
+		if (gameObject.transform.parent.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Movable"))
 			other.gameObject.transform.SetParent (gameObject.transform.parent);
 		
 		if (gameObject.transform.parent.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Player")) {
