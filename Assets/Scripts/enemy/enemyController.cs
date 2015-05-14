@@ -29,7 +29,8 @@ public class enemyController : MonoBehaviour {
 
 	//Animation
 	Animator anim;
-
+	bool isMoving = false;
+	bool isFacingRight = true;
 	// Use this for initialization
 	void Awake () {
 		m_healthController = GetComponent<enemyHealth> ();
@@ -51,7 +52,7 @@ public class enemyController : MonoBehaviour {
 		//transform.position = localPos;
 		//}
 		UpdateState (m_currentState);
-		anim.Play ("idle");
+		anim.SetBool ("isMoving", isMoving);
 
 	}
 
@@ -92,6 +93,7 @@ public class enemyController : MonoBehaviour {
 	public void UpdateState(EnemyState state){
 		switch (m_currentState) {
 		case EnemyState.ROAMING:
+			isMoving = false;
 			if(m_sightController.m_isPlayerOnView)
 				EnterState(EnemyState.ATTACKING);
 			if (m_healthController.IsDead())
@@ -103,6 +105,7 @@ public class enemyController : MonoBehaviour {
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
 			FollowPlayer ();
+			isMoving = true;
 			break;
 		case EnemyState.GETTINGITENS:
 			if(m_sightController.m_isPlayerOnView)
@@ -194,7 +197,16 @@ public class enemyController : MonoBehaviour {
 		Transform target = player.transform;
 		Vector3 direction = (target.position - this.transform.position).normalized;
 		direction.z = 0f;
-		transform.Translate (direction * Time.deltaTime * m_speed);
+		if (transform.position.x < target.position.x && isFacingRight) {
+			transform.LookAt (transform.position - transform.forward);
+			isFacingRight = false;
+		}
+		else if (transform.position.x > target.position.x && !isFacingRight){
+			transform.LookAt (transform.position - transform.forward);
+			isFacingRight = true;
+		}
+		transform.Translate (direction * Time.deltaTime * m_speed, Space.World);
+
 	}
 
 	void ScavengeItems(){
