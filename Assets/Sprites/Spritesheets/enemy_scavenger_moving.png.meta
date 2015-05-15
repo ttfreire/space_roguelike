@@ -79,119 +79,119 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1800
-        width: 450
-        height: 450
+        y: 734
+        width: 104
+        height: 104
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_1
       rect:
         serializedVersion: 2
-        x: 450
-        y: 1800
-        width: 450
-        height: 450
+        x: 104
+        y: 734
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_2
       rect:
         serializedVersion: 2
-        x: 900
-        y: 1800
-        width: 450
-        height: 450
+        x: 208
+        y: 734
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_3
       rect:
         serializedVersion: 2
-        x: 1350
-        y: 1800
-        width: 450
-        height: 450
+        x: 312
+        y: 734
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_4
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 1800
-        width: 450
-        height: 450
+        x: 0
+        y: 630
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_5
       rect:
         serializedVersion: 2
-        x: 2250
-        y: 1800
-        width: 450
-        height: 450
+        x: 104
+        y: 630
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1350
-        width: 450
-        height: 450
+        x: 208
+        y: 630
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_7
       rect:
         serializedVersion: 2
-        x: 450
-        y: 1350
-        width: 450
-        height: 450
+        x: 312
+        y: 630
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_8
       rect:
         serializedVersion: 2
-        x: 900
-        y: 1350
-        width: 450
-        height: 450
+        x: 0
+        y: 526
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_9
       rect:
         serializedVersion: 2
-        x: 1350
-        y: 1350
-        width: 450
-        height: 450
+        x: 104
+        y: 526
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_10
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 1350
-        width: 450
-        height: 450
+        x: 208
+        y: 526
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_11
       rect:
         serializedVersion: 2
-        x: 2250
-        y: 1350
-        width: 450
-        height: 450
+        x: 312
+        y: 526
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,119 +199,119 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 900
-        width: 450
-        height: 450
+        y: 422
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_13
       rect:
         serializedVersion: 2
-        x: 450
-        y: 900
-        width: 450
-        height: 450
+        x: 104
+        y: 422
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_14
       rect:
         serializedVersion: 2
-        x: 900
-        y: 900
-        width: 450
-        height: 450
+        x: 208
+        y: 422
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_15
       rect:
         serializedVersion: 2
-        x: 1350
-        y: 900
-        width: 450
-        height: 450
+        x: 312
+        y: 422
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_16
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 900
-        width: 450
-        height: 450
+        x: 0
+        y: 318
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_17
       rect:
         serializedVersion: 2
-        x: 2250
-        y: 900
-        width: 450
-        height: 450
+        x: 104
+        y: 318
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 450
-        width: 450
-        height: 450
+        x: 208
+        y: 318
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_19
       rect:
         serializedVersion: 2
-        x: 450
-        y: 450
-        width: 450
-        height: 450
+        x: 312
+        y: 318
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_20
       rect:
         serializedVersion: 2
-        x: 900
-        y: 450
-        width: 450
-        height: 450
+        x: 0
+        y: 214
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_21
       rect:
         serializedVersion: 2
-        x: 1350
-        y: 450
-        width: 450
-        height: 450
+        x: 104
+        y: 214
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_22
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 450
-        width: 450
-        height: 450
+        x: 208
+        y: 214
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_23
       rect:
         serializedVersion: 2
-        x: 2250
-        y: 450
-        width: 450
-        height: 450
+        x: 312
+        y: 214
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,49 +319,79 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 450
-        height: 450
+        y: 110
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_25
       rect:
         serializedVersion: 2
-        x: 450
-        y: 0
-        width: 450
-        height: 450
+        x: 104
+        y: 110
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_26
       rect:
         serializedVersion: 2
-        x: 900
-        y: 0
-        width: 450
-        height: 450
+        x: 208
+        y: 110
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_27
       rect:
         serializedVersion: 2
-        x: 1350
-        y: 0
-        width: 450
-        height: 450
+        x: 312
+        y: 110
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: enemy_scavenger_moving_28
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 450
-        height: 450
+        x: 0
+        y: 6
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_scavenger_moving_29
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 6
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_scavenger_moving_30
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 6
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_scavenger_moving_31
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 6
+        width: 104
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
