@@ -1,39 +1,37 @@
 fileFormatVersion: 2
-guid: 35dd9f7063c9849488cacb88f0c23601
+guid: 9c15468c6deb62d49895db3a88c429aa
 TextureImporter:
   fileIDToRecycleName:
-    21300000: enemy_scavenger_moving_0
-    21300002: enemy_scavenger_moving_1
-    21300004: enemy_scavenger_moving_2
-    21300006: enemy_scavenger_moving_3
-    21300008: enemy_scavenger_moving_4
-    21300010: enemy_scavenger_moving_5
-    21300012: enemy_scavenger_moving_6
-    21300014: enemy_scavenger_moving_7
-    21300016: enemy_scavenger_moving_8
-    21300018: enemy_scavenger_moving_9
-    21300020: enemy_scavenger_moving_10
-    21300022: enemy_scavenger_moving_11
-    21300024: enemy_scavenger_moving_12
-    21300026: enemy_scavenger_moving_13
-    21300028: enemy_scavenger_moving_14
-    21300030: enemy_scavenger_moving_15
-    21300032: enemy_scavenger_moving_16
-    21300034: enemy_scavenger_moving_17
-    21300036: enemy_scavenger_moving_18
-    21300038: enemy_scavenger_moving_19
-    21300040: enemy_scavenger_moving_20
-    21300042: enemy_scavenger_moving_21
-    21300044: enemy_scavenger_moving_22
-    21300046: enemy_scavenger_moving_23
-    21300048: enemy_scavenger_moving_24
-    21300050: enemy_scavenger_moving_25
-    21300052: enemy_scavenger_moving_26
-    21300054: enemy_scavenger_moving_27
-    21300056: enemy_scavenger_moving_28
-    21300058: enemy_scavenger_moving_29
-    21300060: enemy_scavenger_moving_30
-    21300062: enemy_scavenger_moving_31
+    21300000: enemy_scavenger_attack_0
+    21300002: enemy_scavenger_attack_1
+    21300004: enemy_scavenger_attack_2
+    21300006: enemy_scavenger_attack_3
+    21300008: enemy_scavenger_attack_4
+    21300010: enemy_scavenger_attack_5
+    21300012: enemy_scavenger_attack_6
+    21300014: enemy_scavenger_attack_7
+    21300016: enemy_scavenger_attack_8
+    21300018: enemy_scavenger_attack_9
+    21300020: enemy_scavenger_attack_10
+    21300022: enemy_scavenger_attack_11
+    21300024: enemy_scavenger_attack_12
+    21300026: enemy_scavenger_attack_13
+    21300028: enemy_scavenger_attack_14
+    21300030: enemy_scavenger_attack_15
+    21300032: enemy_scavenger_attack_16
+    21300034: enemy_scavenger_attack_17
+    21300036: enemy_scavenger_attack_18
+    21300038: enemy_scavenger_attack_19
+    21300040: enemy_scavenger_attack_20
+    21300042: enemy_scavenger_attack_21
+    21300044: enemy_scavenger_attack_22
+    21300046: enemy_scavenger_attack_23
+    21300048: enemy_scavenger_attack_24
+    21300050: enemy_scavenger_attack_25
+    21300052: enemy_scavenger_attack_26
+    21300054: enemy_scavenger_attack_27
+    21300056: enemy_scavenger_attack_28
+    21300058: enemy_scavenger_attack_29
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -75,7 +73,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: enemy_scavenger_moving_0
+    - name: enemy_scavenger_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -83,9 +81,9 @@ TextureImporter:
         width: 450
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_1
+    - name: enemy_scavenger_attack_1
       rect:
         serializedVersion: 2
         x: 450
@@ -95,7 +93,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_2
+    - name: enemy_scavenger_attack_2
       rect:
         serializedVersion: 2
         x: 900
@@ -105,7 +103,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_3
+    - name: enemy_scavenger_attack_3
       rect:
         serializedVersion: 2
         x: 1350
@@ -115,7 +113,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_4
+    - name: enemy_scavenger_attack_4
       rect:
         serializedVersion: 2
         x: 1800
@@ -123,9 +121,9 @@ TextureImporter:
         width: 450
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_5
+    - name: enemy_scavenger_attack_5
       rect:
         serializedVersion: 2
         x: 2250
@@ -135,7 +133,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_6
+    - name: enemy_scavenger_attack_6
       rect:
         serializedVersion: 2
         x: 0
@@ -145,7 +143,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_7
+    - name: enemy_scavenger_attack_7
       rect:
         serializedVersion: 2
         x: 450
@@ -155,7 +153,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_8
+    - name: enemy_scavenger_attack_8
       rect:
         serializedVersion: 2
         x: 900
@@ -165,7 +163,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_9
+    - name: enemy_scavenger_attack_9
       rect:
         serializedVersion: 2
         x: 1350
@@ -175,7 +173,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_10
+    - name: enemy_scavenger_attack_10
       rect:
         serializedVersion: 2
         x: 1800
@@ -185,7 +183,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_11
+    - name: enemy_scavenger_attack_11
       rect:
         serializedVersion: 2
         x: 2250
@@ -195,7 +193,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_12
+    - name: enemy_scavenger_attack_12
       rect:
         serializedVersion: 2
         x: 0
@@ -205,7 +203,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_13
+    - name: enemy_scavenger_attack_13
       rect:
         serializedVersion: 2
         x: 450
@@ -215,7 +213,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_14
+    - name: enemy_scavenger_attack_14
       rect:
         serializedVersion: 2
         x: 900
@@ -225,7 +223,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_15
+    - name: enemy_scavenger_attack_15
       rect:
         serializedVersion: 2
         x: 1350
@@ -235,7 +233,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_16
+    - name: enemy_scavenger_attack_16
       rect:
         serializedVersion: 2
         x: 1800
@@ -245,7 +243,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_17
+    - name: enemy_scavenger_attack_17
       rect:
         serializedVersion: 2
         x: 2250
@@ -255,7 +253,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_18
+    - name: enemy_scavenger_attack_18
       rect:
         serializedVersion: 2
         x: 0
@@ -265,7 +263,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_19
+    - name: enemy_scavenger_attack_19
       rect:
         serializedVersion: 2
         x: 450
@@ -275,7 +273,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_20
+    - name: enemy_scavenger_attack_20
       rect:
         serializedVersion: 2
         x: 900
@@ -285,7 +283,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_21
+    - name: enemy_scavenger_attack_21
       rect:
         serializedVersion: 2
         x: 1350
@@ -295,7 +293,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_22
+    - name: enemy_scavenger_attack_22
       rect:
         serializedVersion: 2
         x: 1800
@@ -305,7 +303,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_23
+    - name: enemy_scavenger_attack_23
       rect:
         serializedVersion: 2
         x: 2250
@@ -315,7 +313,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_24
+    - name: enemy_scavenger_attack_24
       rect:
         serializedVersion: 2
         x: 0
@@ -325,7 +323,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_25
+    - name: enemy_scavenger_attack_25
       rect:
         serializedVersion: 2
         x: 450
@@ -335,7 +333,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_26
+    - name: enemy_scavenger_attack_26
       rect:
         serializedVersion: 2
         x: 900
@@ -345,7 +343,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_27
+    - name: enemy_scavenger_attack_27
       rect:
         serializedVersion: 2
         x: 1350
@@ -355,10 +353,20 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_moving_28
+    - name: enemy_scavenger_attack_28
       rect:
         serializedVersion: 2
         x: 1800
+        y: 0
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: enemy_scavenger_attack_29
+      rect:
+        serializedVersion: 2
+        x: 2250
         y: 0
         width: 450
         height: 450

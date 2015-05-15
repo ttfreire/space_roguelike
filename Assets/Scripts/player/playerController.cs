@@ -5,7 +5,7 @@ public class playerController : MonoBehaviour {
 	
 	public bool isInsideRoom = false;
 	Camera p_camera;
-	float cameraSizeinRoom = 20;
+	float cameraSizeinRoom = 15;
 	float cameraSizeinSpace = 15;
 
 	public int scrap1Quantity;

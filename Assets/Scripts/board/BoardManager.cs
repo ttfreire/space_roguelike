@@ -86,9 +86,7 @@ public class BoardManager : MonoBehaviour {
 					if (gridPositions.Count == 1 || gridPositions.Count == rows || gridPositions.Count == rows+1)
 						toInstantiate = chunkTiles[0];
 					else{
-					if(Random.Range(0,100) < 10)
-						toInstantiate = chunkTiles[0];
-					else
+
 						toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
 					}
 				}

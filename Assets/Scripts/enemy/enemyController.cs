@@ -30,6 +30,7 @@ public class enemyController : MonoBehaviour {
 	//Animation
 	Animator anim;
 	bool isMoving = false;
+	bool isAttacking = false;
 	bool isFacingRight = true;
 	// Use this for initialization
 	void Awake () {
@@ -52,8 +53,10 @@ public class enemyController : MonoBehaviour {
 		//transform.position = localPos;
 		//}
 		UpdateState (m_currentState);
-		anim.SetBool ("isMoving", isMoving);
-
+		if (anim != null) {
+			anim.SetBool ("isMoving", isMoving);
+			anim.SetBool ("isAttacking", isAttacking);
+		}
 	}
 
 	public void EnterState(EnemyState state){
@@ -62,9 +65,10 @@ public class enemyController : MonoBehaviour {
 
 		switch (m_currentState) {
 		case EnemyState.ROAMING:
+			isMoving = false;
 			break;
 		case EnemyState.ATTACKING:
-
+			isMoving = true;
 			break;
 		case EnemyState.GETTINGITENS:
 			break;
@@ -93,7 +97,7 @@ public class enemyController : MonoBehaviour {
 	public void UpdateState(EnemyState state){
 		switch (m_currentState) {
 		case EnemyState.ROAMING:
-			isMoving = false;
+
 			if(m_sightController.m_isPlayerOnView)
 				EnterState(EnemyState.ATTACKING);
 			if (m_healthController.IsDead())
@@ -105,7 +109,7 @@ public class enemyController : MonoBehaviour {
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
 			FollowPlayer ();
-			isMoving = true;
+
 			break;
 		case EnemyState.GETTINGITENS:
 			if(m_sightController.m_isPlayerOnView)
@@ -158,6 +162,7 @@ public class enemyController : MonoBehaviour {
 		if (other.gameObject.Equals (player)) {
 			RepelPlayer (other.rigidbody);
 			shake = true;
+			isAttacking = true;
 		}
 
 	}
@@ -165,6 +170,7 @@ public class enemyController : MonoBehaviour {
 
 	void OnCollisionExit(Collision other){
 		shake = false;
+		isAttacking = false;
 		//m_camera.GetComponent<CameraShake> ().enabled = false;
 	}
 
