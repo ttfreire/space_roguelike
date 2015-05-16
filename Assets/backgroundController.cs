@@ -5,7 +5,6 @@ public class backgroundController : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log ("entrou");
 		if (gameObject.transform.parent.tag.Equals ("Respawn") && other.gameObject.tag.Equals ("Enemy"))
 			other.gameObject.transform.SetParent (gameObject.transform.parent);
 		

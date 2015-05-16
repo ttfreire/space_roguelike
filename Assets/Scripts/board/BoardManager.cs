@@ -38,7 +38,7 @@ public class BoardManager : MonoBehaviour {
 	public float chunkWidth;
 	public float chunkHeight;
 
-	private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
+	public Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
 	public List <GameObject> gridPositions = new List <GameObject> ();   //A list of possible locations to place tiles.
 	
 	GameObject m_player;
@@ -73,23 +73,19 @@ public class BoardManager : MonoBehaviour {
 		chunkHeight *=10f;
 
 		//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
-		for(int x = -1; x < columns + 1; x++)
+		for(int x = -1; x < columns+1; x++)
 		{
 			//Loop along y axis, starting from -1 to place floor or outerwall tiles.
-			for(int y = -1; y < rows + 1; y++)
+			for(int y = -1; y < rows+1; y++)
 			{
+				if(CheckIfGridPositionIsEmpty(x, y)){
 				//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
 				GameObject toInstantiate;
-				if(gridPositions.Count == 0 )
-					toInstantiate = lockedRoomTile;
-				else{
-					if (gridPositions.Count == 1 || gridPositions.Count == rows || gridPositions.Count == rows+1)
-						toInstantiate = chunkTiles[0];
-					else{
+				//if(gridPositions.Count == 0 )
+				//	toInstantiate = lockedRoomTile;
+				//else
+					toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
 
-						toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
-					}
-				}
 				//Check if we current position is at board edge, if so choose a random outer wall prefab from our array of outer wall tiles.
 				if(x == -1 || x == columns || y == -1 || y == rows)
 					toInstantiate = outerWallTiles [Random.Range (0, outerWallTiles.Length)];
@@ -97,26 +93,26 @@ public class BoardManager : MonoBehaviour {
 				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 				GameObject instance =
 					Instantiate (toInstantiate, new Vector3 (x*chunkWidth, y*chunkHeight, 5.0f), toInstantiate.transform.rotation) as GameObject;
-				
+				}
 				//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
-				instance.transform.SetParent (boardHolder);
-				instance.AddComponent("chunkController");
-				instance.GetComponent<chunkController>().InitialiseList();
-				instance.GetComponent<chunkController>().SetChunkRow(y);
-				instance.GetComponent<chunkController>().SetChunkColumn(x);
-				if(gridPositions.Count == 0)
-					instance.GetComponent<chunkController>().hasPlayer = true;
-
-				if(x != -1 && x != columns && y != -1 && y != rows){
-					instance.SetActive(false);
-					gridPositions.Add(instance);
+				GameObject chunk = GetChunkAtGridPosition(x,y);
+				if(chunk != null){
+					if(x != -1 && x != columns && y != -1 && y != rows){
+						chunk.AddComponent("chunkController");
+						chunk.GetComponent<chunkController>().SetChunkRow(y);
+						chunk.GetComponent<chunkController>().SetChunkColumn(x);
+						if(gridPositions.Count == 0)
+							chunk.GetComponent<chunkController>().hasPlayer = true;
+						chunk.SetActive(false);
+						gridPositions.Add(chunk);
+					}
 				}
 			}
 		}
 		int spawnedRooms = 0;
+		/**
 		while (spawnedRooms < totalRoomsOnLevel) {
 			int index = Random.Range(1,gridPositions.Count);
-			if(gridPositions[index].gameObject.name.Equals("chunkBase(Clone)")){
 				int row = gridPositions[index].gameObject.GetComponent<chunkController>().chunkRow;
 				int column = gridPositions[index].gameObject.GetComponent<chunkController>().chunkColumn;
 				Destroy(gridPositions[index].gameObject);
@@ -125,13 +121,13 @@ public class BoardManager : MonoBehaviour {
 				instance.transform.SetParent (boardHolder);
 				instance.AddComponent("chunkController");
 				chunkController chunkCont = instance.GetComponent<chunkController>();
-				instance.GetComponent<chunkController>().InitialiseList();
+
 				instance.GetComponent<chunkController>().SetChunkRow(row);
 				instance.GetComponent<chunkController>().SetChunkColumn(column);
 				gridPositions[index] = instance;
 				spawnedRooms++;
-			}
 		}
+		**/
 		//gridPositions [0].SetActive (true);
 	}
 	
@@ -157,75 +153,10 @@ public class BoardManager : MonoBehaviour {
 	{
 		//Creates the outer walls and floor.
 		BoardSetup ();
-		
-		//Reset our list of gridpositions.
-		//InitialiseList ();
-
-		//Remove the chunk where player starts the game and adjascents
-		removeChunksFromList ();
-
-		int randonChunks = Random.Range (gridPositions.Count / 4, Mathf.RoundToInt(gridPositions.Count / 1.5f));
-		for (int i = 0; i < randonChunks; i++) {
-			GameObject randChunk = RandomChunk();
-			//SetupEnemies(randChunk);
-			//SetupItems(randChunk);
-		}
-		randonChunks = Random.Range (gridPositions.Count / 4, Mathf.RoundToInt(gridPositions.Count / 1.5f));
-		for (int i = 0; i < randonChunks; i++) {
-			//GameObject randChunk = RandomChunk();
-			//SetupItems(randChunk);
-		}
-
 
 	}
-
-	public void SetupEnemies(GameObject chunk){
-		chunkController chunkcontrol = chunk.GetComponent<chunkController> ();
-		List<Vector3> chunkPositions = chunkcontrol.gridPositions;
-		int numEnemies = Random.Range (2, 6);
-		for (int i = 0; i < numEnemies; i++) {
-			GameObject toInstantiate = enemies[Random.Range (0,enemies.Length)];
-			Vector3 randPos = chunkcontrol.RandomPosition();
-			Vector3 instancePos = chunk.transform.position+randPos;
-			instancePos.z = 0;
-			Instantiate (toInstantiate,instancePos, Quaternion.identity);
-		}
-		
-	}
-
-	public void SetupItems(GameObject chunk){
-		chunkController chunkcontrol = chunk.GetComponent<chunkController> ();
-		List<Vector3> chunkPositions = chunkcontrol.gridPositions;
-		int numItems = Random.Range (1, 3);
-		for (int i = 0; i < numItems; i++) {
-			GameObject toInstantiate = items[Random.Range (0,items.Length)];
-			Vector3 randPos = chunkcontrol.RandomPosition();
-			Vector3 instancePos = chunk.transform.position+randPos;
-			instancePos.z = 0;
-			Instantiate (toInstantiate,instancePos, Quaternion.identity);
-		}
-		
-	}
-
-	public void SetupKey(GameObject chunk){
-		chunkController chunkcontrol = chunk.GetComponent<chunkController> ();
-		List<Vector3> chunkPositions = chunkcontrol.gridPositions;
-
-		GameObject toInstantiate = key;
-		Vector3 randPos = chunkcontrol.RandomPosition();
-		Vector3 instancePos = chunk.transform.position+randPos;
-		instancePos.z = 0;
-		Instantiate (toInstantiate,instancePos, Quaternion.identity);
-		
-	}
-
-	void removeChunksFromList(){
-		//gridPositions.RemoveAt (rows + 1);
-		//gridPositions.RemoveAt (rows);
-		//gridPositions.RemoveAt (1);
-		//gridPositions.RemoveAt (0);
-	}
-
+	
+	
 
 	void VisualizeActiveRows(){
 
@@ -239,7 +170,7 @@ public class BoardManager : MonoBehaviour {
 		}
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < columns; j++){
-				int index = i+j*columns;
+				int index = i+j*rows;
 				if((i >= chunkRowIndex -1 && i <= chunkRowIndex +1) && (j >= chunkColumnIndex -1 && j <= chunkColumnIndex +1))
 					gridPositions[index].SetActive(true);
 				else
@@ -260,6 +191,24 @@ public class BoardManager : MonoBehaviour {
 		int playerRow = Mathf.FloorToInt(m_player.transform.position.y / chunkHeight);
 		int playerColumn = Mathf.FloorToInt(m_player.transform.position.x / chunkWidth);
 		return playerColumn + playerRow * columns;
+	}
+
+	bool CheckIfGridPositionIsEmpty(int col, int row){
+		Vector3 targetPos = new Vector3 (40 * col, 30 * row, 5);
+		GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Respawn"); 
+		foreach(GameObject current in allMovableThings) { 
+			if(current.transform.position == targetPos) 
+				return false; 
+		} return true;
+	}
+
+	GameObject GetChunkAtGridPosition(int col, int row){
+		Vector3 targetPos = new Vector3 (40 * col, 30 * row, 5);
+		GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Respawn"); 
+		foreach(GameObject current in allMovableThings) { 
+			if(current.transform.position == targetPos) 
+				return current; 
+		} return null;
 	}
 
 }
