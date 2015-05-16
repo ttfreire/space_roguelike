@@ -84,12 +84,16 @@ public class BoardManager : MonoBehaviour {
 				//if(gridPositions.Count == 0 )
 				//	toInstantiate = lockedRoomTile;
 				//else
-					toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
-
 				//Check if we current position is at board edge, if so choose a random outer wall prefab from our array of outer wall tiles.
 				if(x == -1 || x == columns || y == -1 || y == rows)
 					toInstantiate = outerWallTiles [Random.Range (0, outerWallTiles.Length)];
-				
+				else{
+					do{
+						toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
+					}
+					while(CheckIfChunkGroupSpawnPositionIsvalid(toInstantiate,x,y) == false);
+				}
+
 				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 				GameObject instance =
 					Instantiate (toInstantiate, new Vector3 (x*chunkWidth, y*chunkHeight, 5.0f), toInstantiate.transform.rotation) as GameObject;
@@ -209,6 +213,26 @@ public class BoardManager : MonoBehaviour {
 			if(current.transform.position == targetPos) 
 				return current; 
 		} return null;
+	}
+
+	bool CheckIfChunkGroupSpawnPositionIsvalid(GameObject group, int col, int row){
+		int chunkGroupCol = group.GetComponent<chunkGroupController> ().columns;
+		int chunkGroupRow = group.GetComponent<chunkGroupController> ().rows;
+
+		if (col + chunkGroupCol > columns)
+			return false;
+
+		if (row + chunkGroupRow > rows)
+			return false;
+
+		for (int i = 0; i < chunkGroupCol; i++) {
+			for(int j = 0; j < chunkGroupRow; j++){
+				if(!CheckIfGridPositionIsEmpty(col+i,row+j))
+					return false;
+			}
+		}
+
+		return true;
 	}
 
 }
