@@ -10,6 +10,7 @@ public class enemyShoot : MonoBehaviour {
 	enemySight m_sight;
 	enemyHealth m_health;
 	float m_shootCooldown;
+	public float m_damage;
 
 
 	void Awake () {

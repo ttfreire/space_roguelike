@@ -41,7 +41,7 @@ public class playerController : MonoBehaviour {
 
 	void OnCollisionStay(Collision other){
 		if (other.gameObject.tag.Equals ("Projectile") && other.gameObject.GetComponent<projectileController> ().m_shooter != gameObject) {
-			playerHealth.p_Health.TakeDamage (10.0f);
+			playerHealth.p_Health.TakeDamage (other.gameObject.GetComponent<projectileController>().m_shooter.GetComponent<enemyShoot>().m_damage);
 			Destroy (other.gameObject);
 		}
 		if(other.gameObject.tag.Equals ("Enemy"))
