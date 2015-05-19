@@ -18,7 +18,7 @@ public class gameController : MonoBehaviour {
 	private BoardManager boardScript;                       
 	private int level = 3;                                  
 
-	public List<int> availableRoomNumbers;
+	public List<int> spawnedRoomNumbers;
 
 	// Use this for initialization
 	void Awake () {

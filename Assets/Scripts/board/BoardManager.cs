@@ -28,7 +28,7 @@ public class BoardManager : MonoBehaviour {
 
 	public GameObject[] chunkTiles;                                 //Array of floor prefabs.
 	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
-	public GameObject randomRoomTile; 
+	public GameObject[] chunkRoomTiles; 
 	public GameObject lockedRoomTile; 
 	public GameObject[] enemies;
 	public GameObject[] items;
@@ -49,7 +49,7 @@ public class BoardManager : MonoBehaviour {
 	{
 		//Clear our list gridPositions.
 		gridPositions.Clear ();
-		/**
+
 		//Loop through x axis (columns).
 		for(int x = 0; x < columns; x++)
 		{
@@ -57,10 +57,9 @@ public class BoardManager : MonoBehaviour {
 			for(int y = 0; y < rows; y++)
 			{
 				//At each index add a new Vector3 to our list with the x and y coordinates of that position.
-				gridPositions.Add (new GameObject());
+				gridPositions.Add (null);
 			}
 		}
-		**/
 	}
 	
 	
@@ -71,6 +70,33 @@ public class BoardManager : MonoBehaviour {
 		boardHolder = new GameObject ("Board").transform;
 		chunkWidth *= 10f;
 		chunkHeight *=10f;
+
+		int spawnedRooms = 0;
+
+		while (spawnedRooms < totalRoomsOnLevel) {
+			int row = 0;
+			int column = 0;
+			GameObject toInstantiate;
+			do{
+				while((row == 0 && column == 0)){
+					row = Random.Range (0,rows);
+					column = Random.Range (0,columns);
+				}
+
+				toInstantiate = chunkRoomTiles[Random.Range (0,chunkRoomTiles.Length)];
+			}
+			while(CheckIfChunkGroupSpawnPositionIsvalid(toInstantiate,column,row) == false);
+
+
+			int gridIndex = GetGridPositionsIndex(row, column);
+
+			GameObject instance =
+				Instantiate (toInstantiate, new Vector3 (column*chunkWidth, row*chunkHeight, 5.0f), toInstantiate.transform.rotation) as GameObject;
+			instance.transform.SetParent (boardHolder);
+
+			spawnedRooms++;
+		}
+
 
 		//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
 		for(int x = -1; x < columns+1; x++)
@@ -113,8 +139,8 @@ public class BoardManager : MonoBehaviour {
 				}
 			}
 		}
-		int spawnedRooms = 0;
-		/**
+
+		/*
 		while (spawnedRooms < totalRoomsOnLevel) {
 			int index = Random.Range(1,gridPositions.Count);
 				int row = gridPositions[index].gameObject.GetComponent<chunkController>().chunkRow;
@@ -174,7 +200,7 @@ public class BoardManager : MonoBehaviour {
 		}
 		for(int i = 0; i < rows; i++){
 			for(int j = 0; j < columns; j++){
-				int index = i+j*rows;
+				int index = GetGridPositionsIndex(i, j);
 				if((i >= chunkRowIndex -1 && i <= chunkRowIndex +1) && (j >= chunkColumnIndex -1 && j <= chunkColumnIndex +1))
 					gridPositions[index].SetActive(true);
 				else
@@ -235,4 +261,7 @@ public class BoardManager : MonoBehaviour {
 		return true;
 	}
 
+	int GetGridPositionsIndex (int row, int column){
+		return (row + column * rows);
+	}
 }

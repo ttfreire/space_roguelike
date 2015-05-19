@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class loadRoom : MonoBehaviour {
-
+	public int[] m_PossibleRoomsToSpawn;
 	public int m_room;
 	public bool isLoaded;
 	GameObject m_roomObject;
@@ -16,9 +16,12 @@ public class loadRoom : MonoBehaviour {
 	void Awake () {
 		isLoaded = false;
 		gameController game = GameObject.Find ("GameController").GetComponent<gameController> ();
-		int index = Random.Range (0, game.availableRoomNumbers.Count);
-		m_room = game.availableRoomNumbers[index];
-		game.availableRoomNumbers.RemoveAt (index);
+		int index = Random.Range (0, game.spawnedRoomNumbers.Count);
+		do {
+			m_room = m_PossibleRoomsToSpawn [Random.Range (0, m_PossibleRoomsToSpawn.Length)];
+		} while(game.spawnedRoomNumbers.Contains(m_room));
+
+		game.spawnedRoomNumbers.Add(m_room);
 
 		board = FindObjectOfType<BoardManager> ();
 	}
