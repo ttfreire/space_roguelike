@@ -22,7 +22,7 @@ public class enemySight : MonoBehaviour {
 	void OnTriggerStay(Collider other){
 		if (other.gameObject == m_player) {
 			RaycastHit hit;
-			Transform shooterPos = transform.FindChild("shooter").transform;
+			Transform shooterPos = gameObject.GetComponent<enemyShoot>().shooterObject.transform;
 			m_player = FindObjectOfType<playerController> ().gameObject;
 			float distance = 50;
 			if(Physics.Raycast(shooterPos.position, m_player.transform.position-shooterPos.position, out hit, distance, ignoreLayerMask))

@@ -6,6 +6,7 @@ public class enemyShoot : MonoBehaviour {
 	public GameObject m_projectile;
 	public float m_shootForce;
 	public float m_shootsPerSecond;
+	public GameObject shooterObject;
 	GameObject m_player;
 	enemySight m_sight;
 	enemyHealth m_health;
@@ -37,7 +38,7 @@ public class enemyShoot : MonoBehaviour {
 
 	void ShootTarget(Transform target){
 
-		Transform shotRootPos = gameObject.transform.FindChild ("shooter").transform;
+		Transform shotRootPos = shooterObject.transform;
 		Vector3 shootDir = (target.position - shotRootPos.position).normalized;
 		GameObject proj = (GameObject)Instantiate (m_projectile, shotRootPos.position + shootDir , Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Player");

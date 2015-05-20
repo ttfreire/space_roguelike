@@ -28,7 +28,7 @@ public class BoardManager : MonoBehaviour {
 
 	public GameObject[] chunkTiles;                                 //Array of floor prefabs.
 	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
-	public GameObject[] chunkRoomTiles; 
+	public List<GameObject> chunkRoomTiles;
 	public GameObject lockedRoomTile; 
 	public GameObject[] enemies;
 	public GameObject[] items;
@@ -82,8 +82,9 @@ public class BoardManager : MonoBehaviour {
 					row = Random.Range (0,rows);
 					column = Random.Range (0,columns);
 				}
-
-				toInstantiate = chunkRoomTiles[Random.Range (0,chunkRoomTiles.Length)];
+				int index = Random.Range (0,chunkRoomTiles.Count);
+				toInstantiate = chunkRoomTiles[index];
+				chunkRoomTiles.RemoveAt(index);
 			}
 			while(CheckIfChunkGroupSpawnPositionIsvalid(toInstantiate,column,row) == false);
 

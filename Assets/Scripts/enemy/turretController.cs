@@ -81,7 +81,7 @@ public class turretController : MonoBehaviour {
 			
 			break;
 		case EnemyState.ATTACKING:
-			
+
 			break;
 		case EnemyState.GETTINGITENS:
 			
@@ -94,7 +94,7 @@ public class turretController : MonoBehaviour {
 	protected virtual void UpdateState(EnemyState state){
 		switch (m_currentState) {
 		case EnemyState.IDLE:
-			
+			AimAtPlayer();
 			if(m_sightController.m_isPlayerOnView)
 				EnterState(EnemyState.ATTACKING);
 			if (m_healthController.IsDead())
@@ -175,5 +175,11 @@ public class turretController : MonoBehaviour {
 		Vector3 toTargetVector = turretCannon.transform.position - player.transform.position;
 		float zRotation = Mathf.Atan2( toTargetVector.y, toTargetVector.x )*Mathf.Rad2Deg;
 		turretCannon.transform.rotation = Quaternion.Euler(new Vector3 ( 0, 0, zRotation));
+	}
+
+	void ReturnToOriginalAimPosition(){
+		GameObject turretCannon = gameObject.transform.FindChild ("cannon").gameObject;
+		float step = 2 * Time.deltaTime;
+		turretCannon.transform.rotation = Quaternion.RotateTowards(turretCannon.transform.rotation, Quaternion.identity, step);
 	}
 }
