@@ -29,6 +29,10 @@ public class gameController : MonoBehaviour {
 		m_pControl = player.GetComponent<playerController> ();
 		m_pHealth = player.GetComponent<playerHealth> ();
 		boardScript = GetComponent<BoardManager>();
+
+	}
+
+	void Start(){
 		if (generateLevel)
 			boardScript.SetupScene (level);
 	}

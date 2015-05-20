@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,7 +16,6 @@ public class loadRoom : MonoBehaviour {
 	void Awake () {
 		isLoaded = false;
 		gameController game = GameObject.Find ("GameController").GetComponent<gameController> ();
-		int index = Random.Range (0, game.spawnedRoomNumbers.Count);
 		do {
 			m_room = m_PossibleRoomsToSpawn [Random.Range (0, m_PossibleRoomsToSpawn.Length)];
 		} while(game.spawnedRoomNumbers.Contains(m_room));
