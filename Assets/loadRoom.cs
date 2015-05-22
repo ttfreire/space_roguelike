@@ -12,6 +12,7 @@ public class loadRoom : MonoBehaviour {
 	BoardManager board;
 	bool cleanedRoom = false;
 	public bool playerInRoom = false;
+	playerController p_control;
 	// Use this for initialization
 	void Awake () {
 		isLoaded = false;
@@ -23,6 +24,8 @@ public class loadRoom : MonoBehaviour {
 		game.spawnedRoomNumbers.Add(m_room);
 
 		board = FindObjectOfType<BoardManager> ();
+
+		p_control = FindObjectOfType<playerController>();
 	}
 	
 	// Update is called once per frame
@@ -36,12 +39,6 @@ public class loadRoom : MonoBehaviour {
 					items.GetChild(i).gameObject.SetActive (true);
 				cleanedRoom = true;
 				board.numberOfRoomsToUnlockKey--;
-			}
-			if(cleanedRoom && board.numberOfRoomsToUnlockKey == 0){
-				if(m_roomObject.transform.FindChild("Key").gameObject != null){
-					key = m_roomObject.transform.FindChild("Key").gameObject;
-					key.GetComponent<spawnGameObject>().enabled = true;
-				}
 			}
 		}
 	}
