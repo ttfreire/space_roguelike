@@ -4,6 +4,7 @@ using System.Collections;
 public class enemyShoot : MonoBehaviour {
 	Transform m_targetToShoot;
 	public GameObject m_projectile;
+	public Sprite projectileSprite;
 	public float m_shootForce;
 	public float m_shootsPerSecond;
 	public GameObject shooterObject;
@@ -44,8 +45,14 @@ public class enemyShoot : MonoBehaviour {
 		proj.GetComponent<projectileController>().SetTargetTag("Player");
 		proj.GetComponent<projectileController> ().m_shooter = this.gameObject;
 		proj.GetComponent<projectileController> ().m_damage = m_damage;
-		proj.renderer.material.color = m_health.m_materialColor;
+		proj.GetComponent<SpriteRenderer> ().sprite = projectileSprite;
 		proj.transform.TransformDirection (shootDir);
+		AimAtTarget (proj, shootDir);
 	proj.GetComponent<Rigidbody> ().AddForce (shootDir * m_shootForce, ForceMode.Impulse);
+	}
+
+	void AimAtTarget(GameObject objToRotate, Vector3 targetDirection){
+		float zRotation = Mathf.Atan2( targetDirection.y, targetDirection.x )*Mathf.Rad2Deg;
+		objToRotate.transform.rotation = Quaternion.Euler(new Vector3 ( 0, 0, zRotation+180));
 	}
 }

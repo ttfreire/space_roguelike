@@ -2,42 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class turretController : MonoBehaviour {
+public class turretController : enemyBaseController {
+	
 
-	public enum EnemyState {IDLE, ATTACKING, GETTINGITENS, DEAD};
-	
-	public EnemyState m_currentState = EnemyState.IDLE;
-	
-	public float m_repelForce;
-	bool shake = false;
-	Camera m_camera;
-	
-	Transform m_targetToShoot;
-	protected GameObject player;
-	public float m_speed;
-	
-	
-	protected enemyHealth m_healthController;
-	protected enemySight m_sightController;
-	
-	
-	
-	public List<GameObject> ItemsDrop;
-	
-	
-	//Animation
-	Animator anim;
-	bool isMoving = false;
-	bool isAttacking = false;
-	protected bool isFacingRight = true;
-	// Use this for initialization
-	
 	protected virtual void Awake () {
-		m_healthController = GetComponent<enemyHealth> ();
-		m_sightController = GetComponent<enemySight> ();
-		m_camera = FindObjectOfType<Camera> ();
-		player = GameObject.FindGameObjectWithTag ("Player");
-		anim = GetComponent<Animator>();
+		base.Awake ();
 	}
 	
 	// Update is called once per frame

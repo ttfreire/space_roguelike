@@ -8,10 +8,10 @@ public class enemyBaseController : MonoBehaviour {
 	public EnemyState m_currentState = EnemyState.IDLE;
 	
 	public float m_repelForce;
-	bool shake = false;
-	Camera m_camera;
-	
-	Transform m_targetToShoot;
+	protected bool shake = false;
+	protected Camera m_camera;
+
+	protected Transform m_targetToShoot;
 	protected GameObject player;
 	public float m_speed;
 	
@@ -25,10 +25,11 @@ public class enemyBaseController : MonoBehaviour {
 	
 	
 	//Animation
-	Animator anim;
-	bool isMoving = false;
-	bool isAttacking = false;
+	protected Animator anim;
+	protected bool isMoving = false;
+	protected bool isAttacking = false;
 	protected bool isFacingRight = true;
+
 	// Use this for initialization
 
 	protected virtual void Awake () {

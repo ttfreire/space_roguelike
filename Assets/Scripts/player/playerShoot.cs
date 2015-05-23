@@ -10,6 +10,7 @@ public class playerShoot : MonoBehaviour {
 	public float m_recoilForce;
 	public float m_shootsPerSecond;
 	public GameObject m_projectile;
+	public Sprite projectileSprite;
 	Vector3 shootDirection;
 	float m_nextShot;
 	Camera m_camera;
@@ -59,7 +60,9 @@ public class playerShoot : MonoBehaviour {
 		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
 		proj.GetComponent<projectileController> ().m_shooter = gameObject;
 		proj.GetComponent<projectileController> ().m_damage = m_damage;
+		proj.GetComponent<SpriteRenderer> ().sprite = projectileSprite;
 		proj.transform.TransformDirection (shootDirection);
+		AimAtTarget (proj, shootDirection);
 		proj.GetComponent<Rigidbody> ().AddForce (shootDirection * m_shootForce, ForceMode.Impulse);
 
 		//Recoil
@@ -77,4 +80,8 @@ public class playerShoot : MonoBehaviour {
 		this.gameObject.GetComponent<CameraShake> ().enabled = true;
 	}
 
+	void AimAtTarget(GameObject objToRotate, Vector3 targetDirection){
+		float zRotation = Mathf.Atan2( targetDirection.y, targetDirection.x )*Mathf.Rad2Deg;
+		objToRotate.transform.rotation = Quaternion.Euler(new Vector3 ( 0, 0, zRotation+180));
+	}
 }
