@@ -26,6 +26,8 @@ public class loadRoom : MonoBehaviour {
 		board = FindObjectOfType<BoardManager> ();
 
 		p_control = FindObjectOfType<playerController>();
+
+
 	}
 	
 	// Update is called once per frame
@@ -47,7 +49,7 @@ public class loadRoom : MonoBehaviour {
 		Application.LoadLevelAdditive (roomScene);
 		yield return 0;
 		GameObject room = GameObject.Find(roomScene);
-		Vector3 roomNewPosition = transform.position + new Vector3 (0, 0, 200);
+		Vector3 roomNewPosition = transform.position + new Vector3 (-15, 0, 200);
 		room.transform.position = roomNewPosition;
 		m_roomObject = room;
 		isLoaded = true;

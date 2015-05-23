@@ -43,6 +43,7 @@ public class enemyShoot : MonoBehaviour {
 		GameObject proj = (GameObject)Instantiate (m_projectile, shotRootPos.position + shootDir , Quaternion.identity);
 		proj.GetComponent<projectileController>().SetTargetTag("Player");
 		proj.GetComponent<projectileController> ().m_shooter = this.gameObject;
+		proj.GetComponent<projectileController> ().m_damage = m_damage;
 		proj.renderer.material.color = m_health.m_materialColor;
 		proj.transform.TransformDirection (shootDir);
 	proj.GetComponent<Rigidbody> ().AddForce (shootDir * m_shootForce, ForceMode.Impulse);

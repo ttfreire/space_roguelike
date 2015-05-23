@@ -40,7 +40,7 @@ public class playerController : MonoBehaviour {
 
 	void OnCollisionStay(Collision other){
 		if (other.gameObject.tag.Equals ("Projectile") && other.gameObject.GetComponent<projectileController> ().m_shooter != gameObject) {
-			playerHealth.p_Health.TakeDamage (other.gameObject.GetComponent<projectileController>().m_shooter.GetComponent<enemyShoot>().m_damage);
+			playerHealth.p_Health.TakeDamage (other.gameObject.GetComponent<projectileController>().m_damage);
 			Destroy (other.gameObject);
 		}
 		if(other.gameObject.tag.Equals ("Enemy"))
@@ -75,7 +75,7 @@ public class playerController : MonoBehaviour {
 		if (!isInsideRoom) {
 			isInsideRoom = true;
 			p_camera.orthographicSize = cameraSizeinRoom;
-			Vector3 pos = new Vector3(gameObject.transform.position.x+10, gameObject.transform.position.y, 200);
+			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 200);
 			gameObject.transform.position = pos;
 
 		}
@@ -85,7 +85,7 @@ public class playerController : MonoBehaviour {
 		if (isInsideRoom) {
 			isInsideRoom = false;
 			p_camera.orthographicSize = cameraSizeinSpace;
-			Vector3 pos = new Vector3(gameObject.transform.position.x-10, gameObject.transform.position.y, 0);
+			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 			gameObject.transform.position = pos;
 			board.gridPositions[board.FindPlayerChunkindex()].SetActive(true);	
 		}
