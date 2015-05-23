@@ -9,18 +9,20 @@ public class playerHealth : MonoBehaviour {
 	public float m_OxygenDamageLoss;
 	public float m_currentOxygenValue;
 	public float m_playerTotalOxygen;
-
+	playerController p_control;
 	Camera m_camera;
 
 	void Awake () {
 		p_Health = this;
 		m_currentOxygenValue = m_playerTotalOxygen;
 		m_camera = FindObjectOfType<Camera> ();
+		p_control = GetComponent<playerController> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		ConsumeOxygenperSecond (m_OxygenLossRate);
+		if(!p_control.isInsideRoom)
+			ConsumeOxygenperSecond (m_OxygenLossRate);
 	}
 
 	public void ConsumeOxygenperSecond(float rate){
