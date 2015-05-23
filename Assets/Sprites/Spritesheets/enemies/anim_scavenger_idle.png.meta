@@ -1,37 +1,36 @@
 fileFormatVersion: 2
-guid: d171e603fcc14e14b985276e8cc5bfd8
+guid: 2443f10aec8f343919a3524244f3a28c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: enemy_scavenger_idle_0
-    21300002: enemy_scavenger_idle_1
-    21300004: enemy_scavenger_idle_2
-    21300006: enemy_scavenger_idle_3
-    21300008: enemy_scavenger_idle_4
-    21300010: enemy_scavenger_idle_5
-    21300012: enemy_scavenger_idle_6
-    21300014: enemy_scavenger_idle_7
-    21300016: enemy_scavenger_idle_8
-    21300018: enemy_scavenger_idle_9
-    21300020: enemy_scavenger_idle_10
-    21300022: enemy_scavenger_idle_11
-    21300024: enemy_scavenger_idle_12
-    21300026: enemy_scavenger_idle_13
-    21300028: enemy_scavenger_idle_14
-    21300030: enemy_scavenger_idle_15
-    21300032: enemy_scavenger_idle_16
-    21300034: enemy_scavenger_idle_17
-    21300036: enemy_scavenger_idle_18
-    21300038: enemy_scavenger_idle_19
-    21300040: enemy_scavenger_idle_20
-    21300042: enemy_scavenger_idle_21
-    21300044: enemy_scavenger_idle_22
-    21300046: enemy_scavenger_idle_23
-    21300048: enemy_scavenger_idle_24
-    21300050: enemy_scavenger_idle_25
-    21300052: enemy_scavenger_idle_26
-    21300054: enemy_scavenger_idle_27
-    21300056: enemy_scavenger_idle_28
-    21300058: enemy_scavenger_idle_29
+    21300000: anim_scavenger_idle_0
+    21300002: anim_scavenger_idle_1
+    21300004: anim_scavenger_idle_2
+    21300006: anim_scavenger_idle_3
+    21300008: anim_scavenger_idle_4
+    21300010: anim_scavenger_idle_5
+    21300012: anim_scavenger_idle_6
+    21300014: anim_scavenger_idle_7
+    21300016: anim_scavenger_idle_8
+    21300018: anim_scavenger_idle_9
+    21300020: anim_scavenger_idle_10
+    21300022: anim_scavenger_idle_11
+    21300024: anim_scavenger_idle_12
+    21300026: anim_scavenger_idle_13
+    21300028: anim_scavenger_idle_14
+    21300030: anim_scavenger_idle_15
+    21300032: anim_scavenger_idle_16
+    21300034: anim_scavenger_idle_17
+    21300036: anim_scavenger_idle_18
+    21300038: anim_scavenger_idle_19
+    21300040: anim_scavenger_idle_20
+    21300042: anim_scavenger_idle_21
+    21300044: anim_scavenger_idle_22
+    21300046: anim_scavenger_idle_23
+    21300048: anim_scavenger_idle_24
+    21300050: anim_scavenger_idle_25
+    21300052: anim_scavenger_idle_26
+    21300054: anim_scavenger_idle_27
+    21300056: anim_scavenger_idle_28
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -73,7 +72,57 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: enemy_scavenger_idle_0
+    - name: anim_scavenger_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_scavenger_idle_1
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_scavenger_idle_2
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_scavenger_idle_3
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_scavenger_idle_4
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_scavenger_idle_5
       rect:
         serializedVersion: 2
         x: 0
@@ -83,7 +132,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_1
+    - name: anim_scavenger_idle_6
       rect:
         serializedVersion: 2
         x: 450
@@ -93,7 +142,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_2
+    - name: anim_scavenger_idle_7
       rect:
         serializedVersion: 2
         x: 900
@@ -103,7 +152,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_3
+    - name: anim_scavenger_idle_8
       rect:
         serializedVersion: 2
         x: 1350
@@ -113,7 +162,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_4
+    - name: anim_scavenger_idle_9
       rect:
         serializedVersion: 2
         x: 1800
@@ -123,17 +172,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_5
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 1800
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_6
+    - name: anim_scavenger_idle_10
       rect:
         serializedVersion: 2
         x: 0
@@ -143,7 +182,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_7
+    - name: anim_scavenger_idle_11
       rect:
         serializedVersion: 2
         x: 450
@@ -153,7 +192,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_8
+    - name: anim_scavenger_idle_12
       rect:
         serializedVersion: 2
         x: 900
@@ -163,7 +202,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_9
+    - name: anim_scavenger_idle_13
       rect:
         serializedVersion: 2
         x: 1350
@@ -173,7 +212,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_10
+    - name: anim_scavenger_idle_14
       rect:
         serializedVersion: 2
         x: 1800
@@ -183,17 +222,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_11
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 1350
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_12
+    - name: anim_scavenger_idle_15
       rect:
         serializedVersion: 2
         x: 0
@@ -203,7 +232,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_13
+    - name: anim_scavenger_idle_16
       rect:
         serializedVersion: 2
         x: 450
@@ -213,7 +242,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_14
+    - name: anim_scavenger_idle_17
       rect:
         serializedVersion: 2
         x: 900
@@ -223,7 +252,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_15
+    - name: anim_scavenger_idle_18
       rect:
         serializedVersion: 2
         x: 1350
@@ -233,7 +262,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_16
+    - name: anim_scavenger_idle_19
       rect:
         serializedVersion: 2
         x: 1800
@@ -243,17 +272,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_17
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 900
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_18
+    - name: anim_scavenger_idle_20
       rect:
         serializedVersion: 2
         x: 0
@@ -263,7 +282,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_19
+    - name: anim_scavenger_idle_21
       rect:
         serializedVersion: 2
         x: 450
@@ -273,7 +292,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_20
+    - name: anim_scavenger_idle_22
       rect:
         serializedVersion: 2
         x: 900
@@ -283,7 +302,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_21
+    - name: anim_scavenger_idle_23
       rect:
         serializedVersion: 2
         x: 1350
@@ -293,7 +312,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_22
+    - name: anim_scavenger_idle_24
       rect:
         serializedVersion: 2
         x: 1800
@@ -303,17 +322,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_23
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 450
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_24
+    - name: anim_scavenger_idle_25
       rect:
         serializedVersion: 2
         x: 0
@@ -323,7 +332,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_25
+    - name: anim_scavenger_idle_26
       rect:
         serializedVersion: 2
         x: 450
@@ -333,7 +342,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_26
+    - name: anim_scavenger_idle_27
       rect:
         serializedVersion: 2
         x: 900
@@ -343,20 +352,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_27
+    - name: anim_scavenger_idle_28
       rect:
         serializedVersion: 2
         x: 1350
-        y: 0
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: enemy_scavenger_idle_28
-      rect:
-        serializedVersion: 2
-        x: 1800
         y: 0
         width: 450
         height: 450
