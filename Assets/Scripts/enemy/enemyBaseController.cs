@@ -41,17 +41,14 @@ public class enemyBaseController : MonoBehaviour {
 
 	// Update is called once per frame
 	protected virtual void Update () {
-		if(shake)
-			CameraShake ();
-		
-		//if(transform.parent != null){
-		//Vector3 localPos = new Vector3(transform.position.x, transform.position.y, transform.parent.position.z) + transform.localPosition;
-		//transform.position = localPos;
-		//}
-		UpdateState (m_currentState);
-		if (anim != null) {
-			anim.SetBool ("isMoving", isMoving);
-			anim.SetBool ("isAttacking", isAttacking);
+		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {
+			if (shake)
+				CameraShake ();
+			UpdateState (m_currentState);
+			if (anim != null) {
+				anim.SetBool ("isMoving", isMoving);
+				anim.SetBool ("isAttacking", isAttacking);
+			}
 		}
 	}
 	
