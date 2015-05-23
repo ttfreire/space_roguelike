@@ -39,8 +39,8 @@ public class gameController : MonoBehaviour {
 	
 
 	void Update () {
-		if (Input.GetKeyUp (KeyCode.U))
-			player.GetComponent<upgradeController> ().UpgradetoLevel (m_pControl.m_level);
+		//if (Input.GetKeyUp (KeyCode.U))
+		//	player.GetComponent<upgradeController> ().UpgradetoLevel (m_pControl.m_level);
 
 		if (Input.GetKeyUp (KeyCode.I))
 			m_pControl.scrap1Quantity += 5;

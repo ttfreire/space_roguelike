@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemType {OXYGEN, SCRAP1, SCRAP2, KEY};
+public enum ItemType {OXYGEN, SCRAP1, SCRAP2, DAMAGE, RESISTANCE, VOLUME, VELOCITY};
 
 public class itemController : MonoBehaviour {
 
@@ -10,6 +10,8 @@ public class itemController : MonoBehaviour {
 	public float m_value;
 	float m_oxygen;
 	int m_scrapQuantity;
+	int m_damageItemQuantity;
+	
 
 
 	// Use this for initialization
@@ -21,11 +23,8 @@ public class itemController : MonoBehaviour {
 		case ItemType.SCRAP1:
 			m_scrapQuantity = Mathf.RoundToInt(m_value);
 			break;
-		case ItemType.SCRAP2:
-			m_scrapQuantity = Mathf.RoundToInt(m_value);
-			break;
-		case ItemType.KEY:
-
+		case ItemType.DAMAGE:
+			m_damageItemQuantity = Mathf.RoundToInt(m_value);
 			break;
 		}
 	}
@@ -46,13 +45,8 @@ public class itemController : MonoBehaviour {
 			p_control.scrap1Quantity++;
 			//gameController.control.scrap1.text = p_control.scrap1Quantity.ToString();
 			break;
-		case ItemType.SCRAP2:
-			p_control.scrap2Quantity++;
-			//gameController.control.scrap2.text = p_control.scrap2Quantity.ToString();
-
-			break;
-		case ItemType.KEY:
-			p_control.hasKey = true;
+		case ItemType.DAMAGE:
+			p_control.damageItemQuantity++;
 			break;
 		}
 		Destroy (gameObject);

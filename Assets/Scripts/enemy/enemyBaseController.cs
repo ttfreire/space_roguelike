@@ -109,6 +109,7 @@ public class enemyBaseController : MonoBehaviour {
 			break;
 			
 		case EnemyState.DEAD:
+			DropItems();
 			Destroy (gameObject);
 			break;
 		}
@@ -167,5 +168,9 @@ public class enemyBaseController : MonoBehaviour {
 		direction.z = 0f;
 		transform.Translate (direction * Time.deltaTime * m_speed, Space.World);
 		
+	}
+
+	void DropItems(){
+		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
 	}
 }

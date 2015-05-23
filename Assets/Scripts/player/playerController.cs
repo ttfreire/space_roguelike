@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour {
 	float cameraSizeinSpace = 15;
 
 	public int scrap1Quantity;
-	public int scrap2Quantity;
+	public int damageItemQuantity;
 	public bool hasKey = false;
 	public bool endlevel = false;
 	public int m_level = 1;
@@ -23,7 +23,6 @@ public class playerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
-		scrap2Quantity = 0;
 		p_camera = transform.parent.FindChild("PlayerCamera").camera;
 		currentChunkColumn = 0;
 		currentChunkRow = 0;

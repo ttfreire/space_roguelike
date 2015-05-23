@@ -21,7 +21,7 @@ public class upgradeController : MonoBehaviour {
 	void Update () {
 
 	}
-
+	/**
 	public void UpgradetoLevel(int level){
 		Debug.Log ("level: " + level);
 		int item1QuantityIndex = (level-1) * 3;
@@ -31,12 +31,12 @@ public class upgradeController : MonoBehaviour {
 		int item1Quantity = int.Parse(parsed[item1QuantityIndex]);
 		int item2Quantity = int.Parse(parsed[item2QuantityIndex]);
 
-		if (item1Quantity <= m_pControl.scrap1Quantity && item2Quantity <= m_pControl.scrap2Quantity) {
+		if (item1Quantity <= m_pControl.scrap1Quantity) {
 			m_pControl.scrap1Quantity -= item1Quantity;
-			m_pControl.scrap2Quantity -= item2Quantity;
 			m_pShoot.m_damage += float.Parse (parsed [upgradeFactorIndex].Replace (",", "."));
 			m_pControl.m_level++;
 		}
 
 	}
+	**/
 }

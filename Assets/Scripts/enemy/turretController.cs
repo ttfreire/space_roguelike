@@ -110,6 +110,7 @@ public class turretController : MonoBehaviour {
 			break;
 			
 		case EnemyState.DEAD:
+			DropItems();
 			Destroy (gameObject);
 			break;
 		}
@@ -181,5 +182,9 @@ public class turretController : MonoBehaviour {
 		GameObject turretCannon = gameObject.transform.FindChild ("cannon").gameObject;
 		float step = 2 * Time.deltaTime;
 		turretCannon.transform.rotation = Quaternion.RotateTowards(turretCannon.transform.rotation, Quaternion.identity, step);
+	}
+
+	void DropItems(){
+		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
 	}
 }
