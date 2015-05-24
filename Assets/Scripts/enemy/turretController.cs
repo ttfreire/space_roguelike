@@ -71,7 +71,6 @@ public class turretController : enemyBaseController {
 				EnterState(EnemyState.IDLE);
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
-			FollowPlayer ();
 			AimAtPlayer();
 			break;
 			
@@ -127,14 +126,6 @@ public class turretController : enemyBaseController {
 	
 	void CameraShake(){
 		m_camera.GetComponent<CameraShake> ().enabled = true;
-	}
-	
-	protected virtual void FollowPlayer(){
-		Transform target = player.transform;
-		Vector3 direction = (target.position - this.transform.position).normalized;
-		direction.z = 0f;
-		transform.Translate (direction * Time.deltaTime * m_speed, Space.World);
-		
 	}
 
 	void AimAtPlayer(){

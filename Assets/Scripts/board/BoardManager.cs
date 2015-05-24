@@ -29,6 +29,7 @@ public class BoardManager : MonoBehaviour {
 	public GameObject[] chunkTiles;                                 //Array of floor prefabs.
 	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
 	public List<GameObject> chunkRoomTiles;
+	public List<GameObject> chunkSpecialRoomTiles;
 	public GameObject lockedRoomTile; 
 	public GameObject[] enemies;
 	public GameObject[] items;

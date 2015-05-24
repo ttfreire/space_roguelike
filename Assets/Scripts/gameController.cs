@@ -26,6 +26,7 @@ public class gameController : MonoBehaviour {
 
 	public List<int> spawnedRoomNumbers;
 
+	int destroyableCount;
 
 
 	// Use this for initialization
@@ -41,6 +42,8 @@ public class gameController : MonoBehaviour {
 	}
 
 	void Start(){
+		//destroyableCount = boardScript.chunkSpecialRoomTiles.Count;
+		destroyableCount = 1;
 		if (generateLevel)
 			boardScript.SetupScene (level);
 	}
@@ -80,7 +83,7 @@ public class gameController : MonoBehaviour {
 			
 			OxygenDisplayFeedback ();
 
-			if (m_pControl.endlevel)
+			if (destroyableCount == 0)
 				EnterState(GameStates.VICTORY);
 
 			if(m_pHealth.IsDead())
@@ -163,6 +166,11 @@ public class gameController : MonoBehaviour {
 		
 		if (Input.GetKeyUp (KeyCode.F))
 			HideEnemiesFOV();
+	}
+
+	public void UpdateDestroyablesCount(){
+		if(destroyableCount > 0)
+			destroyableCount--;
 	}
 
 }

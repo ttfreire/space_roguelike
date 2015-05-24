@@ -19,6 +19,7 @@ public class scavengerController : enemyBaseController {
 	// Update is called once per frame
 	protected void Update () {
 		base.Update ();
+		UpdateState (m_currentState);
 	}
 
 	protected  override void UpdateState(EnemyState state){
@@ -56,37 +57,22 @@ public class scavengerController : enemyBaseController {
 	void ScavengeItems(){
 		if (m_seenItems.Count > 0) {
 			GameObject target = m_seenItems[0];
-			Transform targetPos = target.transform;
-			Vector3 direction = targetPos.position - this.transform.position;
-			transform.Translate (direction * Time.deltaTime * m_scavengeSpeed);
-			float distance = (transform.position - targetPos.position).magnitude;
-			if(distance < 1){
-				if(!m_scavangedItems.Contains(target)){
-					m_scavangedItems.Add(target);
-					m_seenItems.Remove(target);
-					target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, -50);
+			if(target != null){
+				FollowTarget(target.transform.position, m_scavengeSpeed);
+				float distance = (transform.position - target.transform.position).magnitude;
+				if(distance < 1){
+					if(!m_scavangedItems.Contains(target)){
+						m_scavangedItems.Add(target);
+						m_seenItems.Remove(target);
+						target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, -50);
+					}
 				}
 			}
-			
 		}
 	}
 	
 	void DropItems(){
 		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
-	}
-
-	protected override void FollowPlayer(){
-		base.FollowPlayer ();
-		Transform target = player.transform;
-		if (canScavenge) {
-			if (transform.position.x < target.position.x && isFacingRight) {
-				transform.LookAt (transform.position - transform.forward);
-				isFacingRight = false;
-			} else if (transform.position.x > target.position.x && !isFacingRight) {
-				transform.LookAt (transform.position - transform.forward);
-				isFacingRight = true;
-			}
-		}
 	}
 
 

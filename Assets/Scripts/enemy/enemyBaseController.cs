@@ -65,6 +65,7 @@ public class enemyBaseController : MonoBehaviour {
 			isMoving = true;
 			break;
 		case EnemyState.GETTINGITENS:
+			isMoving = true;
 			break;
 		case EnemyState.DEAD:
 			
@@ -102,8 +103,7 @@ public class enemyBaseController : MonoBehaviour {
 				EnterState(EnemyState.IDLE);
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
-			FollowPlayer ();
-			
+			FollowTarget (player.transform.position, m_speed);
 			break;
 			
 		case EnemyState.DEAD:
@@ -160,12 +160,17 @@ public class enemyBaseController : MonoBehaviour {
 		m_camera.GetComponent<CameraShake> ().enabled = true;
 	}
 	
-	protected virtual void FollowPlayer(){
-		Transform target = player.transform;
-		Vector3 direction = (target.position - this.transform.position).normalized;
+	protected virtual void FollowTarget(Vector3 targetPos, float speed){
+		Vector3 direction = (targetPos - this.transform.position).normalized;
 		direction.z = 0f;
-		transform.Translate (direction * Time.deltaTime * m_speed, Space.World);
-		
+		transform.Translate (direction * Time.deltaTime * speed, Space.World);	
+		if (transform.position.x < targetPos.x && isFacingRight) {
+			transform.LookAt (transform.position - transform.forward);
+			isFacingRight = false;
+		} else if (transform.position.x > targetPos.x && !isFacingRight) {
+			transform.LookAt (transform.position - transform.forward);
+			isFacingRight = true;
+		}
 	}
 
 	void DropItems(){
