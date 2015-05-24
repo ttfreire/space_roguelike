@@ -24,7 +24,7 @@ public class playerShoot : MonoBehaviour {
 
 	void Update(){
 		Vector3 mouseDir =  m_camera.ScreenToWorldPoint (Input.mousePosition);
-		playerMovement.p_Movement.SetFacingDirection (mouseDir.x - transform.position.x);
+		playerMovement.p_Movement.SetFacingDirection (mouseDir);
 	}
 	
 	float ResetShootCooldown (){

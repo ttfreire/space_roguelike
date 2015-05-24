@@ -2,9 +2,12 @@ using UnityEngine;
 using System.Collections;
 
 public class playerController : MonoBehaviour {
-	
+	public static playerController p_controller;
+	public GameObject frontArm;
+	public GameObject backArm;
+
 	public bool isInsideRoom = false;
-	Camera p_camera;
+	public Camera p_camera;
 	float cameraSizeinRoom = 15;
 	float cameraSizeinSpace = 15;
 
@@ -20,6 +23,10 @@ public class playerController : MonoBehaviour {
 	BoardManager board;
 	public string room;
 
+	void Awake(){
+		p_controller = this;
+	}
+
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
@@ -32,6 +39,7 @@ public class playerController : MonoBehaviour {
 	void Update () {
 		if (Input.GetButtonUp("Fire1"))
 			playerShoot.p_Shoot.Shoot ();
+		AimAtMouse ();
 	}
 
 	void FixedUpdate(){
@@ -91,6 +99,33 @@ public class playerController : MonoBehaviour {
 		}
 	}
 
+	void AimAtMouse(){
+		Vector3 mousePos = p_camera.ScreenToWorldPoint (Input.mousePosition);
+		mousePos.z = 0;
+		Vector3 frontArmVector = mousePos-frontArm.transform.position;
+		Vector3 backArmVector = mousePos-frontArm.transform.position;
+		float zRotationFront = Mathf.Atan2 (frontArmVector.y, frontArmVector.x) * Mathf.Rad2Deg;
+		float zRotationBack = Mathf.Atan2 (backArmVector.y, backArmVector.x) * Mathf.Rad2Deg;
+		if (playerMovement.p_Movement.isFacingRight) {
+			Vector3 auxScale = transform.localScale;
+			auxScale.x = 1;
+			auxScale.y = 1;
+			frontArm.transform.localScale = auxScale;
+			backArm.transform.localScale = auxScale;
+			frontArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, -zRotationFront));
+			backArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, -zRotationBack));
+		}
+		else {
+			Vector3 auxScale = transform.localScale;
+			auxScale.x = -1;
+			auxScale.y = -1;
+			frontArm.transform.localScale = auxScale;
+			backArm.transform.localScale = auxScale;
+			frontArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, zRotationFront));
+			backArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, zRotationBack));
+		}
+
+	}
 
 
 }
