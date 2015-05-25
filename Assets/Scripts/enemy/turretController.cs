@@ -85,6 +85,7 @@ public class turretController : enemyBaseController {
 			break;
 		case EnemyState.ATTACKING:
 			shootTime -= Time.deltaTime;
+			Debug.Log(shootTime);
 			if(shootTime < 0)
 				EnterState(EnemyState.RECHARGING);
 			if(!m_sightController.m_isPlayerOnView)
