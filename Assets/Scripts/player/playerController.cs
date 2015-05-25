@@ -22,7 +22,7 @@ public class playerController : MonoBehaviour {
 
 	BoardManager board;
 	public string room;
-
+	protected Animator anim;
 	void Awake(){
 		p_controller = this;
 	}
@@ -34,6 +34,7 @@ public class playerController : MonoBehaviour {
 		currentChunkColumn = 0;
 		currentChunkRow = 0;
 		board = FindObjectOfType<BoardManager> ();
+		anim = GetComponent<Animator>();
 	}
 	
 	void Update () {
