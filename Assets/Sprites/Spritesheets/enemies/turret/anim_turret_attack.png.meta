@@ -1,67 +1,37 @@
 fileFormatVersion: 2
-guid: fe1674ef0867c4ae4a73f3a8f35fd187
+guid: 0336a8e37c1bc496e9ac372f73c4ba51
 TextureImporter:
   fileIDToRecycleName:
-    21300000: anim_droid_idle_0
-    21300002: anim_droid_idle_1
-    21300004: anim_droid_idle_2
-    21300006: anim_droid_idle_3
-    21300008: anim_droid_idle_4
-    21300010: anim_droid_idle_5
-    21300012: anim_droid_idle_6
-    21300014: anim_droid_idle_7
-    21300016: anim_droid_idle_8
-    21300018: anim_droid_idle_9
-    21300020: anim_droid_idle_10
-    21300022: anim_droid_idle_11
-    21300024: anim_droid_idle_12
-    21300026: anim_droid_idle_13
-    21300028: anim_droid_idle_14
-    21300030: anim_droid_idle_15
-    21300032: anim_droid_idle_16
-    21300034: anim_droid_idle_17
-    21300036: anim_droid_idle_18
-    21300038: anim_droid_idle_19
-    21300040: anim_droid_idle_20
-    21300042: anim_droid_idle_21
-    21300044: anim_droid_idle_22
-    21300046: anim_droid_idle_23
-    21300048: anim_droid_idle_24
-    21300050: anim_droid_idle_25
-    21300052: anim_droid_idle_26
-    21300054: anim_droid_idle_27
-    21300056: anim_droid_idle_28
-    21300058: anim_droid_idle_29
-    21300060: anim_droid_idle_30
-    21300062: anim_droid_idle_31
-    21300064: anim_droid_idle_32
-    21300066: anim_droid_idle_33
-    21300068: anim_droid_idle_34
-    21300070: anim_droid_idle_35
-    21300072: anim_droid_idle_36
-    21300074: anim_droid_idle_37
-    21300076: anim_droid_idle_38
-    21300078: anim_droid_idle_39
-    21300080: anim_droid_idle_40
-    21300082: anim_droid_idle_41
-    21300084: anim_droid_idle_42
-    21300086: anim_droid_idle_43
-    21300088: anim_droid_idle_44
-    21300090: anim_droid_idle_45
-    21300092: anim_droid_idle_46
-    21300094: anim_droid_idle_47
-    21300096: anim_droid_idle_48
-    21300098: anim_droid_idle_49
-    21300100: anim_droid_idle_50
-    21300102: anim_droid_idle_51
-    21300104: anim_droid_idle_52
-    21300106: anim_droid_idle_53
-    21300108: anim_droid_idle_54
-    21300110: anim_droid_idle_55
-    21300112: anim_droid_idle_56
-    21300114: anim_droid_idle_57
-    21300116: anim_droid_idle_58
-    21300118: anim_droid_idle_59
+    21300000: anim_turret_attack_0
+    21300002: anim_turret_attack_1
+    21300004: anim_turret_attack_2
+    21300006: anim_turret_attack_3
+    21300008: anim_turret_attack_4
+    21300010: anim_turret_attack_5
+    21300012: anim_turret_attack_6
+    21300014: anim_turret_attack_7
+    21300016: anim_turret_attack_8
+    21300018: anim_turret_attack_9
+    21300020: anim_turret_attack_10
+    21300022: anim_turret_attack_11
+    21300024: anim_turret_attack_12
+    21300026: anim_turret_attack_13
+    21300028: anim_turret_attack_14
+    21300030: anim_turret_attack_15
+    21300032: anim_turret_attack_16
+    21300034: anim_turret_attack_17
+    21300036: anim_turret_attack_18
+    21300038: anim_turret_attack_19
+    21300040: anim_turret_attack_20
+    21300042: anim_turret_attack_21
+    21300044: anim_turret_attack_22
+    21300046: anim_turret_attack_23
+    21300048: anim_turret_attack_24
+    21300050: anim_turret_attack_25
+    21300052: anim_turret_attack_26
+    21300054: anim_turret_attack_27
+    21300056: anim_turret_attack_28
+    21300058: anim_turret_attack_29
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -103,7 +73,57 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: anim_droid_idle_0
+    - name: anim_turret_attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_turret_attack_1
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_turret_attack_2
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_turret_attack_3
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_turret_attack_4
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 2250
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: anim_turret_attack_5
       rect:
         serializedVersion: 2
         x: 0
@@ -113,7 +133,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_1
+    - name: anim_turret_attack_6
       rect:
         serializedVersion: 2
         x: 450
@@ -123,7 +143,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_2
+    - name: anim_turret_attack_7
       rect:
         serializedVersion: 2
         x: 900
@@ -133,7 +153,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_3
+    - name: anim_turret_attack_8
       rect:
         serializedVersion: 2
         x: 1350
@@ -143,7 +163,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_4
+    - name: anim_turret_attack_9
       rect:
         serializedVersion: 2
         x: 1800
@@ -153,17 +173,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_5
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 1800
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_6
+    - name: anim_turret_attack_10
       rect:
         serializedVersion: 2
         x: 0
@@ -173,7 +183,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_7
+    - name: anim_turret_attack_11
       rect:
         serializedVersion: 2
         x: 450
@@ -183,7 +193,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_8
+    - name: anim_turret_attack_12
       rect:
         serializedVersion: 2
         x: 900
@@ -193,7 +203,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_9
+    - name: anim_turret_attack_13
       rect:
         serializedVersion: 2
         x: 1350
@@ -203,7 +213,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_10
+    - name: anim_turret_attack_14
       rect:
         serializedVersion: 2
         x: 1800
@@ -213,17 +223,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_11
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 1350
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_12
+    - name: anim_turret_attack_15
       rect:
         serializedVersion: 2
         x: 0
@@ -233,7 +233,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_13
+    - name: anim_turret_attack_16
       rect:
         serializedVersion: 2
         x: 450
@@ -243,7 +243,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_14
+    - name: anim_turret_attack_17
       rect:
         serializedVersion: 2
         x: 900
@@ -253,7 +253,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_15
+    - name: anim_turret_attack_18
       rect:
         serializedVersion: 2
         x: 1350
@@ -263,7 +263,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_16
+    - name: anim_turret_attack_19
       rect:
         serializedVersion: 2
         x: 1800
@@ -273,17 +273,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_17
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 900
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_18
+    - name: anim_turret_attack_20
       rect:
         serializedVersion: 2
         x: 0
@@ -293,7 +283,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_19
+    - name: anim_turret_attack_21
       rect:
         serializedVersion: 2
         x: 450
@@ -303,7 +293,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_20
+    - name: anim_turret_attack_22
       rect:
         serializedVersion: 2
         x: 900
@@ -313,7 +303,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_21
+    - name: anim_turret_attack_23
       rect:
         serializedVersion: 2
         x: 1350
@@ -323,7 +313,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_22
+    - name: anim_turret_attack_24
       rect:
         serializedVersion: 2
         x: 1800
@@ -333,17 +323,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_23
-      rect:
-        serializedVersion: 2
-        x: 2250
-        y: 450
-        width: 450
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_24
+    - name: anim_turret_attack_25
       rect:
         serializedVersion: 2
         x: 0
@@ -353,7 +333,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_25
+    - name: anim_turret_attack_26
       rect:
         serializedVersion: 2
         x: 450
@@ -363,7 +343,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_26
+    - name: anim_turret_attack_27
       rect:
         serializedVersion: 2
         x: 900
@@ -373,7 +353,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_27
+    - name: anim_turret_attack_28
       rect:
         serializedVersion: 2
         x: 1350
@@ -383,7 +363,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: anim_droid_idle_28
+    - name: anim_turret_attack_29
       rect:
         serializedVersion: 2
         x: 1800

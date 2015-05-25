@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class enemyBaseController : MonoBehaviour {
-	public enum EnemyState {IDLE, ATTACKING, GETTINGITENS, DEAD};
+	public enum EnemyState {IDLE, ATTACKING, GETTINGITENS, RECHARGING, DEAD};
 
 	public EnemyState m_currentState = EnemyState.IDLE;
 	
@@ -18,6 +18,7 @@ public class enemyBaseController : MonoBehaviour {
 	
 	protected enemyHealth m_healthController;
 	protected enemySight m_sightController;
+	protected enemyShoot m_shootController;
 	
 	
 	
@@ -35,6 +36,7 @@ public class enemyBaseController : MonoBehaviour {
 	protected virtual void Awake () {
 		m_healthController = GetComponent<enemyHealth> ();
 		m_sightController = GetComponent<enemySight> ();
+		m_shootController = GetComponent<enemyShoot> ();
 		m_camera = FindObjectOfType<Camera> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		anim = GetComponent<Animator>();
@@ -104,6 +106,8 @@ public class enemyBaseController : MonoBehaviour {
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
 			FollowTarget (player.transform.position, m_speed);
+			if(m_shootController != null)
+				m_shootController.Shoot();
 			break;
 			
 		case EnemyState.DEAD:
@@ -114,24 +118,18 @@ public class enemyBaseController : MonoBehaviour {
 	}
 	
 	protected virtual void OnCollisionEnter(Collision other){
-
-
 		if (other.gameObject.tag.Equals ("Projectile")) {
 			projectileController proj = other.gameObject.GetComponent<projectileController> ();
-			if (!other.contacts [0].thisCollider.tag.Equals ("Undamagable")) {
 				if (proj.m_shooter != this.gameObject) {
 					Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
 					Vector3 shootForce = player.GetComponent<playerShoot> ().m_pushForce * dirFromProjectile;
 					this.rigidbody.AddForceAtPosition (shootForce, this.transform.position, ForceMode.Impulse);
 					Destroy (other.gameObject);
 				}
-			} else
-				Destroy (other.gameObject);
 			if (proj.m_shooter != this.gameObject)
 				if (proj.m_shooter.tag.Equals("Player"))
 					m_healthController.TakeDamage (proj.m_damage);
 		}
-		
 	}
 	
 	void OnCollisionStay(Collision other){

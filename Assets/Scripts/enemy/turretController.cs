@@ -3,22 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class turretController : enemyBaseController {
-	
+	float rechargeTime;
+	float secondsToRecharge = 2;
+	float secondstoShoot = 2;
+	float shootTime;
+	Animator baseAnimator;
+	Animator cannonAnimator;
 
-	protected virtual void Awake () {
+	protected override void Awake () {
 		base.Awake ();
+		rechargeTime = 0;
+		shootTime = Time.deltaTime * 60 * secondstoShoot;
+		baseAnimator = transform.FindChild("base").GetComponent<Animator>();
+		cannonAnimator = transform.FindChild("cannon").FindChild("Cannon_base").GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	protected virtual void Update () {
+	protected override void Update () {
 		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {
 			if (shake)
 				CameraShake ();
 			UpdateState (m_currentState);
-			if (anim != null) {
-				anim.SetBool ("isMoving", isMoving);
-				anim.SetBool ("isAttacking", isAttacking);
+			if (baseAnimator != null) {
+				baseAnimator.SetBool ("isAttacking", isAttacking);
+				baseAnimator.SetFloat("rechargeTime", rechargeTime);
 			}
+			if(cannonAnimator != null)
+				cannonAnimator.SetBool ("isAttacking", isAttacking);
 		}
 	}
 	
@@ -28,12 +39,17 @@ public class turretController : enemyBaseController {
 		
 		switch (m_currentState) {
 		case EnemyState.IDLE:
-			isMoving = false;
+			isAttacking = false;
 			break;
 		case EnemyState.ATTACKING:
-			isMoving = true;
+			isAttacking = true;
+			shootTime = Time.deltaTime * 60 * secondstoShoot;
+
 			break;
 		case EnemyState.GETTINGITENS:
+			break;
+		case EnemyState.RECHARGING:
+			rechargeTime = Time.deltaTime * 60 * secondsToRecharge;
 			break;
 		case EnemyState.DEAD:
 			
@@ -52,6 +68,7 @@ public class turretController : enemyBaseController {
 		case EnemyState.GETTINGITENS:
 			
 			break;
+
 		case EnemyState.DEAD:
 			break;
 		}
@@ -67,11 +84,26 @@ public class turretController : enemyBaseController {
 				EnterState(EnemyState.DEAD);
 			break;
 		case EnemyState.ATTACKING:
+			shootTime -= Time.deltaTime;
+			if(shootTime < 0)
+				EnterState(EnemyState.RECHARGING);
 			if(!m_sightController.m_isPlayerOnView)
 				EnterState(EnemyState.IDLE);
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
 			AimAtPlayer();
+			if(m_shootController != null)
+				m_shootController.Shoot();
+			break;
+
+		case EnemyState.RECHARGING:
+			rechargeTime -= Time.deltaTime;
+			if(rechargeTime < 0)
+				EnterState(EnemyState.ATTACKING);
+			if(!m_sightController.m_isPlayerOnView)
+				EnterState(EnemyState.IDLE);
+			if (m_healthController.IsDead())
+				EnterState(EnemyState.DEAD);
 			break;
 			
 		case EnemyState.DEAD:
@@ -81,9 +113,7 @@ public class turretController : enemyBaseController {
 		}
 	}
 	
-	protected virtual void OnCollisionEnter(Collision other){
-		
-		
+	protected override void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag.Equals ("Projectile")) {
 			projectileController proj = other.gameObject.GetComponent<projectileController> ();
 			if (!other.contacts [0].thisCollider.tag.Equals ("Undamagable")) {

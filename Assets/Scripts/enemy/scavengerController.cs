@@ -10,6 +10,7 @@ public class scavengerController : enemyBaseController {
 	public bool canScavenge;
 	// Use this for initialization
 
+
 	protected override void Awake () {
 		base.Awake ();
 		m_seenItems.Clear ();
@@ -27,7 +28,6 @@ public class scavengerController : enemyBaseController {
 		case EnemyState.IDLE:
 			break;
 		case EnemyState.ATTACKING:
-
 			break;
 
 		case EnemyState.GETTINGITENS:

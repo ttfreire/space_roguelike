@@ -24,12 +24,7 @@ public class enemyShoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		m_shootCooldown -= Time.deltaTime;
-		if (m_shootCooldown <= 0.0f && m_sight.m_isPlayerOnView) {
-			m_shootCooldown = ResetShootCooldown();
-			m_targetToShoot = m_player.transform;
-			ShootTarget (m_targetToShoot);
-		}
+
 	}
 
 	float ResetShootCooldown ()
@@ -54,5 +49,14 @@ public class enemyShoot : MonoBehaviour {
 	void AimAtTarget(GameObject objToRotate, Vector3 targetDirection){
 		float zRotation = Mathf.Atan2( targetDirection.y, targetDirection.x )*Mathf.Rad2Deg;
 		objToRotate.transform.rotation = Quaternion.Euler(new Vector3 ( 0, 0, zRotation+180));
+	}
+
+	public void Shoot(){
+		m_shootCooldown -= Time.deltaTime;
+		if (m_shootCooldown <= 0.0f && m_sight.m_isPlayerOnView) {
+			m_shootCooldown = ResetShootCooldown();
+			m_targetToShoot = m_player.transform;
+			ShootTarget (m_targetToShoot);
+		}
 	}
 }
