@@ -16,6 +16,7 @@ public class playerMovement : MonoBehaviour {
 		Vector3 direction = new Vector3(h_translation, v_translation, 0);
 
 		rigidbody.AddForceAtPosition(direction, this.transform.position, ForceMode.Force);
+		DefiningDirectionOfMovement (h_translation, v_translation);
 	}
 
 	public void SetFacingDirection(Vector3 mousePos){
@@ -42,6 +43,11 @@ public class playerMovement : MonoBehaviour {
 			transform.localScale = auxScale;
 			isFacingRight = false;
 		}
+	}
+
+	void DefiningDirectionOfMovement(float horizontalMovement, float verticalMovement){
+		if ((isFacingRight && horizontalMovement < 0) || (!isFacingRight && horizontalMovement > 0))
+			playerController.p_controller.isMovingBack = true;
 	}
 
 }

@@ -22,7 +22,10 @@ public class playerController : MonoBehaviour {
 
 	BoardManager board;
 	public string room;
-	protected Animator anim;
+	protected Animator animBody;
+	protected Animator animFrontArm;
+	protected Animator animBackArm;
+	public bool isMovingBack = false;
 	void Awake(){
 		p_controller = this;
 	}
@@ -34,13 +37,18 @@ public class playerController : MonoBehaviour {
 		currentChunkColumn = 0;
 		currentChunkRow = 0;
 		board = FindObjectOfType<BoardManager> ();
-		anim = GetComponent<Animator>();
+		animBody = GetComponent<Animator>();
+		animFrontArm = transform.FindChild("Body").GetChild(0).GetComponent<Animator>();
+		animBackArm = transform.FindChild("Body").GetChild(1).GetComponent<Animator>();
 	}
 	
 	void Update () {
 		if (Input.GetButtonUp("Fire1"))
 			playerShoot.p_Shoot.Shoot ();
 		AimAtMouse ();
+		if (animBody != null) {
+			animBody.SetBool ("isMovingBack", isMovingBack);
+		}
 	}
 
 	void FixedUpdate(){
