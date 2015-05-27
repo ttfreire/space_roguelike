@@ -26,6 +26,9 @@ public class playerController : MonoBehaviour {
 	protected Animator animFrontArm;
 	protected Animator animBackArm;
 	public bool isMovingBack = false;
+	public bool isMovingForward = false;
+	public bool isMovingUp = false;
+	public bool isMovingDown = false;
 	void Awake(){
 		p_controller = this;
 	}
@@ -48,6 +51,9 @@ public class playerController : MonoBehaviour {
 		AimAtMouse ();
 		if (animBody != null) {
 			animBody.SetBool ("isMovingBack", isMovingBack);
+			animBody.SetBool ("isMovingForward", isMovingForward);
+			animBody.SetBool ("isMovingUp", isMovingUp);
+			animBody.SetBool ("isMovingDown", isMovingDown);
 		}
 	}
 

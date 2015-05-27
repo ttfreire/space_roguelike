@@ -46,8 +46,29 @@ public class playerMovement : MonoBehaviour {
 	}
 
 	void DefiningDirectionOfMovement(float horizontalMovement, float verticalMovement){
+		// Moving Back
 		if ((isFacingRight && horizontalMovement < 0) || (!isFacingRight && horizontalMovement > 0))
 			playerController.p_controller.isMovingBack = true;
+		else
+			playerController.p_controller.isMovingBack = false;
+
+		// Moving Forward
+		if ((isFacingRight && horizontalMovement > 0) || (!isFacingRight && horizontalMovement < 0))
+			playerController.p_controller.isMovingForward = true;
+		else
+			playerController.p_controller.isMovingForward = false;
+
+		// Moving Up
+		if (verticalMovement > 0)
+			playerController.p_controller.isMovingUp = true;
+		else
+			playerController.p_controller.isMovingUp = false;
+
+		// Moving Down
+		if (verticalMovement < 0)
+			playerController.p_controller.isMovingDown = true;
+		else
+			playerController.p_controller.isMovingDown = false;
 	}
 
 }

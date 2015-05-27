@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class enemyBaseController : MonoBehaviour {
-	public enum EnemyState {IDLE, ATTACKING, GETTINGITENS, RECHARGING, DEAD};
+	public enum EnemyState {IDLE, ENGAGING, ATTACKING, GETTINGITENS, RECHARGING, DEAD};
 
 	public EnemyState m_currentState = EnemyState.IDLE;
 	
@@ -30,6 +30,8 @@ public class enemyBaseController : MonoBehaviour {
 	protected bool isMoving = false;
 	protected bool isAttacking = false;
 	protected bool isFacingRight = true;
+	protected bool isDead = false;
+	protected float explosionTime = 2;
 
 	// Use this for initialization
 
@@ -45,12 +47,13 @@ public class enemyBaseController : MonoBehaviour {
 	// Update is called once per frame
 	protected virtual void Update () {
 		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {
-			if (shake)
+			if (shake && !isDead)
 				CameraShake ();
 			UpdateState (m_currentState);
 			if (anim != null) {
 				anim.SetBool ("isMoving", isMoving);
 				anim.SetBool ("isAttacking", isAttacking);
+				anim.SetFloat ("health", m_healthController.m_health);
 			}
 		}
 	}
@@ -111,8 +114,11 @@ public class enemyBaseController : MonoBehaviour {
 			break;
 			
 		case EnemyState.DEAD:
-			DropItems();
-			Destroy (gameObject);
+			explosionTime -= Time.deltaTime;
+			if(explosionTime < 0){
+				DropItems();
+				Destroy(gameObject);
+			}
 			break;
 		}
 	}
@@ -136,7 +142,7 @@ public class enemyBaseController : MonoBehaviour {
 		if (other.gameObject.Equals (player)) {
 			RepelPlayer (other.rigidbody);
 			shake = true;
-			isAttacking = true;
+			//isAttacking = true;
 		}
 		
 	}
@@ -144,7 +150,7 @@ public class enemyBaseController : MonoBehaviour {
 	
 	void OnCollisionExit(Collision other){
 		shake = false;
-		isAttacking = false;
+		//isAttacking = false;
 		//m_camera.GetComponent<CameraShake> ().enabled = false;
 	}
 	
@@ -155,7 +161,8 @@ public class enemyBaseController : MonoBehaviour {
 	}
 	
 	void CameraShake(){
-		m_camera.GetComponent<CameraShake> ().enabled = true;
+		if(!isDead)
+			m_camera.GetComponent<CameraShake> ().enabled = true;
 	}
 	
 	protected virtual void FollowTarget(Vector3 targetPos, float speed){
@@ -171,7 +178,8 @@ public class enemyBaseController : MonoBehaviour {
 		}
 	}
 
-	void DropItems(){
-		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
+	protected void DropItems(){
+		if(ItemsDrop.Count > 0)
+			Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
 	}
 }

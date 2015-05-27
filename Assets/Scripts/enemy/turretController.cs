@@ -7,6 +7,7 @@ public class turretController : enemyBaseController {
 	float secondsToRecharge = 2;
 	float secondstoShoot = 2;
 	float shootTime;
+	Animator deathAnimator;
 	Animator baseAnimator;
 	Animator cannonAnimator;
 
@@ -27,9 +28,13 @@ public class turretController : enemyBaseController {
 			if (baseAnimator != null) {
 				baseAnimator.SetBool ("isAttacking", isAttacking);
 				baseAnimator.SetFloat("rechargeTime", rechargeTime);
+				baseAnimator.SetFloat("health", m_healthController.m_health);
 			}
-			if(cannonAnimator != null)
+			if(cannonAnimator != null){
 				cannonAnimator.SetBool ("isAttacking", isAttacking);
+				cannonAnimator.SetFloat("health", m_healthController.m_health);
+			}
+
 		}
 	}
 	
@@ -52,28 +57,11 @@ public class turretController : enemyBaseController {
 			rechargeTime = Time.deltaTime * 60 * secondsToRecharge;
 			break;
 		case EnemyState.DEAD:
-			
+
 			break;
 		}
 	}
-	
-	public void ExitState(EnemyState state){
-		switch (m_currentState) {
-		case EnemyState.IDLE:
-			
-			break;
-		case EnemyState.ATTACKING:
 
-			break;
-		case EnemyState.GETTINGITENS:
-			
-			break;
-
-		case EnemyState.DEAD:
-			break;
-		}
-	}
-	
 	protected virtual void UpdateState(EnemyState state){
 		switch (m_currentState) {
 		case EnemyState.IDLE:
@@ -85,7 +73,6 @@ public class turretController : enemyBaseController {
 			break;
 		case EnemyState.ATTACKING:
 			shootTime -= Time.deltaTime;
-			Debug.Log(shootTime);
 			if(shootTime < 0)
 				EnterState(EnemyState.RECHARGING);
 			if(!m_sightController.m_isPlayerOnView)
@@ -108,8 +95,11 @@ public class turretController : enemyBaseController {
 			break;
 			
 		case EnemyState.DEAD:
-			DropItems();
-			Destroy (gameObject);
+			explosionTime -= Time.deltaTime;
+			if(explosionTime < 0){
+				DropItems();
+				Destroy(gameObject);
+			}
 			break;
 		}
 	}

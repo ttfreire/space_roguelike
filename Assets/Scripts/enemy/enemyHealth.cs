@@ -26,7 +26,7 @@ public class enemyHealth : MonoBehaviour {
 	}
 
 	public bool IsDead(){
-		if (m_health <= 0.0f)
+		if (m_health < 0.0f)
 			return true;
 		else
 			return false;

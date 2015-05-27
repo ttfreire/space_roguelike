@@ -18,12 +18,39 @@ public class scavengerController : enemyBaseController {
 	}
 	
 	// Update is called once per frame
-	protected void Update () {
+	protected override void Update () {
 		base.Update ();
-		UpdateState (m_currentState);
+		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING))
+			UpdateState (m_currentState);
 	}
 
+	public void EnterState(EnemyState state){
+		ExitState (m_currentState);
+		m_currentState = state;
+		
+		switch (m_currentState) {
+		case EnemyState.IDLE:
+			isMoving = false;
+			break;
+		case EnemyState.ATTACKING:
+			isMoving = true;
+			break;
+		case EnemyState.GETTINGITENS:
+			isMoving = true;
+			break;
+		case EnemyState.DEAD:
+			transform.FindChild("FOV").collider.enabled = false;
+			transform.collider.enabled = false;
+			foreach(GameObject test in m_scavangedItems){
+				test.transform.position = transform.position;
+			}
+			m_scavangedItems.Clear();
+
+			break;
+		}
+	}
 	protected  override void UpdateState(EnemyState state){
+		base.UpdateState(state);
 		switch (m_currentState) {
 		case EnemyState.IDLE:
 			break;
@@ -41,17 +68,9 @@ public class scavengerController : enemyBaseController {
 			ScavengeItems();
 			break;
 		case EnemyState.DEAD:
-			transform.FindChild("FOV").collider.enabled = false;
-			transform.collider.enabled = false;
-			foreach(GameObject test in m_scavangedItems){
-				test.transform.position = transform.position;
-			}
-			m_scavangedItems.Clear();
-			DropItems();
+
 			break;
 		}
-
-		base.UpdateState (m_currentState);
 	}
 
 	void ScavengeItems(){
@@ -71,7 +90,7 @@ public class scavengerController : enemyBaseController {
 		}
 	}
 	
-	void DropItems(){
+	protected void DropItems(){
 		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
 	}
 
