@@ -30,12 +30,11 @@ public class BoardManager : MonoBehaviour {
 	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
 	public List<GameObject> chunkRoomTiles;
 	public List<GameObject> chunkSpecialRoomTiles;
-	public GameObject lockedRoomTile; 
 	public GameObject[] enemies;
 	public GameObject[] items;
-	public GameObject key;
-	public int totalRoomsOnLevel;
-	public int numberOfRoomsToUnlockKey;
+	public int normalRoomsQuantity;
+	public int specialRoomsQuantity;
+	//public int numberOfRoomsToUnlockKey;
 	public float chunkWidth;
 	public float chunkHeight;
 
@@ -73,31 +72,13 @@ public class BoardManager : MonoBehaviour {
 		chunkHeight *=10f;
 
 		int spawnedRooms = 0;
-
-		while (spawnedRooms < totalRoomsOnLevel) {
-			int row = 0;
-			int column = 0;
-			GameObject toInstantiate;
-			do{
-				while((row == 0 && column == 0)){
-					row = Random.Range (0,rows);
-					column = Random.Range (0,columns);
-				}
-				int index = Random.Range (0,chunkRoomTiles.Count);
-				toInstantiate = chunkRoomTiles[index];
-				chunkRoomTiles.RemoveAt(index);
-			}
-			while(CheckIfChunkGroupSpawnPositionIsvalid(toInstantiate,column,row) == false);
+		
+		// normal rooms
+		SpawnRooms (chunkRoomTiles, normalRoomsQuantity);
+		// special rooms
+		SpawnRooms (chunkSpecialRoomTiles, specialRoomsQuantity);
 
 
-			int gridIndex = GetGridPositionsIndex(row, column);
-
-			GameObject instance =
-				Instantiate (toInstantiate, new Vector3 (column*chunkWidth, row*chunkHeight, 5.0f), toInstantiate.transform.rotation) as GameObject;
-			instance.transform.SetParent (boardHolder);
-
-			spawnedRooms++;
-		}
 
 
 		//Loop along x axis, starting from -1 (to fill corner) with floor or outerwall edge tiles.
@@ -265,5 +246,33 @@ public class BoardManager : MonoBehaviour {
 
 	int GetGridPositionsIndex (int row, int column){
 		return (row + column * rows);
+	}
+
+	void SpawnRooms(List<GameObject> rooms, int quantity){
+		int spawnedRooms = 0;
+		while (spawnedRooms < quantity) {
+			int row = 0;
+			int column = 0;
+			GameObject toInstantiate;
+			do{
+				while((row == 0 && column == 0)){
+					row = Random.Range (0,rows);
+					column = Random.Range (0,columns);
+				}
+				int index = Random.Range (0,rooms.Count);
+				toInstantiate = rooms[index];
+				rooms.RemoveAt(index);
+			}
+			while(CheckIfChunkGroupSpawnPositionIsvalid(toInstantiate,column,row) == false);
+			
+			
+			int gridIndex = GetGridPositionsIndex(row, column);
+			
+			GameObject instance =
+				Instantiate (toInstantiate, new Vector3 (column*chunkWidth, row*chunkHeight, 5.0f), toInstantiate.transform.rotation) as GameObject;
+			instance.transform.SetParent (boardHolder);
+			
+			spawnedRooms++;
+		}
 	}
 }

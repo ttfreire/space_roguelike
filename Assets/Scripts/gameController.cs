@@ -43,7 +43,7 @@ public class gameController : MonoBehaviour {
 
 	void Start(){
 		//destroyableCount = boardScript.chunkSpecialRoomTiles.Count;
-		destroyableCount = 1;
+		destroyableCount = boardScript.specialRoomsQuantity;
 		if (generateLevel)
 			boardScript.SetupScene (level);
 	}

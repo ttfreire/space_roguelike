@@ -26,7 +26,7 @@ public class loadRoom : MonoBehaviour {
 		board = FindObjectOfType<BoardManager> ();
 
 		p_control = FindObjectOfType<playerController>();
-
+		Debug.Log ("Room " + m_room + " spawned");
 
 	}
 	
@@ -40,7 +40,7 @@ public class loadRoom : MonoBehaviour {
 				for(int i = 0; i < items.childCount; i++)
 					items.GetChild(i).gameObject.SetActive (true);
 				cleanedRoom = true;
-				board.numberOfRoomsToUnlockKey--;
+				//board.numberOfRoomsToUnlockKey--;
 			}
 		}
 	}
