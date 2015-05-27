@@ -70,7 +70,7 @@ public class gameController : MonoBehaviour {
 			DisplayEndGameFeedback(GameEndTypes.VICTORY);
 			break;
 		case GameStates.GAMEOVER:
-			Time.timeScale = 0;
+			//Time.timeScale = 0;
 			DisplayEndGameFeedback(GameEndTypes.DEFEAT);
 			break;
 		}
@@ -101,7 +101,7 @@ public class gameController : MonoBehaviour {
 	public void ExitState(GameStates state){
 		switch (m_currentGameState) {
 		case GameStates.RUNNING:
-			Time.timeScale = 0;
+			//Time.timeScale = 0;
 			break;
 		case GameStates.PAUSED:
 			break;
@@ -123,7 +123,7 @@ public class gameController : MonoBehaviour {
 		if(endType.Equals(GameEndTypes.DEFEAT)){
 			//Time.timeScale = 0;
 			victory.text = "Defeat!";
-			Destroy (player);
+			//Destroy (player);
 		}
 
 		GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;

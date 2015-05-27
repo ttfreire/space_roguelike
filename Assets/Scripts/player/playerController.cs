@@ -3,6 +3,7 @@ using System.Collections;
 
 public class playerController : MonoBehaviour {
 	public static playerController p_controller;
+	GameObject body;
 	public GameObject frontArm;
 	public GameObject backArm;
 
@@ -29,8 +30,10 @@ public class playerController : MonoBehaviour {
 	public bool isMovingForward = false;
 	public bool isMovingUp = false;
 	public bool isMovingDown = false;
+	float health;
 	void Awake(){
 		p_controller = this;
+		body = transform.FindChild ("Body").gameObject;
 	}
 
 	// Use this for initialization
@@ -46,19 +49,27 @@ public class playerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Input.GetButtonUp("Fire1"))
-			playerShoot.p_Shoot.Shoot ();
-		AimAtMouse ();
-		if (animBody != null) {
-			animBody.SetBool ("isMovingBack", isMovingBack);
-			animBody.SetBool ("isMovingForward", isMovingForward);
-			animBody.SetBool ("isMovingUp", isMovingUp);
-			animBody.SetBool ("isMovingDown", isMovingDown);
+		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {
+			if (Input.GetButtonUp ("Fire1"))
+				playerShoot.p_Shoot.Shoot ();
+			AimAtMouse ();
 		}
+			if (animBody != null) {
+				animBody.SetBool ("isMovingBack", isMovingBack);
+				animBody.SetBool ("isMovingForward", isMovingForward);
+				animBody.SetBool ("isMovingUp", isMovingUp);
+				animBody.SetBool ("isMovingDown", isMovingDown);
+				animBody.SetFloat ("health", playerHealth.p_Health.m_currentOxygenValue);
+			}
+		
+			if (playerHealth.p_Health.IsDead ())
+				body.SetActive (false);
+		
 	}
 
 	void FixedUpdate(){
-		playerMovement.p_Movement.Move ();
+		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING))
+			playerMovement.p_Movement.Move ();
 	}
 
 	void OnCollisionStay(Collision other){
