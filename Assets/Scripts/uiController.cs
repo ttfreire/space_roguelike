@@ -31,4 +31,8 @@ public class uiController : MonoBehaviour {
 		option.color = notSelectedColor;
 	}
 
+	public void ChangeIcon(Sprite icon, Image uiImage){
+		uiImage.sprite = icon;
+	}
+
 }
