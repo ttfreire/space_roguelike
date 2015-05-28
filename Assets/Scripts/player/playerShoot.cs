@@ -47,6 +47,7 @@ public class playerShoot : MonoBehaviour {
 		if (Time.time > m_nextShot && ShootingDistanceIsGreaterThanZero ()) {
 			m_nextShot = Time.time + ResetShootCooldown ();
 			//playerMovement.p_Movement.SetFacingDirection((shootDirection-this.transform.position).x);
+			source.PlayOneShot(shootSound,1f);
 			ShootProjectile ();
 		}
 	}
