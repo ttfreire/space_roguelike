@@ -11,8 +11,8 @@ public class playerShoot : MonoBehaviour {
 	public float m_shootsPerSecond;
 	public GameObject m_projectile;
 	public Sprite projectileSprite;
-	public AudioClip shootSound;
-	public AudioSource source;
+	//public AudioClip shootSound;
+	AudioSource source;
 	Vector3 shootDirection;
 	float m_nextShot;
 	Camera m_camera;
@@ -47,7 +47,7 @@ public class playerShoot : MonoBehaviour {
 		if (Time.time > m_nextShot && ShootingDistanceIsGreaterThanZero ()) {
 			m_nextShot = Time.time + ResetShootCooldown ();
 			//playerMovement.p_Movement.SetFacingDirection((shootDirection-this.transform.position).x);
-			source.PlayOneShot(shootSound,1f);
+			source.Play();
 			ShootProjectile ();
 		}
 	}

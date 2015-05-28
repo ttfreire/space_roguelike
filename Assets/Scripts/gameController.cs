@@ -30,6 +30,8 @@ public class gameController : MonoBehaviour {
 
 	int destroyableCount;
 
+	public Canvas vitoria;
+	public Canvas derrota;
 
 	// Use this for initialization
 	void Awake () {
@@ -79,11 +81,13 @@ public class gameController : MonoBehaviour {
 			break;
 		case GameStates.VICTORY:
 			Time.timeScale = 0;
-			DisplayEndGameFeedback(GameEndTypes.VICTORY);
+			//DisplayEndGameFeedback(GameEndTypes.VICTORY);
+			vitoria.gameObject.SetActive(true);
 			break;
 		case GameStates.GAMEOVER:
 			//Time.timeScale = 0;
-			DisplayEndGameFeedback(GameEndTypes.DEFEAT);
+			//DisplayEndGameFeedback(GameEndTypes.DEFEAT);
+			derrota.gameObject.SetActive(true);
 			break;
 		}
 	}

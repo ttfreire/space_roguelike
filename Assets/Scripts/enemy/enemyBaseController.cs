@@ -23,7 +23,7 @@ public class enemyBaseController : MonoBehaviour {
 	
 	
 	public List<GameObject> ItemsDrop;
-	
+	public AudioSource boomSource;
 	
 	//Animation
 	protected Animator anim;
@@ -73,7 +73,7 @@ public class enemyBaseController : MonoBehaviour {
 			isMoving = true;
 			break;
 		case EnemyState.DEAD:
-			
+			boomSource.Play();
 			break;
 		}
 	}

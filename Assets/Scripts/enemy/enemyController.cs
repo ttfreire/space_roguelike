@@ -25,7 +25,7 @@ public class enemyController : MonoBehaviour {
 	public bool canScavenge;
 
 	public List<GameObject> ItemsDrop;
-
+	public AudioSource boomSource;
 
 	//Animation
 	Animator anim;
@@ -73,7 +73,7 @@ public class enemyController : MonoBehaviour {
 		case EnemyState.GETTINGITENS:
 			break;
 		case EnemyState.DEAD:
-
+			boomSource.Play();
 			break;
 		}
 	}
