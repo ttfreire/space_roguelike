@@ -31,8 +31,8 @@ public class uiController : MonoBehaviour {
 		option.color = notSelectedColor;
 	}
 
-	public void ChangeIcon(Sprite icon, Image uiImage){
-		uiImage.sprite = icon;
+	public void FullScreen(bool isFullScreen){
+		Screen.fullScreen = isFullScreen;
 	}
 
 }
