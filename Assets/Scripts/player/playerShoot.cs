@@ -11,6 +11,8 @@ public class playerShoot : MonoBehaviour {
 	public float m_shootsPerSecond;
 	public GameObject m_projectile;
 	public Sprite projectileSprite;
+	public AudioClip shootSound;
+	public AudioSource source;
 	Vector3 shootDirection;
 	float m_nextShot;
 	Camera m_camera;
@@ -20,6 +22,7 @@ public class playerShoot : MonoBehaviour {
 		p_Shoot = this;
 		m_rigidbody = rigidbody;
 		m_camera = FindObjectOfType<Camera> ();
+		source = GetComponent <AudioSource>();
 	}
 
 	void Update(){
