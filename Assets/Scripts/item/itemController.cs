@@ -11,6 +11,9 @@ public class itemController : MonoBehaviour {
 	float m_oxygen;
 	int m_scrapQuantity;
 	int m_damageItemQuantity;
+	int m_resistanceItemQuantity;
+	int m_velocityItemQuantity;
+	int m_volumeItemQuantity;
 	
 
 
@@ -46,7 +49,16 @@ public class itemController : MonoBehaviour {
 			//gameController.control.scrap1.text = p_control.scrap1Quantity.ToString();
 			break;
 		case ItemType.DAMAGE:
-			p_control.damageItemQuantity++;
+			p_control.m_damageItemQuantity++;
+			break;
+		case ItemType.RESISTANCE:
+			p_control.m_resistanceItemQuantity++;
+			break;
+		case ItemType.VOLUME:
+			p_control.m_velocityItemQuantity++;
+			break;
+		case ItemType.VELOCITY:
+			p_control.m_volumeItemQuantity++;
 			break;
 		}
 		Destroy (gameObject);

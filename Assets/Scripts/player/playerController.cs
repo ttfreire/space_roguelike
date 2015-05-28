@@ -13,7 +13,16 @@ public class playerController : MonoBehaviour {
 	float cameraSizeinSpace = 15;
 
 	public int scrap1Quantity;
-	public int damageItemQuantity;
+	public int m_damageItemQuantity;
+	public int m_resistanceItemQuantity;
+	public int m_velocityItemQuantity;
+	public int m_volumeItemQuantity;
+	public int m_weaponApiece1Quantity;
+	public int m_weaponApiece2Quantity;
+	public int m_weaponApiece3Quantity;
+	public int m_weaponBpiece1Quantity;
+	public int m_weaponBpiece2Quantity;
+	public int m_weaponBpiece3Quantity;
 	public bool hasKey = false;
 	public bool endlevel = false;
 	public int m_level = 1;

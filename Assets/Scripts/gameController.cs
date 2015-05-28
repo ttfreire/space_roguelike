@@ -15,6 +15,8 @@ public class gameController : MonoBehaviour {
 	public bool generateLevel;
 	public Text victory;
 	public Image m_currentOxygen;
+	public Text itemCount;
+	public Text weaponCount;
 
 	playerShoot m_pShoot;
 	playerController m_pControl;
@@ -52,6 +54,16 @@ public class gameController : MonoBehaviour {
 	void Update () {
 		UpdateState ();
 		DebugAndTestShortcuts ();
+		itemCount.text = (playerController.p_controller.m_damageItemQuantity + 
+						playerController.p_controller.m_resistanceItemQuantity + 
+						playerController.p_controller.m_velocityItemQuantity +
+						playerController.p_controller.m_volumeItemQuantity).ToString();
+		weaponCount.text = (playerController.p_controller.m_weaponApiece1Quantity +
+		                    playerController.p_controller.m_weaponApiece2Quantity +
+		                    playerController.p_controller.m_weaponApiece3Quantity +
+		                    playerController.p_controller.m_weaponBpiece1Quantity +
+		                    playerController.p_controller.m_weaponBpiece2Quantity +
+		                    playerController.p_controller.m_weaponBpiece3Quantity).ToString();
 	}
 
 	public void EnterState(GameStates state){
