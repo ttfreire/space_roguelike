@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class loadRoom : MonoBehaviour {
-	public int[] m_PossibleRoomsToSpawn;
+	public List<int> m_PossibleRoomsToSpawn;
 	public int m_room;
 	public bool isLoaded;
 	GameObject m_roomObject;
@@ -18,7 +18,7 @@ public class loadRoom : MonoBehaviour {
 		isLoaded = false;
 		gameController game = GameObject.Find ("GameController").GetComponent<gameController> ();
 		do {
-			m_room = m_PossibleRoomsToSpawn [Random.Range (0, m_PossibleRoomsToSpawn.Length)];
+			m_room = m_PossibleRoomsToSpawn [Random.Range (0, m_PossibleRoomsToSpawn.Count)];
 		} while(game.spawnedRoomNumbers.Contains(m_room));
 
 		game.spawnedRoomNumbers.Add(m_room);

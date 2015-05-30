@@ -26,8 +26,8 @@ public class BoardManager : MonoBehaviour {
 	public int columns;                                         //Number of columns in our game board.
 	public int rows;                                            //Number of rows in our game board.
 
-	public GameObject[] chunkTiles;                                 //Array of floor prefabs.
-	public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
+	public List<GameObject> chunkTiles;                                 //Array of floor prefabs.
+	public List<GameObject> outerWallTiles;                             //Array of outer tile prefabs.
 	public List<GameObject> chunkRoomTiles;
 	public List<GameObject> chunkSpecialRoomTiles;
 	public GameObject[] enemies;
@@ -95,12 +95,12 @@ public class BoardManager : MonoBehaviour {
 				//else
 				//Check if we current position is at board edge, if so choose a random outer wall prefab from our array of outer wall tiles.
 				if(x == -1 || x == columns || y == -1 || y == rows)
-					toInstantiate = outerWallTiles [Random.Range (0, outerWallTiles.Length)];
+					toInstantiate = outerWallTiles [Random.Range (0, outerWallTiles.Count)];
 				else{
 					do{
-						toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Length)];
+						toInstantiate = chunkTiles[Random.Range (0,chunkTiles.Count)];
 					}
-					while(CheckIfChunkGroupSpawnPositionIsvalid(toInstantiate,x,y) == false);
+					while(!IsChunkGroupSpawnPositionValid(toInstantiate,x,y));
 				}
 
 				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
@@ -224,7 +224,7 @@ public class BoardManager : MonoBehaviour {
 		} return null;
 	}
 
-	bool CheckIfChunkGroupSpawnPositionIsvalid(GameObject group, int col, int row){
+	bool IsChunkGroupSpawnPositionValid(GameObject group, int col, int row){
 		int chunkGroupCol = group.GetComponent<chunkGroupController> ().columns;
 		int chunkGroupRow = group.GetComponent<chunkGroupController> ().rows;
 
@@ -250,29 +250,44 @@ public class BoardManager : MonoBehaviour {
 
 	void SpawnRooms(List<GameObject> rooms, int quantity){
 		int spawnedRooms = 0;
-		while (spawnedRooms < quantity) {
-			int row = 0;
-			int column = 0;
-			GameObject toInstantiate;
-			do{
-				while((row == 0 && column == 0)){
-					row = Random.Range (0,rows);
-					column = Random.Range (0,columns);
-				}
-				int index = Random.Range (0,rooms.Count);
-				toInstantiate = rooms[index];
-				rooms.RemoveAt(index);
+		int l_row = 0;
+		int l_column = 0;
+		int index = 0;
+		GameObject toInstantiate;
+		if (rooms.Count > 0) {
+			while (spawnedRooms < quantity) {
+				bool isAllRoomsSpawned;
+				do {
+					index = Random.Range (0, rooms.Count);
+					do {
+						l_row = Random.Range (0, rows);
+						l_column = Random.Range (0, columns);
+					}while ((l_row == 0 && l_column == 0) || !IsChunkGroupSpawnPositionValid(rooms[index], l_column, l_row));
+					
+					isAllRoomsSpawned = IsAllPossibleRoomsSpawned(rooms [index]);
+					if(isAllRoomsSpawned)
+						rooms.RemoveAt (index);
+				} while(isAllRoomsSpawned);
+			
+				toInstantiate = rooms [index]; 
+				int gridIndex = GetGridPositionsIndex (l_row, l_column);
+			
+				GameObject instance =
+				Instantiate (toInstantiate, new Vector3 (l_column * chunkWidth, l_row * chunkHeight, 5.0f), toInstantiate.transform.rotation) as GameObject;
+				instance.transform.SetParent (boardHolder);
+			
+				spawnedRooms++;
 			}
-			while(CheckIfChunkGroupSpawnPositionIsvalid(toInstantiate,column,row) == false);
-			
-			
-			int gridIndex = GetGridPositionsIndex(row, column);
-			
-			GameObject instance =
-				Instantiate (toInstantiate, new Vector3 (column*chunkWidth, row*chunkHeight, 5.0f), toInstantiate.transform.rotation) as GameObject;
-			instance.transform.SetParent (boardHolder);
-			
-			spawnedRooms++;
 		}
+	}
+
+	bool IsAllPossibleRoomsSpawned(GameObject theRoom){
+		List<int> possibleRooms = theRoom.transform.GetChild(0).FindChild ("Container").gameObject.GetComponent<loadRoom> ().m_PossibleRoomsToSpawn;
+		bool isAllSpawned = true;
+		foreach (int room in possibleRooms) {
+			if (!gameController.control.spawnedRoomNumbers.Contains (room))
+				isAllSpawned = false;
+		}
+		return isAllSpawned;
 	}
 }
