@@ -96,9 +96,11 @@ public class BoardManager : MonoBehaviour {
 				//Check if we current position is at board edge, if so choose a random outer wall prefab from our array of outer wall tiles.
 				if(x == -1 || x == columns || y == -1 || y == rows)
 					toInstantiate = outerWallTiles [Random.Range (0, outerWallTiles.Count)];
-				else{
+				else if(x == 0 && y == 0)
+					toInstantiate = chunkTiles[0];
+				else {
 					do{
-						toInstantiate = chunkTiles[Random.Range (0,chunkTiles.Count)];
+						toInstantiate = chunkTiles[Random.Range (1,chunkTiles.Count)];
 					}
 					while(!IsChunkGroupSpawnPositionValid(toInstantiate,x,y));
 				}

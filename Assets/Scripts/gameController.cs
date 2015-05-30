@@ -42,7 +42,7 @@ public class gameController : MonoBehaviour {
 		m_pControl = player.GetComponent<playerController> ();
 		m_pHealth = player.GetComponent<playerHealth> ();
 		boardScript = GetComponent<BoardManager>();
-		m_currentGameState = GameStates.RUNNING;
+		m_currentGameState = GameStates.PAUSED;
 	}
 
 	void Start(){
@@ -50,6 +50,7 @@ public class gameController : MonoBehaviour {
 		destroyableCount = boardScript.specialRoomsQuantity;
 		if (generateLevel)
 			boardScript.SetupScene (level);
+		EnterState (m_currentGameState);
 	}
 	
 
