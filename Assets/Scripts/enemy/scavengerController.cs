@@ -91,7 +91,7 @@ public class scavengerController : enemyBaseController {
 	}
 	
 	protected void DropItems(){
-		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count-1)], this.transform.position, this.transform.rotation);
+		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count)], this.transform.position, this.transform.rotation);
 	}
 
 

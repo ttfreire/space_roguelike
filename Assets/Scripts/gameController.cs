@@ -33,6 +33,8 @@ public class gameController : MonoBehaviour {
 	public Canvas vitoria;
 	public Canvas derrota;
 
+	List<GameObject> PowerUpItemList = new List<GameObject>();
+
 	// Use this for initialization
 	void Awake () {
 		control = this;
@@ -97,7 +99,7 @@ public class gameController : MonoBehaviour {
 		switch (m_currentGameState) {
 		case GameStates.RUNNING:
 
-			
+			VerifyPowerUpItemList();
 			OxygenDisplayFeedback ();
 
 			if (destroyableCount == 0)
@@ -188,6 +190,38 @@ public class gameController : MonoBehaviour {
 	public void UpdateDestroyablesCount(){
 		if(destroyableCount > 0)
 			destroyableCount--;
+	}
+
+	public void AddItemToPowerUpItemList(GameObject item){
+		if (PowerUpItemList.Count == 3) {
+			GameObject itemToRemove = PowerUpItemList[0];
+			PowerUpItemList.RemoveAt (0);
+			Destroy(itemToRemove);
+		}
+		PowerUpItemList.Add (item);
+	}
+
+	void VerifyPowerUpItemList(){
+		if (PowerUpItemList.Count == 0)
+			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
+		else if (AllItensFromType(ItemType.DAMAGE) && PowerUpItemList.Count == 3)
+			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.DAMAGE;
+		else if (AllItensFromType(ItemType.VELOCITY) && PowerUpItemList.Count == 3)
+			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.VELOCITY;
+		else if (AllItensFromType(ItemType.RESISTANCE) && PowerUpItemList.Count == 3)
+			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
+		else if (AllItensFromType(ItemType.VOLUME) && PowerUpItemList.Count == 3)
+			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
+		else 
+			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
+	}
+
+	bool AllItensFromType(ItemType type){
+		bool allItensAreEqual = true;
+		foreach (GameObject item in PowerUpItemList)
+			if (!item.GetComponent<itemController> ().m_itemType.Equals (type))
+				allItensAreEqual = false;
+		return allItensAreEqual;
 	}
 
 }

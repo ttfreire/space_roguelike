@@ -61,7 +61,11 @@ public class itemController : MonoBehaviour {
 			p_control.m_volumeItemQuantity++;
 			break;
 		}
-		Destroy (gameObject);
+		Vector3 newPos = new Vector3 (0, 0, 50);
+		this.gameObject.transform.position = newPos;
+		gameController.control.AddItemToPowerUpItemList(this.gameObject);
+		//Destroy (gameObject);
+
 	}
 
 	public void EnemyCollectItem(GameObject enemy){
