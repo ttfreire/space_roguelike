@@ -33,7 +33,7 @@ public class gameController : MonoBehaviour {
 	public Canvas vitoria;
 	public Canvas derrota;
 
-	List<GameObject> PowerUpItemList = new List<GameObject>();
+	public List<GameObject> PowerUpItemList = new List<GameObject>();
 	bool powerupOn = false;
 
 	// Use this for initialization
@@ -199,7 +199,7 @@ public class gameController : MonoBehaviour {
 			PowerUpItemList.RemoveAt (0);
 			Destroy(itemToRemove);
 		}
-		PowerUpItemList.Add (item);
+		PowerUpItemList.Add(item);
 	}
 
 	void VerifyPowerUpItemList(){
@@ -218,12 +218,12 @@ public class gameController : MonoBehaviour {
 				powerupOn = true;
 				StartCoroutine(powerupOff ());
 			}
-			if (AllItensFromType (ItemType.RESISTANCE)){
+			if (AllItensFromType (ItemType.PIERCING)){
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
 				powerupOn = true;
 				StartCoroutine(powerupOff ());
 			}
-			if (AllItensFromType (ItemType.VOLUME)){
+			if (AllItensFromType (ItemType.AREA)){
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
 				powerupOn = true;
 				StartCoroutine(powerupOff ());

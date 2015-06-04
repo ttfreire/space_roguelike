@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemType {OXYGEN, SCRAP1, SCRAP2, DAMAGE, RESISTANCE, VOLUME, VELOCITY};
+public enum ItemType {OXYGEN, AREA, DAMAGE, PIERCING, VELOCITY, SCRAP1};
 public enum ItemShape {NONE, TRIANGLE, SQUARE, PENTAGON};
 
 public class itemController : MonoBehaviour {
@@ -57,12 +57,12 @@ public class itemController : MonoBehaviour {
 			this.gameObject.transform.position = newPos;
 			gameController.control.AddItemToPowerUpItemList(this.gameObject);
 			break;
-		case ItemType.RESISTANCE:
+		case ItemType.PIERCING:
 			p_control.m_resistanceItemQuantity++;
 			this.gameObject.transform.position = newPos;
 			gameController.control.AddItemToPowerUpItemList(this.gameObject);
 			break;
-		case ItemType.VOLUME:
+		case ItemType.AREA:
 			p_control.m_velocityItemQuantity++;
 			this.gameObject.transform.position = newPos;
 			gameController.control.AddItemToPowerUpItemList(this.gameObject);

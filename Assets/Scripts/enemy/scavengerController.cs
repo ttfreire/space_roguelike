@@ -100,7 +100,7 @@ public class scavengerController : enemyBaseController {
 			if(m_seenItems.Contains(col.gameObject))
 				m_seenItems.Remove (col.gameObject);
 	}
-
+	/**
 	void OnTriggerStay(Collider col){
 		if (col.tag.Equals ("Item")) {
 			//if (!m_seenItems.Contains (col.gameObject))
@@ -110,4 +110,5 @@ public class scavengerController : enemyBaseController {
 		if (!m_sightController.m_isPlayerOnView && canScavenge)
 			EnterState (EnemyState.GETTINGITENS);
 	}
+	**/
 }
