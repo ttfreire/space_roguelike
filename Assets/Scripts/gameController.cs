@@ -34,6 +34,7 @@ public class gameController : MonoBehaviour {
 	public Canvas derrota;
 
 	List<GameObject> PowerUpItemList = new List<GameObject>();
+	bool powerupOn = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -202,26 +203,93 @@ public class gameController : MonoBehaviour {
 	}
 
 	void VerifyPowerUpItemList(){
-		if (PowerUpItemList.Count == 0)
+		if ((PowerUpItemList.Count == 0 && !powerupOn) || PowerUpItemList.Count == 1 || PowerUpItemList.Count == 2)
 			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
-		else if (AllItensFromType(ItemType.DAMAGE) && PowerUpItemList.Count == 3)
-			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.DAMAGE;
-		else if (AllItensFromType(ItemType.VELOCITY) && PowerUpItemList.Count == 3)
-			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.VELOCITY;
-		else if (AllItensFromType(ItemType.RESISTANCE) && PowerUpItemList.Count == 3)
-			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
-		else if (AllItensFromType(ItemType.VOLUME) && PowerUpItemList.Count == 3)
-			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
-		else 
-			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
+		if (PowerUpItemList.Count == 3){
+			if(!powerupOn)
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
+			if (AllItensFromType (ItemType.DAMAGE)){
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.DAMAGE;
+				powerupOn = true;
+				StartCoroutine(powerupOff ());
+			}
+			if (AllItensFromType (ItemType.VELOCITY)){
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.VELOCITY;
+				powerupOn = true;
+				StartCoroutine(powerupOff ());
+			}
+			if (AllItensFromType (ItemType.RESISTANCE)){
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
+				powerupOn = true;
+				StartCoroutine(powerupOff ());
+			}
+			if (AllItensFromType (ItemType.VOLUME)){
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
+				powerupOn = true;
+				StartCoroutine(powerupOff ());
+			}
+		}
+
+		if ((PowerUpItemList.Count == 0 && !powerupOn) || PowerUpItemList.Count == 1 || PowerUpItemList.Count == 2) {
+			playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed;
+			playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
+			playerHealth.p_Health.damageReductionDivider = 1;
+		}
+		if (PowerUpItemList.Count == 3){
+			if(!powerupOn){
+				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed;
+				playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
+				playerHealth.p_Health.damageReductionDivider = 1;
+			}
+			if (AllItensFromShape (ItemShape.TRIANGLE)){
+				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed + 1.0f;
+				powerupOn = true;
+				StartCoroutine(powerupOff ());
+			}
+			if (AllItensFromShape (ItemShape.SQUARE)){
+				playerHealth.p_Health.m_currentOxygenLossRate = 0f;
+				powerupOn = true;
+				StartCoroutine(powerupOff ());
+			}
+			if (AllItensFromShape (ItemShape.PENTAGON)){
+				playerHealth.p_Health.damageReductionDivider = 2;
+				PowerUpItemList.Clear();
+				powerupOn = true;
+			}
+		}
+
+		if (powerupOn && PowerUpItemList.Count == 3)
+			PowerUpItemList.Clear ();
+
+			
+
 	}
 
 	bool AllItensFromType(ItemType type){
+		if (PowerUpItemList.Count == 0)
+			return false;
 		bool allItensAreEqual = true;
 		foreach (GameObject item in PowerUpItemList)
 			if (!item.GetComponent<itemController> ().m_itemType.Equals (type))
 				allItensAreEqual = false;
 		return allItensAreEqual;
 	}
+
+	bool AllItensFromShape(ItemShape shape){
+		if (PowerUpItemList.Count == 0)
+			return false;
+		bool allItensAreEqual = true;
+		foreach (GameObject item in PowerUpItemList)
+			if (!item.GetComponent<itemController> ().m_itemShape.Equals (shape))
+				allItensAreEqual = false;
+		return allItensAreEqual;
+	}
+
+	IEnumerator powerupOff ()
+	{
+		yield return new WaitForSeconds (15.0f);
+		powerupOn = false;
+	}
+	
 
 }

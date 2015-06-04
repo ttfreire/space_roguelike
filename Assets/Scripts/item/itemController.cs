@@ -2,11 +2,12 @@
 using System.Collections;
 
 public enum ItemType {OXYGEN, SCRAP1, SCRAP2, DAMAGE, RESISTANCE, VOLUME, VELOCITY};
+public enum ItemShape {NONE, TRIANGLE, SQUARE, PENTAGON};
 
 public class itemController : MonoBehaviour {
 
 	public ItemType m_itemType;
-	public float m_points;
+	public ItemShape m_itemShape;
 	public float m_value;
 	float m_oxygen;
 	int m_scrapQuantity;
@@ -39,31 +40,41 @@ public class itemController : MonoBehaviour {
 
 	public void PlayerCollectItem(GameObject player){
 		playerController p_control = player.GetComponent<playerController>();
+		Vector3 newPos = new Vector3 (0, 0, 50);
 		switch (m_itemType) {
 		case ItemType.OXYGEN:
 			playerHealth p_health = player.GetComponent<playerHealth>();
 			p_health.m_currentOxygenValue += m_oxygen;
+			Destroy (gameObject);
 			break;
 		case ItemType.SCRAP1:
 			p_control.scrap1Quantity++;
+			Destroy (gameObject);
 			//gameController.control.scrap1.text = p_control.scrap1Quantity.ToString();
 			break;
 		case ItemType.DAMAGE:
 			p_control.m_damageItemQuantity++;
+			this.gameObject.transform.position = newPos;
+			gameController.control.AddItemToPowerUpItemList(this.gameObject);
 			break;
 		case ItemType.RESISTANCE:
 			p_control.m_resistanceItemQuantity++;
+			this.gameObject.transform.position = newPos;
+			gameController.control.AddItemToPowerUpItemList(this.gameObject);
 			break;
 		case ItemType.VOLUME:
 			p_control.m_velocityItemQuantity++;
+			this.gameObject.transform.position = newPos;
+			gameController.control.AddItemToPowerUpItemList(this.gameObject);
 			break;
 		case ItemType.VELOCITY:
 			p_control.m_volumeItemQuantity++;
+			this.gameObject.transform.position = newPos;
+			gameController.control.AddItemToPowerUpItemList(this.gameObject);
 			break;
 		}
-		Vector3 newPos = new Vector3 (0, 0, 50);
-		this.gameObject.transform.position = newPos;
-		gameController.control.AddItemToPowerUpItemList(this.gameObject);
+
+
 		//Destroy (gameObject);
 
 	}

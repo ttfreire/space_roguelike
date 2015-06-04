@@ -13,6 +13,7 @@ public class loadRoom : MonoBehaviour {
 	bool cleanedRoom = false;
 	public bool playerInRoom = false;
 	playerController p_control;
+
 	// Use this for initialization
 	void Awake () {
 		isLoaded = false;
@@ -54,6 +55,7 @@ public class loadRoom : MonoBehaviour {
 		m_roomObject = room;
 		isLoaded = true;
 	}
+
 
 
 }

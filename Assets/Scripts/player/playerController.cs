@@ -103,10 +103,13 @@ public class playerController : MonoBehaviour {
 				room = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
 				if(!load.isLoaded)
 					StartCoroutine(load.loadRoomOnContainerPosition(room));
-			} else{
+			} else
 				LeaveRoom ();
 
-			}
+			if (other.tag.Equals ("Space"))
+				playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
+			if (other.tag.Equals ("Outer Space"))
+				playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OuterSpaceOxygenLossRate;
 		}
 		if (other.tag.Equals ("Item")) {
 			itemController i_control = other.gameObject.GetComponent<itemController>();

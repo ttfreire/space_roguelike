@@ -5,14 +5,16 @@ public class playerMovement : MonoBehaviour {
 	public static playerMovement p_Movement;
 	public bool isFacingRight = true;
 	public float m_speed;
+	public float currentSpeed;
 
 	public void Awake(){
 		p_Movement = this;
+		currentSpeed = m_speed;
 	}
 	
 	public void Move(){
-		float h_translation = Input.GetAxisRaw("Horizontal") * m_speed;
-		float v_translation = Input.GetAxisRaw("Vertical") * m_speed;
+		float h_translation = Input.GetAxisRaw("Horizontal") * currentSpeed;
+		float v_translation = Input.GetAxisRaw("Vertical") * currentSpeed;
 		Vector3 direction = new Vector3(h_translation, v_translation, 0);
 
 		rigidbody.AddForceAtPosition(direction, this.transform.position, ForceMode.Force);
