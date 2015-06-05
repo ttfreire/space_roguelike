@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 2b7492889e92093419af2f79fc974354
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: space_anim_efeito_campo-forca (1)_0
+    21300002: space_anim_efeito_campo-forca (1)_1
+    21300004: space_anim_efeito_campo-forca (1)_2
+    21300006: space_anim_efeito_campo-forca (1)_3
+    21300008: space_anim_efeito_campo-forca (1)_4
+    21300010: space_anim_efeito_campo-forca (1)_5
+    21300012: space_anim_efeito_campo-forca (1)_6
+    21300014: space_anim_efeito_campo-forca (1)_7
+    21300016: space_anim_efeito_campo-forca (1)_8
+    21300018: space_anim_efeito_campo-forca (1)_9
+    21300020: space_anim_efeito_campo-forca (1)_10
+    21300022: space_anim_efeito_campo-forca (1)_11
+    21300024: space_anim_efeito_campo-forca (1)_12
+    21300026: space_anim_efeito_campo-forca (1)_13
+    21300028: space_anim_efeito_campo-forca (1)_14
+    21300030: space_anim_efeito_campo-forca (1)_15
+    21300032: space_anim_efeito_campo-forca (1)_16
+    21300034: space_anim_efeito_campo-forca (1)_17
+    21300036: space_anim_efeito_campo-forca (1)_18
+    21300038: space_anim_efeito_campo-forca (1)_19
+    21300040: space_anim_efeito_campo-forca (1)_20
+    21300042: space_anim_efeito_campo-forca (1)_21
+    21300044: space_anim_efeito_campo-forca (1)_22
+    21300046: space_anim_efeito_campo-forca (1)_23
+    21300048: space_anim_efeito_campo-forca (1)_24
+    21300050: space_anim_efeito_campo-forca (1)_25
+    21300052: space_anim_efeito_campo-forca (1)_26
+    21300054: space_anim_efeito_campo-forca (1)_27
+    21300056: space_anim_efeito_campo-forca (1)_28
+    21300058: space_anim_efeito_campo-forca (1)_29
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: space_anim_efeito_campo-forca (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 250
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 250
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 250
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 250
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_6
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 200
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_7
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 200
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_8
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 200
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_9
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 200
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_11
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 150
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_12
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 150
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_13
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 150
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_14
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 150
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_16
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 100
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_17
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 100
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_18
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 100
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_19
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 100
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_21
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 50
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_22
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 50
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_23
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 50
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_24
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 50
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_26
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_27
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_efeito_campo-forca (1)_29
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 400
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
