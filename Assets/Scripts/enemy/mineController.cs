@@ -46,6 +46,7 @@ public class mineController : enemyBaseController {
 	}
 
 	protected override void UpdateState(EnemyState state){
+		base.UpdateState (m_currentState);
 		switch (m_currentState) {
 		case EnemyState.IDLE:
 			
@@ -96,6 +97,8 @@ public class mineController : enemyBaseController {
 	void OnCollisionEnter(Collision other){
 		if(other.transform.tag.Equals("Player"))
 			SelfDestruct();
+		if (other.transform.tag.Equals ("Projectile"))
+			Destroy (other.gameObject);
 	}
 
 

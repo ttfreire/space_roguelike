@@ -129,7 +129,7 @@ public class enemyBaseController : MonoBehaviour {
 				if (proj.m_shooter != this.gameObject) {
 					Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
 					Vector3 shootForce = player.GetComponent<playerShoot> ().m_pushForce * dirFromProjectile;
-					this.rigidbody.AddForceAtPosition (shootForce, this.transform.position, ForceMode.Impulse);
+					//this.rigidbody.AddForceAtPosition (shootForce, this.transform.position, ForceMode.Impulse);
 					Destroy (other.gameObject);
 				}
 			if (proj.m_shooter != this.gameObject)

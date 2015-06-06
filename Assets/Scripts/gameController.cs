@@ -36,6 +36,9 @@ public class gameController : MonoBehaviour {
 	public List<GameObject> PowerUpItemList = new List<GameObject>();
 	bool powerupOn = false;
 
+	Animator powerupAnimator;
+	bool isEngaging = false;
+
 	// Use this for initialization
 	void Awake () {
 		control = this;
@@ -46,6 +49,7 @@ public class gameController : MonoBehaviour {
 		m_pHealth = player.GetComponent<playerHealth> ();
 		boardScript = GetComponent<BoardManager>();
 		m_currentGameState = GameStates.PAUSED;
+		powerupAnimator = FindObjectOfType<powerupDisplayController> ().transform.GetChild(0).GetComponent<Animator> ();
 	}
 
 	void Start(){
@@ -58,6 +62,7 @@ public class gameController : MonoBehaviour {
 	
 
 	void Update () {
+		powerupAnimator.SetBool ("isEngaging", isEngaging);
 		UpdateState ();
 		DebugAndTestShortcuts ();
 		itemCount.text = (playerController.p_controller.m_damageItemQuantity + 
@@ -203,30 +208,31 @@ public class gameController : MonoBehaviour {
 	}
 
 	void VerifyPowerUpItemList(){
+		List<int> powerupNumber = new List<int>();
 		if ((PowerUpItemList.Count == 0 && !powerupOn) || PowerUpItemList.Count == 1 || PowerUpItemList.Count == 2)
 			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
 		if (PowerUpItemList.Count == 3){
 			if(!powerupOn)
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
 			if (AllItensFromType (ItemType.DAMAGE)){
-				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.DAMAGE;
+				powerupNumber.Add(0);
 				powerupOn = true;
-				StartCoroutine(powerupOff ());
+				isEngaging = true;
 			}
 			if (AllItensFromType (ItemType.VELOCITY)){
-				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.VELOCITY;
+				powerupNumber.Add(1);
 				powerupOn = true;
-				StartCoroutine(powerupOff ());
+				isEngaging = true;
 			}
 			if (AllItensFromType (ItemType.PIERCING)){
-				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
+				powerupNumber.Add(2);
 				powerupOn = true;
-				StartCoroutine(powerupOff ());
+				isEngaging = true;
 			}
 			if (AllItensFromType (ItemType.AREA)){
-				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
+				powerupNumber.Add(3);
 				powerupOn = true;
-				StartCoroutine(powerupOff ());
+				isEngaging = true;
 			}
 		}
 
@@ -242,24 +248,27 @@ public class gameController : MonoBehaviour {
 				playerHealth.p_Health.damageReductionDivider = 1;
 			}
 			if (AllItensFromShape (ItemShape.TRIANGLE)){
-				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed + 1.0f;
+				powerupNumber.Add(4);
 				powerupOn = true;
-				StartCoroutine(powerupOff ());
+				isEngaging = true;
 			}
 			if (AllItensFromShape (ItemShape.SQUARE)){
-				playerHealth.p_Health.m_currentOxygenLossRate = 0f;
+				powerupNumber.Add(5);
 				powerupOn = true;
-				StartCoroutine(powerupOff ());
+				isEngaging = true;
 			}
 			if (AllItensFromShape (ItemShape.PENTAGON)){
-				playerHealth.p_Health.damageReductionDivider = 2;
-				PowerUpItemList.Clear();
+				powerupNumber.Add(6);
 				powerupOn = true;
+				isEngaging = true;
 			}
 		}
 
-		if (powerupOn && PowerUpItemList.Count == 3)
+		if (powerupOn && PowerUpItemList.Count == 3 && Input.GetKey (KeyCode.E)) {
 			PowerUpItemList.Clear ();
+			ActivatePowerup(powerupNumber);
+			StartCoroutine (powerupOff ());
+		}
 
 			
 
@@ -287,8 +296,38 @@ public class gameController : MonoBehaviour {
 
 	IEnumerator powerupOff ()
 	{
+		isEngaging = false;
 		yield return new WaitForSeconds (15.0f);
 		powerupOn = false;
+
+	}
+
+	void ActivatePowerup(List<int> powerup){
+		for (int i = 0; i < powerup.Count; i++) {
+			switch (powerup[i]) {
+			case 0:
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.DAMAGE;
+				break;
+			case 1:
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.VELOCITY;
+				break;
+			case 2:
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
+				break;
+			case 3:
+				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
+				break;
+			case 4:
+				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed + 1.0f;
+				break;
+			case 5:
+				playerHealth.p_Health.m_currentOxygenLossRate = 0f;
+				break;
+			case 6:
+				playerHealth.p_Health.damageReductionDivider = 2;
+				break;
+			}
+		}
 	}
 	
 
