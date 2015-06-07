@@ -209,11 +209,15 @@ public class gameController : MonoBehaviour {
 
 	void VerifyPowerUpItemList(){
 		List<int> powerupNumber = new List<int>();
+		/**
 		if ((PowerUpItemList.Count == 0 && !powerupOn) || PowerUpItemList.Count == 1 || PowerUpItemList.Count == 2)
 			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
+			**/
+
+			if (!powerupOn)
+				Removepowerups ();
+				
 		if (PowerUpItemList.Count == 3){
-			if(!powerupOn)
-				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
 			if (AllItensFromType (ItemType.DAMAGE)){
 				powerupNumber.Add(0);
 				powerupOn = true;
@@ -235,18 +239,18 @@ public class gameController : MonoBehaviour {
 				isEngaging = true;
 			}
 		}
-
+		/**
 		if ((PowerUpItemList.Count == 0 && !powerupOn) || PowerUpItemList.Count == 1 || PowerUpItemList.Count == 2) {
 			playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed;
 			playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
 			playerHealth.p_Health.damageReductionDivider = 1;
 		}
-		if (PowerUpItemList.Count == 3){
+		**/
+
 			if(!powerupOn){
-				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed;
-				playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
-				playerHealth.p_Health.damageReductionDivider = 1;
+				Removepowerups();
 			}
+		if (PowerUpItemList.Count == 3){
 			if (AllItensFromShape (ItemShape.TRIANGLE)){
 				powerupNumber.Add(4);
 				powerupOn = true;
@@ -265,6 +269,7 @@ public class gameController : MonoBehaviour {
 		}
 
 		if (powerupOn && PowerUpItemList.Count == 3 && Input.GetKey (KeyCode.E)) {
+			Removepowerups();
 			PowerUpItemList.Clear ();
 			ActivatePowerup(powerupNumber);
 			StartCoroutine (powerupOff ());
@@ -329,6 +334,12 @@ public class gameController : MonoBehaviour {
 			}
 		}
 	}
-	
 
+	void Removepowerups(){
+		playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
+		playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed;
+		playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
+		playerHealth.p_Health.damageReductionDivider = 1;
+	}
+	
 }
