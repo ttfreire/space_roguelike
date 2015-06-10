@@ -23,8 +23,8 @@ public class pecaController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision col){
-		if (col.transform.tag.Equals ("Projectile")) {
+	void OnTriggerEnter(Collider col){
+		if (col.tag.Equals ("Projectile")) {
 			TakeDamage(col.transform.gameObject.GetComponent<projectileController>().m_damage);
 			Destroy(col.transform.gameObject);
 		}
