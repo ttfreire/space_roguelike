@@ -94,12 +94,13 @@ public class scavengerController : enemyBaseController {
 		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count)], this.transform.position, this.transform.rotation);
 	}
 
-
+	/**
 	void OnTriggerExit(Collider col){
 		if (collider.tag.Equals ("Item"))
 			if(m_seenItems.Contains(col.gameObject))
 				m_seenItems.Remove (col.gameObject);
 	}
+	**/
 	/**
 	void OnTriggerStay(Collider col){
 		if (col.tag.Equals ("Item")) {

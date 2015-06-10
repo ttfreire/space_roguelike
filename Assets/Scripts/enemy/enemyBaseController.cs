@@ -126,18 +126,30 @@ public class enemyBaseController : MonoBehaviour {
 	protected virtual void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag.Equals ("Projectile")) {
 			projectileController proj = other.gameObject.GetComponent<projectileController> ();
-				if (proj.m_shooter != this.gameObject) {
-					Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
-					Vector3 shootForce = player.GetComponent<playerShoot> ().m_pushForce * dirFromProjectile;
-					//this.rigidbody.AddForceAtPosition (shootForce, this.transform.position, ForceMode.Impulse);
-					Destroy (other.gameObject);
-				}
+			if (proj.m_shooter != this.gameObject) {
+				Vector3 dirFromProjectile = (this.transform.position - other.gameObject.transform.position);
+				Vector3 shootForce = player.GetComponent<playerShoot> ().m_pushForce * dirFromProjectile;
+				//this.rigidbody.AddForceAtPosition (shootForce, this.transform.position, ForceMode.Impulse);
+				Destroy (other.gameObject);
+			}
 			if (proj.m_shooter != this.gameObject)
 				if (proj.m_shooter.tag.Equals("Player"))
 					m_healthController.TakeDamage (proj.m_damage);
 		}
 	}
-	
+
+	protected virtual void OnTriggerEnter(Collider other){
+		if (other.tag.Equals ("Projectile")) {
+			projectileController proj = other.gameObject.GetComponent<projectileController> ();
+			if (proj.m_shooter != this.gameObject)
+				if (proj.m_shooter.tag.Equals("Player")){
+					m_healthController.TakeDamage (proj.m_damage);
+				if(!proj.isPiercing)
+					Destroy(other.gameObject);
+				}
+		}
+	}
+
 	void OnCollisionStay(Collision other){
 		if (other.gameObject.Equals (player)) {
 			RepelPlayer (other.rigidbody);
@@ -182,4 +194,5 @@ public class enemyBaseController : MonoBehaviour {
 		if(ItemsDrop.Count > 0)
 			Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count)], this.transform.position, this.transform.rotation);
 	}
+	
 }

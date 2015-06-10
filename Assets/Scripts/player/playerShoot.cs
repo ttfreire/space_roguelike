@@ -115,6 +115,8 @@ public class playerShoot : MonoBehaviour {
 		proj.GetComponent<projectileController> ().m_shooter = gameObject;
 		proj.GetComponent<projectileController> ().m_damage = projDamage;
 		proj.GetComponent<SpriteRenderer> ().sprite = projectileSprite;
+		if(currentAmmoType.Equals(ProjectileType.PIERCING))
+		   proj.GetComponent<projectileController>().isPiercing = true;
 		proj.transform.TransformDirection (directionToShoot);
 		AimAtTarget (proj, directionToShoot);
 		proj.GetComponent<Rigidbody> ().AddForce (directionToShoot * projectileSpriteSpeed, ForceMode.Impulse);

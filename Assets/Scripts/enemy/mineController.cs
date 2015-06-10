@@ -101,6 +101,11 @@ public class mineController : enemyBaseController {
 			Destroy (other.gameObject);
 	}
 
+	protected override void OnTriggerEnter(Collider other){
+		if (other.tag.Equals ("Projectile"))
+			Destroy (other.gameObject);
+	}
+
 
 
 }

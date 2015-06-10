@@ -8,6 +8,8 @@ public class projectileController : MonoBehaviour {
 	public float m_damage;
 
 	Rigidbody m_rigidbody;
+
+	public bool isPiercing = false;
 	// Use this for initialization
 	void Start () {
 		m_rigidbody = GetComponent<Rigidbody> ();
@@ -37,9 +39,13 @@ public class projectileController : MonoBehaviour {
 			   Destroy(gameObject);
 			   **/
 
-		if(!other.gameObject.transform.tag.Equals("Enemy") && !other.gameObject.transform.tag.Equals("Player"))
-			Destroy(gameObject);
+		//if(!other.gameObject.transform.tag.Equals("Enemy") && !other.gameObject.transform.tag.Equals("Player"))
+		//	Destroy(gameObject);
 	}
 			
-
+	void OnTriggerEnter(Collider other){
+		if(!other.tag.Equals("Enemy") && !other.tag.Equals("Player"))
+			if(!isPiercing)
+				Destroy(gameObject);
+	}
 }

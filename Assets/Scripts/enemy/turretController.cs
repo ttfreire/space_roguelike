@@ -131,7 +131,14 @@ public class turretController : enemyBaseController {
 		}
 		
 	}
-	
+/**
+	void OnTriggerEnter(Collider other){
+		if(other.tag.Equals("Projectile"))
+			if (other.gameObject.GetComponent<projectileController>().m_shooter != this.gameObject)
+				if (other.gameObject.GetComponent<projectileController>().m_shooter.tag.Equals("Player"))
+					m_healthController.TakeDamage (other.gameObject.GetComponent<projectileController>().m_damage);
+	}
+**/
 	
 	void OnCollisionExit(Collision other){
 		shake = false;
