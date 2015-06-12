@@ -136,7 +136,7 @@ public class playerController : MonoBehaviour {
 			p_camera.orthographicSize = cameraSizeinSpace;
 			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
 			gameObject.transform.position = pos;
-			board.gridPositions[board.FindPlayerChunkindex()].SetActive(true);	
+			//board.gridPositions[board.FindPlayerChunkindex()].SetActive(true);	
 		}
 	}
 

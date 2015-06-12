@@ -153,7 +153,7 @@ public class gameController : MonoBehaviour {
 
 		GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
 	}
-
+/**
 	void HideEnemiesFOV(){
 		GameObject[] FOVs = GameObject.FindGameObjectsWithTag("FOV");
 		foreach(GameObject fov in FOVs){
@@ -161,7 +161,7 @@ public class gameController : MonoBehaviour {
 			fovMesh.enabled = !fovMesh.enabled;
 		}
 	}
-
+**/
 	public void KillAllEnemies(){
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (GameObject enemy in enemies)
