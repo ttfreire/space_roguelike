@@ -188,9 +188,7 @@ public class gameController : MonoBehaviour {
 		
 		if (Input.GetKeyUp (KeyCode.T))
 			KillAllEnemies();
-		
-		if (Input.GetKeyUp (KeyCode.F))
-			HideEnemiesFOV();
+
 	}
 
 	public void UpdateDestroyablesCount(){
