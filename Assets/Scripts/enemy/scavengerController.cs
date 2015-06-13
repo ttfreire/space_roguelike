@@ -24,7 +24,7 @@ public class scavengerController : enemyBaseController {
 			UpdateState (m_currentState);
 	}
 
-	public void EnterState(EnemyState state){
+	protected override void EnterState(EnemyState state){
 		ExitState (m_currentState);
 		m_currentState = state;
 		
@@ -32,66 +32,79 @@ public class scavengerController : enemyBaseController {
 		case EnemyState.IDLE:
 			isMoving = false;
 			break;
+		case EnemyState.ENGAGING:
+			engageTime = 1f;
+			break;
 		case EnemyState.ATTACKING:
 			isMoving = true;
 			break;
-		case EnemyState.GETTINGITENS:
+		case EnemyState.MOVING:
 			isMoving = true;
 			break;
 		case EnemyState.DEAD:
 			transform.FindChild("FOV").collider.enabled = false;
 			transform.collider.enabled = false;
-			foreach(GameObject test in m_scavangedItems){
-				test.transform.position = transform.position;
-			}
-			m_scavangedItems.Clear();
-
+			isDead = true;
+			boomSource.Play();
 			break;
 		}
 	}
-	protected  override void UpdateState(EnemyState state){
-		base.UpdateState(state);
+	protected override void UpdateState(EnemyState state){
 		switch (m_currentState) {
 		case EnemyState.IDLE:
-			break;
-		case EnemyState.ATTACKING:
-			break;
-
-		case EnemyState.GETTINGITENS:
-			if(base.m_sightController.m_isPlayerOnView)
-				EnterState(EnemyState.ATTACKING);
-			else if (m_seenItems != null)
-				if(m_seenItems.Count == 0)
-					EnterState(EnemyState.IDLE);
+			
+			if(m_sightController.m_isPlayerOnView)
+				EnterState(EnemyState.ENGAGING);
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
-			ScavengeItems();
+			break;
+		case EnemyState.ENGAGING:
+			engageTime -= Time.deltaTime;
+			if(engageTime < 0f)
+				EnterState(EnemyState.MOVING);
+			break;
+		case EnemyState.ATTACKING:
+			if(!m_sightController.m_isPlayerOnView)
+				EnterState(EnemyState.IDLE);
+			if (m_healthController.IsDead())
+				EnterState(EnemyState.DEAD);
+			if(isMoving)
+				EnterState(EnemyState.MOVING);
+			break;
+		case EnemyState.MOVING:
+			FollowTarget (player.transform.position, m_speed);
+			if(isAttacking)
+				EnterState(EnemyState.ATTACKING);
+			if (m_healthController.IsDead())
+				EnterState(EnemyState.DEAD);
 			break;
 		case EnemyState.DEAD:
-
+			explosionTime -= Time.deltaTime;
+			if(explosionTime < 0){
+				DropItems();
+				Destroy(gameObject);
+			}
 			break;
 		}
 	}
 
-	void ScavengeItems(){
-		if (m_seenItems.Count > 0) {
-			GameObject target = m_seenItems[0];
-			if(target != null){
-				FollowTarget(target.transform.position, m_scavengeSpeed);
-				float distance = (transform.position - target.transform.position).magnitude;
-				if(distance < 1){
-					if(!m_scavangedItems.Contains(target)){
-						m_scavangedItems.Add(target);
-						m_seenItems.Remove(target);
-						target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, -50);
-					}
-				}
-			}
-		}
-	}
+
 	
 	protected void DropItems(){
 		Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count)], this.transform.position, this.transform.rotation);
+	}
+
+	protected override void OnCollisionStay(Collision other){
+		base.OnCollisionStay (other);
+		if (other.gameObject.Equals (player))
+			isAttacking = true;
+	}
+	
+	
+	protected override void OnCollisionExit(Collision other){
+		base.OnCollisionExit (other);
+		if (other.gameObject.Equals (player))
+			isMoving = true;
 	}
 
 	/**

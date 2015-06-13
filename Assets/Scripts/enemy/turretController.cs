@@ -38,7 +38,7 @@ public class turretController : enemyBaseController {
 		}
 	}
 	
-	public void EnterState(EnemyState state){
+	protected override void EnterState(EnemyState state){
 		ExitState (m_currentState);
 		m_currentState = state;
 		
@@ -51,7 +51,7 @@ public class turretController : enemyBaseController {
 			shootTime = Time.deltaTime * 60 * secondstoShoot;
 
 			break;
-		case EnemyState.GETTINGITENS:
+		case EnemyState.MOVING:
 			break;
 		case EnemyState.RECHARGING:
 			rechargeTime = Time.deltaTime * 60 * secondsToRecharge;

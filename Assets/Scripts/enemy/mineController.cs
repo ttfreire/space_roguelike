@@ -6,11 +6,13 @@ public class mineController : enemyBaseController {
 	public bool isEngaging = false;
 	public float explosionDamage;
 	float engagetime;
+	Animator pulseAnim;
 
 	// Use this for initialization
 	protected override void Awake () {
 		base.Awake ();
 		engagetime = 1;
+		pulseAnim = transform.FindChild("Pulse").GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -21,9 +23,13 @@ public class mineController : enemyBaseController {
 			anim.SetBool ("isAttacking", isAttacking);
 			anim.SetBool("isDead", isDead);
 		}
+		if(pulseAnim != null){
+			pulseAnim.SetBool ("isAttacking", isAttacking);
+			pulseAnim.SetBool("isDead", isDead);
+		}
 	}
 
-	public void EnterState(EnemyState state){
+	protected override void EnterState(EnemyState state){
 		ExitState (m_currentState);
 		m_currentState = state;
 		
@@ -41,12 +47,13 @@ public class mineController : enemyBaseController {
 			break;
 		case EnemyState.DEAD:
 			isDead = true;
+			boomSource.Play();
 			break;
 		}
 	}
 
 	protected override void UpdateState(EnemyState state){
-		base.UpdateState (m_currentState);
+
 		switch (m_currentState) {
 		case EnemyState.IDLE:
 			
@@ -74,7 +81,11 @@ public class mineController : enemyBaseController {
 			break;
 			
 		case EnemyState.DEAD:
-
+			explosionTime -= Time.deltaTime;
+			if(explosionTime < 0){
+				DropItems();
+				Destroy(gameObject);
+			}
 			break;
 		}
 	}

@@ -97,6 +97,7 @@ public class playerController : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if (other.tag.Equals ("Projectile") && other.gameObject.GetComponent<projectileController> ().m_shooter != gameObject) {
 			playerHealth.p_Health.TakeDamage (other.gameObject.GetComponent<projectileController>().m_damage);
+			Destroy(other.gameObject);
 		}
 		if (other.tag.Equals ("Door")) {
 			this.collider.isTrigger = false;

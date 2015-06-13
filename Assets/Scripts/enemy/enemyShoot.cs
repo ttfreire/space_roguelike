@@ -16,7 +16,7 @@ public class enemyShoot : MonoBehaviour {
 
 
 	void Awake () {
-		m_shootCooldown = ResetShootCooldown();
+		m_shootCooldown = 0f;
 		m_sight = GetComponent<enemySight> ();
 		m_health = GetComponent<enemyHealth> ();
 		m_player = FindObjectOfType<playerController> ().gameObject;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class enemyBaseController : MonoBehaviour {
-	public enum EnemyState {IDLE, ENGAGING, ATTACKING, GETTINGITENS, RECHARGING, DEAD};
+	public enum EnemyState {IDLE, ENGAGING, ATTACKING, MOVING, RECHARGING, DEAD};
 
 	public EnemyState m_currentState = EnemyState.IDLE;
 	
@@ -15,7 +15,6 @@ public class enemyBaseController : MonoBehaviour {
 	protected GameObject player;
 	public float m_speed;
 	
-	
 	protected enemyHealth m_healthController;
 	protected enemySight m_sightController;
 	protected enemyShoot m_shootController;
@@ -24,6 +23,8 @@ public class enemyBaseController : MonoBehaviour {
 	
 	public List<GameObject> ItemsDrop;
 	public AudioSource boomSource;
+
+	protected float engageTime = 0.5f;
 	
 	//Animation
 	protected Animator anim;
@@ -32,6 +33,8 @@ public class enemyBaseController : MonoBehaviour {
 	protected bool isFacingRight = true;
 	protected bool isDead = false;
 	protected float explosionTime = 2;
+	protected float timeToAttack;
+	protected float attackTime;
 
 	// Use this for initialization
 
@@ -53,41 +56,53 @@ public class enemyBaseController : MonoBehaviour {
 			if (anim != null) {
 				anim.SetBool ("isMoving", isMoving);
 				anim.SetBool ("isAttacking", isAttacking);
+				anim.SetBool ("isPlayerOnSight", m_sightController.m_isPlayerOnView);
 				anim.SetFloat ("health", m_healthController.m_health);
 			}
 		}
 	}
 	
-	public void EnterState(EnemyState state){
+	protected virtual void EnterState(EnemyState state){
 		ExitState (m_currentState);
 		m_currentState = state;
 		
 		switch (m_currentState) {
 		case EnemyState.IDLE:
-			isMoving = false;
+
+			break;
+		case EnemyState.ENGAGING:
+			engageTime = 1f;
 			break;
 		case EnemyState.ATTACKING:
-			isMoving = true;
+			isAttacking = true;
+			attackTime = anim.GetCurrentAnimatorStateInfo(0).length;
 			break;
-		case EnemyState.GETTINGITENS:
+		case EnemyState.MOVING:
 			isMoving = true;
+			timeToAttack = 2f;
 			break;
 		case EnemyState.DEAD:
+			isDead = true;
 			boomSource.Play();
 			break;
 		}
 	}
 	
-	public void ExitState(EnemyState state){
+	protected virtual void ExitState(EnemyState state){
 		switch (m_currentState) {
 		case EnemyState.IDLE:
 			
 			break;
-		case EnemyState.ATTACKING:
-			
+		case EnemyState.ENGAGING:
+
 			break;
-		case EnemyState.GETTINGITENS:
-			
+		case EnemyState.ATTACKING:
+			isAttacking = false;
+
+			break;
+		case EnemyState.MOVING:
+			isMoving = false;
+
 			break;
 		case EnemyState.DEAD:
 			break;
@@ -99,9 +114,14 @@ public class enemyBaseController : MonoBehaviour {
 		case EnemyState.IDLE:
 			
 			if(m_sightController.m_isPlayerOnView)
-				EnterState(EnemyState.ATTACKING);
+				EnterState(EnemyState.ENGAGING);
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
+			break;
+		case EnemyState.ENGAGING:
+			engageTime -= Time.deltaTime;
+				if(engageTime < 0f)
+					EnterState(EnemyState.MOVING);
 			break;
 		case EnemyState.ATTACKING:
 			if(!m_sightController.m_isPlayerOnView)
@@ -109,10 +129,19 @@ public class enemyBaseController : MonoBehaviour {
 			if (m_healthController.IsDead())
 				EnterState(EnemyState.DEAD);
 			FollowTarget (player.transform.position, m_speed);
-			if(m_shootController != null)
-				m_shootController.Shoot();
+			m_shootController.Shoot();
+			attackTime -= Time.deltaTime;
+			if(attackTime < 0f)
+				EnterState(EnemyState.MOVING);
 			break;
-			
+		case EnemyState.MOVING:
+			FollowTarget (player.transform.position, m_speed);
+			timeToAttack -= Time.deltaTime;
+			if(timeToAttack < 0f)
+				EnterState(EnemyState.ATTACKING);
+			if (m_healthController.IsDead())
+				EnterState(EnemyState.DEAD);
+			break;
 		case EnemyState.DEAD:
 			explosionTime -= Time.deltaTime;
 			if(explosionTime < 0){
@@ -150,7 +179,7 @@ public class enemyBaseController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionStay(Collision other){
+	protected virtual void OnCollisionStay(Collision other){
 		if (other.gameObject.Equals (player)) {
 			RepelPlayer (other.rigidbody);
 			shake = true;
@@ -160,7 +189,7 @@ public class enemyBaseController : MonoBehaviour {
 	}
 	
 	
-	void OnCollisionExit(Collision other){
+	protected virtual void OnCollisionExit(Collision other){
 		shake = false;
 		//isAttacking = false;
 		//m_camera.GetComponent<CameraShake> ().enabled = false;
