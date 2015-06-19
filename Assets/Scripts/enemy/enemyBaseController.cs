@@ -14,6 +14,7 @@ public class enemyBaseController : MonoBehaviour {
 	protected Transform m_targetToShoot;
 	protected GameObject player;
 	public float m_speed;
+	public GameObject explosionObject;
 	
 	protected enemyHealth m_healthController;
 	protected enemySight m_sightController;
@@ -32,7 +33,7 @@ public class enemyBaseController : MonoBehaviour {
 	protected bool isAttacking = false;
 	protected bool isFacingRight = true;
 	protected bool isDead = false;
-	protected float explosionTime = 2;
+	protected float explosionTime = 1;
 	protected float timeToAttack;
 	protected float attackTime;
 
@@ -144,10 +145,11 @@ public class enemyBaseController : MonoBehaviour {
 			break;
 		case EnemyState.DEAD:
 			explosionTime -= Time.deltaTime;
-			if(explosionTime < 0){
+			//if(explosionTime < 0){
 				DropItems();
+				Instantiate(explosionObject, this.transform.position, this.transform.rotation);
 				Destroy(gameObject);
-			}
+			//}
 			break;
 		}
 	}

@@ -79,11 +79,7 @@ public class scavengerController : enemyBaseController {
 				EnterState(EnemyState.DEAD);
 			break;
 		case EnemyState.DEAD:
-			explosionTime -= Time.deltaTime;
-			if(explosionTime < 0){
-				DropItems();
-				Destroy(gameObject);
-			}
+			base.UpdateState(m_currentState);
 			break;
 		}
 	}
