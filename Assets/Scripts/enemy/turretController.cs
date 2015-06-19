@@ -103,7 +103,7 @@ public class turretController : enemyBaseController {
 			break;
 		}
 	}
-	
+	/**
 	protected override void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag.Equals ("Projectile")) {
 			projectileController proj = other.gameObject.GetComponent<projectileController> ();
@@ -122,6 +122,7 @@ public class turretController : enemyBaseController {
 		}
 		
 	}
+	**/
 	
 	void OnCollisionStay(Collision other){
 		if (other.gameObject.Equals (player)) {

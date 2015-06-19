@@ -44,8 +44,13 @@ public class projectileController : MonoBehaviour {
 	}
 			
 	void OnTriggerEnter(Collider other){
-		if(!other.tag.Equals("Enemy") && !other.tag.Equals("Player"))
-			if(!isPiercing)
-				Destroy(gameObject);
+		Rigidbody r_body = other.gameObject.rigidbody;
+		if(r_body != null && !other.tag.Equals ("Player"))
+			r_body.AddForceAtPosition(5*(r_body.transform.position-m_shooter.transform.position), r_body.transform.position);
+		if (!other.tag.Equals ("Enemy") && !other.tag.Equals ("Player")) {
+
+			if (!isPiercing)
+				Destroy (gameObject);
+		}
 	}
 }

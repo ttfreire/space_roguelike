@@ -108,8 +108,8 @@ public class mineController : enemyBaseController {
 	void OnCollisionEnter(Collision other){
 		if(other.transform.tag.Equals("Player"))
 			SelfDestruct();
-		if (other.transform.tag.Equals ("Projectile"))
-			Destroy (other.gameObject);
+		//if (other.transform.tag.Equals ("Projectile"))
+		//	Destroy (other.gameObject);
 	}
 
 	protected override void OnTriggerEnter(Collider other){
