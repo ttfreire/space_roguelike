@@ -81,11 +81,7 @@ public class mineController : enemyBaseController {
 			break;
 			
 		case EnemyState.DEAD:
-			explosionTime -= Time.deltaTime;
-			if(explosionTime < 0){
-				DropItems();
-				Destroy(gameObject);
-			}
+			base.UpdateState(m_currentState);
 			break;
 		}
 	}
