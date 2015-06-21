@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class mineController : enemyBaseController {
-	public float m_pushForce;
+	public float m_pullForce;
 	public bool isEngaging = false;
 	public float explosionDamage;
 	float engagetime;
@@ -87,8 +87,8 @@ public class mineController : enemyBaseController {
 	}
 
 	void pullTarget(Rigidbody target){
-		Vector3 pullVector = (transform.position - target.transform.position) * m_pushForce;
-		target.AddForceAtPosition (pullVector, target.transform.position, ForceMode.Impulse);
+		Vector3 pullVector = (transform.position - target.transform.position) * m_pullForce;
+		target.AddForceAtPosition (pullVector, target.transform.position);
 	}
 
 	void SelfDestruct(){

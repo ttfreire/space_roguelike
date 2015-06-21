@@ -302,7 +302,7 @@ public class gameController : MonoBehaviour {
 		isEngaging = false;
 		yield return new WaitForSeconds (15.0f);
 		powerupOn = false;
-
+		playerController.p_controller.SelectCorrectArmFromPowerUp (0);
 	}
 
 	void ActivatePowerup(List<int> powerup){
@@ -322,12 +322,14 @@ public class gameController : MonoBehaviour {
 				break;
 			case 4:
 				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed + 1.0f;
+				playerController.p_controller.SelectCorrectArmFromPowerUp (1);
 				break;
 			case 5:
 				playerHealth.p_Health.m_currentOxygenLossRate = 0f;
 				break;
 			case 6:
 				playerHealth.p_Health.damageReductionDivider = 2;
+				playerController.p_controller.SelectCorrectArmFromPowerUp (2);
 				break;
 			}
 		}

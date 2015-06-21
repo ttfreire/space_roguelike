@@ -12,6 +12,7 @@ public class playerHealth : MonoBehaviour {
 	public float m_currentOxygenValue;
 	public float m_playerTotalOxygen;
 	public float damageReductionDivider;
+	public bool deathByDamage = false;
 	playerController p_control;
 	Camera m_camera;
 
@@ -37,6 +38,8 @@ public class playerHealth : MonoBehaviour {
 	public void TakeDamage(float damageTaken){
 		m_currentOxygenValue -= damageTaken / damageReductionDivider;
 		m_camera.GetComponent<CameraShake> ().enabled = true;
+		if (m_currentOxygenValue <= 0.0f)
+			deathByDamage = true;
 	}
 
 	public bool IsDead(){

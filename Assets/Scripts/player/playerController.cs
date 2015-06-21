@@ -5,7 +5,9 @@ public class playerController : MonoBehaviour {
 	public static playerController p_controller;
 	GameObject body;
 	public GameObject frontArm;
-	public GameObject backArm;
+	public Sprite frontArmNormal;
+	public Sprite frontArmVeloc;
+	public Sprite frontArmResist;
 
 	public bool isInsideRoom = false;
 	public Camera p_camera;
@@ -13,16 +15,17 @@ public class playerController : MonoBehaviour {
 	float cameraSizeinSpace = 15;
 
 	public int scrap1Quantity;
-	public int m_damageItemQuantity;
-	public int m_resistanceItemQuantity;
-	public int m_velocityItemQuantity;
-	public int m_volumeItemQuantity;
-	public int m_weaponApiece1Quantity;
-	public int m_weaponApiece2Quantity;
-	public int m_weaponApiece3Quantity;
-	public int m_weaponBpiece1Quantity;
-	public int m_weaponBpiece2Quantity;
-	public int m_weaponBpiece3Quantity;
+
+	[HideInInspector] public int m_damageItemQuantity;
+	[HideInInspector] public int m_resistanceItemQuantity;
+	[HideInInspector] public int m_velocityItemQuantity;
+	[HideInInspector] public int m_volumeItemQuantity;
+	[HideInInspector] public int m_weaponApiece1Quantity;
+	[HideInInspector] public int m_weaponApiece2Quantity;
+	[HideInInspector] public int m_weaponApiece3Quantity;
+	[HideInInspector] public int m_weaponBpiece1Quantity;
+	[HideInInspector] public int m_weaponBpiece2Quantity;
+	[HideInInspector] public int m_weaponBpiece3Quantity;
 	public bool hasKey = false;
 	public bool endlevel = false;
 	public int m_level = 1;
@@ -34,11 +37,12 @@ public class playerController : MonoBehaviour {
 	public string room;
 	protected Animator animBody;
 	protected Animator animFrontArm;
-	protected Animator animBackArm;
 	public bool isMovingBack = false;
 	public bool isMovingForward = false;
 	public bool isMovingUp = false;
 	public bool isMovingDown = false;
+	public int powerupType = 0;
+	public bool BackToMainTree = false;
 	float health;
 	void Awake(){
 		p_controller = this;
@@ -54,10 +58,10 @@ public class playerController : MonoBehaviour {
 		board = FindObjectOfType<BoardManager> ();
 		animBody = GetComponent<Animator>();
 		animFrontArm = transform.FindChild("Body").GetChild(0).GetComponent<Animator>();
-		animBackArm = transform.FindChild("Body").GetChild(1).GetComponent<Animator>();
 	}
 	
 	void Update () {
+		//BackToMainTree = false;
 		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {
 			if (Input.GetButtonUp ("Fire1"))
 				playerShoot.p_Shoot.Shoot ();
@@ -68,7 +72,10 @@ public class playerController : MonoBehaviour {
 				animBody.SetBool ("isMovingForward", isMovingForward);
 				animBody.SetBool ("isMovingUp", isMovingUp);
 				animBody.SetBool ("isMovingDown", isMovingDown);
+				animBody.SetBool ("BackToMainTree", BackToMainTree);
 				animBody.SetFloat ("health", playerHealth.p_Health.m_currentOxygenValue);
+				animBody.SetBool ("deathByDamage", playerHealth.p_Health.deathByDamage);
+				animBody.SetInteger ("powerupType", powerupType);
 			}
 		
 			if (playerHealth.p_Health.IsDead ())
@@ -153,21 +160,36 @@ public class playerController : MonoBehaviour {
 			auxScale.x = 1;
 			auxScale.y = 1;
 			frontArm.transform.localScale = auxScale;
-			backArm.transform.localScale = auxScale;
 			frontArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, -zRotationFront));
-			backArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, -zRotationBack));
 		}
 		else {
 			Vector3 auxScale = transform.localScale;
 			auxScale.x = -1;
 			auxScale.y = -1;
 			frontArm.transform.localScale = auxScale;
-			backArm.transform.localScale = auxScale;
 			frontArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, zRotationFront));
-			backArm.transform.rotation = Quaternion.Euler (new Vector3 (0, 0, zRotationBack));
 		}
 
 	}
 
+	public void SelectCorrectArmFromPowerUp(int powerup){
+		switch (powerup) {
+		case 0:
+			frontArm.GetComponent<SpriteRenderer>().sprite = frontArmNormal;
+			powerupType = 0;
+			BackToMainTree = true;
+			break;
+		case 1:
+			frontArm.GetComponent<SpriteRenderer>().sprite = frontArmVeloc;
+			powerupType = 1;
+			BackToMainTree = true;
+			break;
+		case 2:
+			frontArm.GetComponent<SpriteRenderer>().sprite = frontArmResist;
+			powerupType = 2;
+			BackToMainTree = true;
+			break;
+		}
+	}
 
 }
