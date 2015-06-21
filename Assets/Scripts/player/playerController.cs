@@ -76,6 +76,7 @@ public class playerController : MonoBehaviour {
 				animBody.SetFloat ("health", playerHealth.p_Health.m_currentOxygenValue);
 				animBody.SetBool ("deathByDamage", playerHealth.p_Health.deathByDamage);
 				animBody.SetInteger ("powerupType", powerupType);
+				BackToMainTree = false;
 			}
 		
 			if (playerHealth.p_Health.IsDead ())
