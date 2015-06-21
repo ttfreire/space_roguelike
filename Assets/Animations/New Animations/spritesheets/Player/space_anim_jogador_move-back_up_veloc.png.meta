@@ -1,47 +1,37 @@
 fileFormatVersion: 2
-guid: 9deeceee85740460cac870f0ef6e8202
+guid: 7550a2aab2aaf454682b1f36a80ccb24
 TextureImporter:
   fileIDToRecycleName:
-    21300000: space_anim_jogador_death-oxygen_up_veloc_0
-    21300002: space_anim_jogador_death-oxygen_up_veloc_1
-    21300004: space_anim_jogador_death-oxygen_up_veloc_2
-    21300006: space_anim_jogador_death-oxygen_up_veloc_3
-    21300008: space_anim_jogador_death-oxygen_up_veloc_4
-    21300010: space_anim_jogador_death-oxygen_up_veloc_5
-    21300012: space_anim_jogador_death-oxygen_up_veloc_6
-    21300014: space_anim_jogador_death-oxygen_up_veloc_7
-    21300016: space_anim_jogador_death-oxygen_up_veloc_8
-    21300018: space_anim_jogador_death-oxygen_up_veloc_9
-    21300020: space_anim_jogador_death-oxygen_up_veloc_10
-    21300022: space_anim_jogador_death-oxygen_up_veloc_11
-    21300024: space_anim_jogador_death-oxygen_up_veloc_12
-    21300026: space_anim_jogador_death-oxygen_up_veloc_13
-    21300028: space_anim_jogador_death-oxygen_up_veloc_14
-    21300030: space_anim_jogador_death-oxygen_up_veloc_15
-    21300032: space_anim_jogador_death-oxygen_up_veloc_16
-    21300034: space_anim_jogador_death-oxygen_up_veloc_17
-    21300036: space_anim_jogador_death-oxygen_up_veloc_18
-    21300038: space_anim_jogador_death-oxygen_up_veloc_19
-    21300040: space_anim_jogador_death-oxygen_up_veloc_20
-    21300042: space_anim_jogador_death-oxygen_up_veloc_21
-    21300044: space_anim_jogador_death-oxygen_up_veloc_22
-    21300046: space_anim_jogador_death-oxygen_up_veloc_23
-    21300048: space_anim_jogador_death-oxygen_up_veloc_24
-    21300050: space_anim_jogador_death-oxygen_up_veloc_25
-    21300052: space_anim_jogador_death-oxygen_up_veloc_26
-    21300054: space_anim_jogador_death-oxygen_up_veloc_27
-    21300056: space_anim_jogador_death-oxygen_up_veloc_28
-    21300058: space_anim_jogador_death-oxygen_up_veloc_29
-    21300060: space_anim_jogador_death-oxygen_up_veloc_30
-    21300062: space_anim_jogador_death-oxygen_up_veloc_31
-    21300064: space_anim_jogador_death-oxygen_up_veloc_32
-    21300066: space_anim_jogador_death-oxygen_up_veloc_33
-    21300068: space_anim_jogador_death-oxygen_up_veloc_34
-    21300070: space_anim_jogador_death-oxygen_up_veloc_35
-    21300072: space_anim_jogador_death-oxygen_up_veloc_36
-    21300074: space_anim_jogador_death-oxygen_up_veloc_37
-    21300076: space_anim_jogador_death-oxygen_up_veloc_38
-    21300078: space_anim_jogador_death-oxygen_up_veloc_39
+    21300000: space_anim_jogador_move-back_up_veloc_0
+    21300002: space_anim_jogador_move-back_up_veloc_1
+    21300004: space_anim_jogador_move-back_up_veloc_2
+    21300006: space_anim_jogador_move-back_up_veloc_3
+    21300008: space_anim_jogador_move-back_up_veloc_4
+    21300010: space_anim_jogador_move-back_up_veloc_5
+    21300012: space_anim_jogador_move-back_up_veloc_6
+    21300014: space_anim_jogador_move-back_up_veloc_7
+    21300016: space_anim_jogador_move-back_up_veloc_8
+    21300018: space_anim_jogador_move-back_up_veloc_9
+    21300020: space_anim_jogador_move-back_up_veloc_10
+    21300022: space_anim_jogador_move-back_up_veloc_11
+    21300024: space_anim_jogador_move-back_up_veloc_12
+    21300026: space_anim_jogador_move-back_up_veloc_13
+    21300028: space_anim_jogador_move-back_up_veloc_14
+    21300030: space_anim_jogador_move-back_up_veloc_15
+    21300032: space_anim_jogador_move-back_up_veloc_16
+    21300034: space_anim_jogador_move-back_up_veloc_17
+    21300036: space_anim_jogador_move-back_up_veloc_18
+    21300038: space_anim_jogador_move-back_up_veloc_19
+    21300040: space_anim_jogador_move-back_up_veloc_20
+    21300042: space_anim_jogador_move-back_up_veloc_21
+    21300044: space_anim_jogador_move-back_up_veloc_22
+    21300046: space_anim_jogador_move-back_up_veloc_23
+    21300048: space_anim_jogador_move-back_up_veloc_24
+    21300050: space_anim_jogador_move-back_up_veloc_25
+    21300052: space_anim_jogador_move-back_up_veloc_26
+    21300054: space_anim_jogador_move-back_up_veloc_27
+    21300056: space_anim_jogador_move-back_up_veloc_28
+    21300058: space_anim_jogador_move-back_up_veloc_29
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -83,67 +73,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: space_anim_jogador_death-oxygen_up_veloc_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 4800
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_1
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 4800
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_2
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 4800
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_3
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 4800
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_4
-      rect:
-        serializedVersion: 2
-        x: 3200
-        y: 4800
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_5
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 4800
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_6
+    - name: space_anim_jogador_move-back_up_veloc_0
       rect:
         serializedVersion: 2
         x: 0
@@ -153,7 +83,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_7
+    - name: space_anim_jogador_move-back_up_veloc_1
       rect:
         serializedVersion: 2
         x: 800
@@ -163,7 +93,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_8
+    - name: space_anim_jogador_move-back_up_veloc_2
       rect:
         serializedVersion: 2
         x: 1600
@@ -173,7 +103,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_9
+    - name: space_anim_jogador_move-back_up_veloc_3
       rect:
         serializedVersion: 2
         x: 2400
@@ -183,7 +113,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_10
+    - name: space_anim_jogador_move-back_up_veloc_4
       rect:
         serializedVersion: 2
         x: 3200
@@ -193,17 +123,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_11
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 4000
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_12
+    - name: space_anim_jogador_move-back_up_veloc_5
       rect:
         serializedVersion: 2
         x: 0
@@ -213,7 +133,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_13
+    - name: space_anim_jogador_move-back_up_veloc_6
       rect:
         serializedVersion: 2
         x: 800
@@ -223,7 +143,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_14
+    - name: space_anim_jogador_move-back_up_veloc_7
       rect:
         serializedVersion: 2
         x: 1600
@@ -233,7 +153,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_15
+    - name: space_anim_jogador_move-back_up_veloc_8
       rect:
         serializedVersion: 2
         x: 2400
@@ -243,7 +163,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_16
+    - name: space_anim_jogador_move-back_up_veloc_9
       rect:
         serializedVersion: 2
         x: 3200
@@ -253,17 +173,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_17
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 3200
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_18
+    - name: space_anim_jogador_move-back_up_veloc_10
       rect:
         serializedVersion: 2
         x: 0
@@ -273,7 +183,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_19
+    - name: space_anim_jogador_move-back_up_veloc_11
       rect:
         serializedVersion: 2
         x: 800
@@ -283,7 +193,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_20
+    - name: space_anim_jogador_move-back_up_veloc_12
       rect:
         serializedVersion: 2
         x: 1600
@@ -293,7 +203,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_21
+    - name: space_anim_jogador_move-back_up_veloc_13
       rect:
         serializedVersion: 2
         x: 2400
@@ -303,7 +213,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_22
+    - name: space_anim_jogador_move-back_up_veloc_14
       rect:
         serializedVersion: 2
         x: 3200
@@ -313,17 +223,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_23
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 2400
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_24
+    - name: space_anim_jogador_move-back_up_veloc_15
       rect:
         serializedVersion: 2
         x: 0
@@ -333,7 +233,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_25
+    - name: space_anim_jogador_move-back_up_veloc_16
       rect:
         serializedVersion: 2
         x: 800
@@ -343,7 +243,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_26
+    - name: space_anim_jogador_move-back_up_veloc_17
       rect:
         serializedVersion: 2
         x: 1600
@@ -353,7 +253,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_27
+    - name: space_anim_jogador_move-back_up_veloc_18
       rect:
         serializedVersion: 2
         x: 2400
@@ -363,7 +263,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_28
+    - name: space_anim_jogador_move-back_up_veloc_19
       rect:
         serializedVersion: 2
         x: 3200
@@ -373,17 +273,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_29
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 1600
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_30
+    - name: space_anim_jogador_move-back_up_veloc_20
       rect:
         serializedVersion: 2
         x: 0
@@ -393,7 +283,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_31
+    - name: space_anim_jogador_move-back_up_veloc_21
       rect:
         serializedVersion: 2
         x: 800
@@ -403,7 +293,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_32
+    - name: space_anim_jogador_move-back_up_veloc_22
       rect:
         serializedVersion: 2
         x: 1600
@@ -413,7 +303,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_33
+    - name: space_anim_jogador_move-back_up_veloc_23
       rect:
         serializedVersion: 2
         x: 2400
@@ -423,7 +313,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_34
+    - name: space_anim_jogador_move-back_up_veloc_24
       rect:
         serializedVersion: 2
         x: 3200
@@ -433,17 +323,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_35
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 800
-        width: 800
-        height: 800
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_36
+    - name: space_anim_jogador_move-back_up_veloc_25
       rect:
         serializedVersion: 2
         x: 0
@@ -453,7 +333,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_37
+    - name: space_anim_jogador_move-back_up_veloc_26
       rect:
         serializedVersion: 2
         x: 800
@@ -463,7 +343,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_38
+    - name: space_anim_jogador_move-back_up_veloc_27
       rect:
         serializedVersion: 2
         x: 1600
@@ -473,10 +353,20 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: space_anim_jogador_death-oxygen_up_veloc_39
+    - name: space_anim_jogador_move-back_up_veloc_28
       rect:
         serializedVersion: 2
         x: 2400
+        y: 0
+        width: 800
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_jogador_move-back_up_veloc_29
+      rect:
+        serializedVersion: 2
+        x: 3200
         y: 0
         width: 800
         height: 800
