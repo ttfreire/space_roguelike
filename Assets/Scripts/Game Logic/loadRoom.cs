@@ -27,7 +27,7 @@ public class loadRoom : MonoBehaviour {
 		board = FindObjectOfType<BoardManager> ();
 
 		p_control = FindObjectOfType<playerController>();
-		Debug.Log ("Room " + m_room + " spawned");
+
 
 	}
 	

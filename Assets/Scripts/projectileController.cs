@@ -47,7 +47,7 @@ public class projectileController : MonoBehaviour {
 		Rigidbody r_body = other.gameObject.rigidbody;
 		if(r_body != null && !other.tag.Equals ("Player"))
 			r_body.AddForceAtPosition(5*(r_body.transform.position-m_shooter.transform.position), r_body.transform.position);
-		if (!other.tag.Equals ("Enemy") && !other.tag.Equals ("Player")) {
+		if (!other.tag.Equals ("Enemy") && !other.tag.Equals ("Player") && !other.tag.Equals ("Space")) {
 
 			if (!isPiercing)
 				Destroy (gameObject);
