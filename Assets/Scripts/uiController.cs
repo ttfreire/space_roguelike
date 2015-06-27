@@ -19,6 +19,14 @@ public class uiController : MonoBehaviour {
 			**/
 	}
 
+	public void TurnMenuOn(Canvas menu){
+		menu.gameObject.SetActive (true);
+	}
+
+	public void TurnMenuOff(Canvas menu){
+		menu.gameObject.SetActive (false);
+	}
+
 	public void LoadScene(string scene){
 		Application.LoadLevel (scene);
 	}

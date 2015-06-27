@@ -13,10 +13,7 @@ public class gameController : MonoBehaviour {
 	public static gameController control;
 	public GameStates m_currentGameState;
 	public bool generateLevel;
-	public Text victory;
 	public Image m_currentOxygen;
-	public Text itemCount;
-	public Text weaponCount;
 
 	playerShoot m_pShoot;
 	playerController m_pControl;
@@ -48,7 +45,7 @@ public class gameController : MonoBehaviour {
 		m_pControl = player.GetComponent<playerController> ();
 		m_pHealth = player.GetComponent<playerHealth> ();
 		boardScript = GetComponent<BoardManager>();
-		m_currentGameState = GameStates.PAUSED;
+		m_currentGameState = GameStates.RUNNING;
 		powerupAnimator = FindObjectOfType<powerupDisplayController> ().transform.GetChild(0).GetComponent<Animator> ();
 	}
 
@@ -65,16 +62,6 @@ public class gameController : MonoBehaviour {
 		powerupAnimator.SetBool ("isEngaging", isEngaging);
 		UpdateState ();
 		DebugAndTestShortcuts ();
-		itemCount.text = (playerController.p_controller.m_damageItemQuantity + 
-						playerController.p_controller.m_resistanceItemQuantity + 
-						playerController.p_controller.m_velocityItemQuantity +
-						playerController.p_controller.m_volumeItemQuantity).ToString();
-		weaponCount.text = (playerController.p_controller.m_weaponApiece1Quantity +
-		                    playerController.p_controller.m_weaponApiece2Quantity +
-		                    playerController.p_controller.m_weaponApiece3Quantity +
-		                    playerController.p_controller.m_weaponBpiece1Quantity +
-		                    playerController.p_controller.m_weaponBpiece2Quantity +
-		                    playerController.p_controller.m_weaponBpiece3Quantity).ToString();
 	}
 
 	public void EnterState(GameStates state){
@@ -92,11 +79,13 @@ public class gameController : MonoBehaviour {
 			Time.timeScale = 0;
 			//DisplayEndGameFeedback(GameEndTypes.VICTORY);
 			vitoria.gameObject.SetActive(true);
+			GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
 			break;
 		case GameStates.GAMEOVER:
 			//Time.timeScale = 0;
 			//DisplayEndGameFeedback(GameEndTypes.DEFEAT);
 			derrota.gameObject.SetActive(true);
+			GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
 			break;
 		}
 	}
@@ -140,33 +129,7 @@ public class gameController : MonoBehaviour {
 		m_currentOxygen.fillAmount = m_pHealth.m_currentOxygenValue/m_pHealth.m_playerTotalOxygen;
 	}
 
-	void DisplayEndGameFeedback(GameEndTypes endType){
-		if (endType.Equals(GameEndTypes.VICTORY)) {
-			//Time.timeScale = 0;
-			victory.text = "Victory!";
-		}
-		if(endType.Equals(GameEndTypes.DEFEAT)){
-			//Time.timeScale = 0;
-			victory.text = "Defeat!";
-			//Destroy (player);
-		}
 
-		GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
-	}
-/**
-	void HideEnemiesFOV(){
-		GameObject[] FOVs = GameObject.FindGameObjectsWithTag("FOV");
-		foreach(GameObject fov in FOVs){
-			MeshRenderer fovMesh = fov.gameObject.GetComponent<MeshRenderer>();
-			fovMesh.enabled = !fovMesh.enabled;
-		}
-	}
-**/
-	public void KillAllEnemies(){
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		foreach (GameObject enemy in enemies)
-			Destroy (enemy.gameObject);
-	}
 
 	public void PauseUnpauseGame(){
 		//Time.timeScale = 1.0f - Time.timeScale;
@@ -177,17 +140,10 @@ public class gameController : MonoBehaviour {
 	}
 
 	public void DebugAndTestShortcuts(){
-		//if (Input.GetKeyUp (KeyCode.U))
-		//	player.GetComponent<upgradeController> ().UpgradetoLevel (m_pControl.m_level);
-		
-		if (Input.GetKeyUp (KeyCode.I))
-			m_pControl.scrap1Quantity += 5;
 		
 		if (Input.GetKeyUp (KeyCode.R))
 			Application.LoadLevel (Application.loadedLevel);
-		
-		if (Input.GetKeyUp (KeyCode.T))
-			KillAllEnemies();
+
 
 	}
 
