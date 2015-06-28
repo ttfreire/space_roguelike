@@ -12,7 +12,6 @@ public class cameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {
 			if (player.GetComponent<playerController> ().isInsideRoom) {
 				if (room == null)
 					room = GameObject.Find (player.GetComponent<playerController> ().room);
@@ -22,6 +21,5 @@ public class cameraController : MonoBehaviour {
 				room = null;
 				this.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z + distance);
 			}
-		}
 	}
 }

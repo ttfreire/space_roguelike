@@ -45,7 +45,7 @@ public class gameController : MonoBehaviour {
 		m_pControl = player.GetComponent<playerController> ();
 		m_pHealth = player.GetComponent<playerHealth> ();
 		boardScript = GetComponent<BoardManager>();
-		m_currentGameState = GameStates.RUNNING;
+		//m_currentGameState = GameStates.RUNNING;
 		powerupAnimator = FindObjectOfType<powerupDisplayController> ().transform.GetChild(0).GetComponent<Animator> ();
 	}
 
@@ -137,6 +137,14 @@ public class gameController : MonoBehaviour {
 			EnterState (GameStates.PAUSED);
 		else
 			EnterState (GameStates.RUNNING);
+	}
+
+	public void PauseGame(){
+		EnterState (GameStates.PAUSED);
+	}
+
+	public void UnpauseGame(){
+		EnterState (GameStates.RUNNING);
 	}
 
 	public void DebugAndTestShortcuts(){
