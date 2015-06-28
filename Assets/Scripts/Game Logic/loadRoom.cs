@@ -16,7 +16,6 @@ public class loadRoom : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		isLoaded = false;
 		gameController game = GameObject.Find ("GameController").GetComponent<gameController> ();
 		do {
 			m_room = m_PossibleRoomsToSpawn [Random.Range (0, m_PossibleRoomsToSpawn.Count)];
@@ -33,15 +32,17 @@ public class loadRoom : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isLoaded) {
+		if (isLoaded && m_roomObject != null) {
 			Transform enemies = m_roomObject.transform.FindChild("enemies");
-			int enemiesQuantity = enemies.childCount;
-			if (enemiesQuantity == 0 && !cleanedRoom){
-				Transform items = m_roomObject.transform.FindChild("items");
-				for(int i = 0; i < items.childCount; i++)
-					items.GetChild(i).gameObject.SetActive (true);
-				cleanedRoom = true;
-				//board.numberOfRoomsToUnlockKey--;
+			if(enemies != null){
+				int enemiesQuantity = enemies.childCount;
+				if (enemiesQuantity == 0 && !cleanedRoom){
+					Transform items = m_roomObject.transform.FindChild("items");
+					for(int i = 0; i < items.childCount; i++)
+						items.GetChild(i).gameObject.SetActive (true);
+					cleanedRoom = true;
+					//board.numberOfRoomsToUnlockKey--;
+				}
 			}
 		}
 	}

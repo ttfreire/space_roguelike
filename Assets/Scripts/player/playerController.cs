@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour {
 	public Sprite frontArmVeloc;
 	public Sprite frontArmResist;
 
-	public bool isInsideRoom = false;
+	public bool isInsideRoom = true;
 	public Camera p_camera;
 	float cameraSizeinRoom = 15;
 	float cameraSizeinSpace = 15;
