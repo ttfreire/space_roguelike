@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public enum GameStates {RUNNING, PAUSED, VICTORY, GAMEOVER};
+public enum GameStates {INTRO, RUNNING, PAUSED, VICTORY, GAMEOVER};
 
 public class gameController : MonoBehaviour {
 
@@ -29,6 +29,7 @@ public class gameController : MonoBehaviour {
 
 	public Canvas vitoria;
 	public Canvas derrota;
+	public Canvas missao;
 
 	public List<GameObject> PowerUpItemList = new List<GameObject>();
 	bool powerupOn = false;
@@ -36,8 +37,14 @@ public class gameController : MonoBehaviour {
 	Animator powerupAnimator;
 	bool isEngaging = false;
 
+	public GameObject teleportobj;
+	Animator teleportAnimator;
+
+	SpriteRenderer body;
+	SpriteRenderer arm;
 	// Use this for initialization
 	void Awake () {
+		//EnterState (GameStates.INTRO);
 		control = this;
 		Time.timeScale = 1;
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -47,6 +54,10 @@ public class gameController : MonoBehaviour {
 		boardScript = GetComponent<BoardManager>();
 		//m_currentGameState = GameStates.RUNNING;
 		powerupAnimator = FindObjectOfType<powerupDisplayController> ().transform.GetChild(0).GetComponent<Animator> ();
+		teleportAnimator = teleportobj.GetComponent<Animator> ();
+		body = m_pControl.GetComponent<SpriteRenderer> ();
+		arm = m_pControl.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer> ();
+		missao.gameObject.SetActive(false);
 	}
 
 	void Start(){
@@ -54,7 +65,6 @@ public class gameController : MonoBehaviour {
 		destroyableCount = boardScript.specialRoomsQuantity;
 		if (generateLevel)
 			boardScript.SetupScene (level);
-		EnterState (m_currentGameState);
 	}
 	
 
@@ -69,6 +79,11 @@ public class gameController : MonoBehaviour {
 		m_currentGameState = state;
 		
 		switch (m_currentGameState) {
+		case GameStates.INTRO:
+			body.enabled = false;
+			arm.enabled = false;
+			Time.timeScale = 1;
+			break;
 		case GameStates.RUNNING:
 			Time.timeScale = 1;
 			break;
@@ -92,6 +107,11 @@ public class gameController : MonoBehaviour {
 
 	public void UpdateState(){
 		switch (m_currentGameState) {
+		case GameStates.INTRO:
+			if (teleportAnimator.GetCurrentAnimatorStateInfo (0).IsName ("End")) {
+				EnterState(GameStates.PAUSED);
+			}
+			break;
 		case GameStates.RUNNING:
 
 			VerifyPowerUpItemList();
@@ -114,6 +134,11 @@ public class gameController : MonoBehaviour {
 	
 	public void ExitState(GameStates state){
 		switch (m_currentGameState) {
+		case GameStates.INTRO:
+			body.enabled = true;
+			arm.enabled = true;
+			missao.gameObject.SetActive(true);
+			break;
 		case GameStates.RUNNING:
 			//Time.timeScale = 0;
 			break;
