@@ -8,18 +8,21 @@ public class pecaController : MonoBehaviour {
 	float m_blinkingTimeMax = 0.25f;
 	bool isTakingDamage = false;
 	Color m_materialColor;
+	Animator anim;
 
 	// Use this for initialization
 	void Awake () {
 		m_materialColor = gameObject.renderer.material.color;
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		DamageFeedback ();
+		anim.SetFloat ("health", m_health);
 		if (IsDead ()) {
-			gameController.control.UpdateDestroyablesCount ();
-			Destroy (this.gameObject);
+			//gameController.control.UpdateDestroyablesCount ();
+			//Destroy (this.gameObject);
 		}
 	}
 
@@ -50,7 +53,7 @@ public class pecaController : MonoBehaviour {
 	}
 	
 	public bool IsDead(){
-		if (m_health <= 0.0f)
+		if (m_health < 0.1f)
 			return true;
 		else
 			return false;
