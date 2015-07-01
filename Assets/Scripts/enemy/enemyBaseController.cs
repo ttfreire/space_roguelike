@@ -211,7 +211,7 @@ public class enemyBaseController : MonoBehaviour {
 
 	protected void DropItems(){
 		if(ItemsDrop.Count > 0)
-			Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count)], this.transform.position, this.transform.rotation);
+			Instantiate(ItemsDrop[Random.Range(0, ItemsDrop.Count)], this.transform.position, Quaternion.identity);
 	}
 	
 }

@@ -20,6 +20,7 @@ public class itemController : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		transform.rotation = Quaternion.identity;
 		switch (m_itemType) {
 		case ItemType.OXYGEN:
 			m_oxygen = m_value;
