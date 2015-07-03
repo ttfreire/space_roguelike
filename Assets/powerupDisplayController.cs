@@ -10,6 +10,7 @@ public class powerupDisplayController : MonoBehaviour {
 	public List<Sprite> piercingSprites;
 	public List<Sprite> velocitySprites;
 	public List<Image> powerupDisplay;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -17,6 +18,7 @@ public class powerupDisplayController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(playerController.p_controller)
 		ClearPowerupListSprites ();
 		if (gameController.control.PowerUpItemList.Count > 0) {
 			for (int i = gameController.control.PowerUpItemList.Count-1; i >=0 ; i--) {

@@ -22,13 +22,12 @@ public class playerShoot : MonoBehaviour {
 	AudioSource source;
 	Vector3 shootDirection;
 	float m_nextShot;
-	Camera m_camera;
+	public Camera m_camera;
 	Rigidbody m_rigidbody;
 	public ProjectileType currentAmmoType;
 	void Awake () {
 		p_Shoot = this;
 		m_rigidbody = rigidbody;
-		m_camera = FindObjectOfType<Camera> ();
 		source = GetComponent <AudioSource>();
 		projectileSprite = projectileSpriteNormal;
 		currentAmmoType = ProjectileType.NORMAL;

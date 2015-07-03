@@ -42,6 +42,9 @@ public class gameController : MonoBehaviour {
 
 	SpriteRenderer body;
 	SpriteRenderer arm;
+
+	public Canvas powerupAnimationCanvas;
+
 	// Use this for initialization
 	void Awake () {
 		//EnterState (GameStates.INTRO);
@@ -259,6 +262,7 @@ public class gameController : MonoBehaviour {
 			Removepowerups();
 			PowerUpItemList.Clear ();
 			ActivatePowerup(powerupNumber);
+
 			StartCoroutine (powerupOff ());
 		}
 
@@ -295,6 +299,7 @@ public class gameController : MonoBehaviour {
 	}
 
 	void ActivatePowerup(List<int> powerup){
+		powerupAnimationCanvas.gameObject.SetActive (true);
 		for (int i = 0; i < powerup.Count; i++) {
 			switch (powerup[i]) {
 			case 0:
@@ -325,6 +330,7 @@ public class gameController : MonoBehaviour {
 	}
 
 	void Removepowerups(){
+		powerupAnimationCanvas.gameObject.SetActive (false);
 		playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
 		playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed;
 		playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
