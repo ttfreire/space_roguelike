@@ -115,8 +115,9 @@ public class playerController : MonoBehaviour {
 		}
 
 		if (other.tag.Equals ("Finish") && hasDiamond) {
-			gameController.control.EnterState(GameStates.VICTORY);
-			Debug.Log("Diamond Dogs");
+			gameController.control.isDiamondCollected = true;
+			Destroy(gameController.control.DiamondObject.GetComponent<FixedJoint>());
+			gameController.control.DiamondObject.transform.position = other.transform.position;
 		}
 	}
 

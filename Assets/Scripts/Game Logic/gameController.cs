@@ -25,12 +25,13 @@ public class gameController : MonoBehaviour {
 
 	public List<int> spawnedRoomNumbers;
 
-	bool isDiamondCollected = false;
+	public bool isDiamondCollected = false;
 	public GameObject DiamondObject;
 
 	public Canvas vitoria;
 	public Canvas derrota;
 	public Canvas missao;
+	public Canvas bossCanvas;
 
 	public List<GameObject> PowerUpItemList = new List<GameObject>();
 	bool powerupOn = false;
@@ -43,6 +44,9 @@ public class gameController : MonoBehaviour {
 
 	SpriteRenderer body;
 	SpriteRenderer arm;
+
+	public GameObject m_boss;
+	public Image m_bossHealth;
 
 	public Canvas powerupAnimationCanvas;
 
@@ -62,6 +66,7 @@ public class gameController : MonoBehaviour {
 		body = m_pControl.GetComponent<SpriteRenderer> ();
 		arm = m_pControl.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer> ();
 		missao.gameObject.SetActive(false);
+		m_boss = null;
 	}
 
 	void Start(){
@@ -118,7 +123,14 @@ public class gameController : MonoBehaviour {
 
 			VerifyPowerUpItemList();
 			OxygenDisplayFeedback ();
-
+			if(m_boss!= null){
+				if(!m_boss.GetComponent<pecaController>().IsDead()){
+					bossCanvas.gameObject.SetActive(true);
+					BossHealthDisplayFeedback();
+				}
+				else
+					bossCanvas.gameObject.SetActive(false);
+			}
 			if (isDiamondCollected)
 				EnterState(GameStates.VICTORY);
 
@@ -152,10 +164,15 @@ public class gameController : MonoBehaviour {
 			break;
 		}
 	}
+
 	void OxygenDisplayFeedback(){
 		m_currentOxygen.fillAmount = m_pHealth.m_currentOxygenValue/m_pHealth.m_playerTotalOxygen;
 	}
 
+
+	void BossHealthDisplayFeedback(){
+		m_bossHealth.fillAmount = m_boss.GetComponent<pecaController>().m_currentHealth/m_boss.GetComponent<pecaController>().m_health;
+	}
 
 
 	public void PauseUnpauseGame(){

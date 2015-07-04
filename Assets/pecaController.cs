@@ -4,6 +4,7 @@ using System.Collections;
 public class pecaController : MonoBehaviour {
 
 	public float m_health;
+	public float m_currentHealth;
 	float m_blinkingTime = 0.0f ;
 	float m_blinkingTimeMax = 0.25f;
 	bool isTakingDamage = false;
@@ -14,12 +15,14 @@ public class pecaController : MonoBehaviour {
 	void Awake () {
 		m_materialColor = gameObject.renderer.material.color;
 		anim = GetComponent<Animator> ();
+		m_currentHealth = m_health;
+		gameController.control.m_boss = this.gameObject;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		DamageFeedback ();
-		anim.SetFloat ("health", m_health);
+		anim.SetFloat ("health", m_currentHealth);
 		if (IsDead ()) {
 			gameController.control.DiamondObject.SetActive(true);
 			playerController.p_controller.hasDiamond = true;
@@ -48,13 +51,13 @@ public class pecaController : MonoBehaviour {
 	}
 
 	public void TakeDamage(float damageTaken){
-		m_health -= damageTaken;
+		m_currentHealth -= damageTaken;
 		isTakingDamage = true;
 		
 	}
 	
 	public bool IsDead(){
-		if (m_health < 0.1f)
+		if (m_currentHealth < 0.1f)
 			return true;
 		else
 			return false;
