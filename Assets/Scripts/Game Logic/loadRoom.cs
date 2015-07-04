@@ -51,7 +51,7 @@ public class loadRoom : MonoBehaviour {
 		Application.LoadLevelAdditive (roomScene);
 		yield return 0;
 		GameObject room = GameObject.Find(roomScene);
-		Vector3 roomNewPosition = transform.position + new Vector3 (-15, 0, 200);
+		Vector3 roomNewPosition = transform.position + new Vector3 (-15, 0, -200);
 		room.transform.position = roomNewPosition;
 		m_roomObject = room;
 		isLoaded = true;

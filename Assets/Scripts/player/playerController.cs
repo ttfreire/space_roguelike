@@ -14,7 +14,6 @@ public class playerController : MonoBehaviour {
 	float cameraSizeinRoom = 15;
 	float cameraSizeinSpace = 15;
 
-	public int scrap1Quantity;
 
 	[HideInInspector] public int m_damageItemQuantity;
 	[HideInInspector] public int m_resistanceItemQuantity;
@@ -26,14 +25,7 @@ public class playerController : MonoBehaviour {
 	[HideInInspector] public int m_weaponBpiece1Quantity;
 	[HideInInspector] public int m_weaponBpiece2Quantity;
 	[HideInInspector] public int m_weaponBpiece3Quantity;
-	public bool hasKey = false;
-	public bool endlevel = false;
-	public int m_level = 1;
 
-	public int currentChunkRow = 0;
-	public int currentChunkColumn = 0;
-
-	BoardManager board;
 	public string room;
 	protected Animator animBody;
 	protected Animator animFrontArm;
@@ -44,6 +36,7 @@ public class playerController : MonoBehaviour {
 	public int powerupType = 0;
 	public bool BackToMainTree = false;
 	float health;
+	public bool hasDiamond = false;
 	void Awake(){
 		p_controller = this;
 		body = transform.FindChild ("Body").gameObject;
@@ -51,10 +44,7 @@ public class playerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		scrap1Quantity = 0;
-		currentChunkColumn = 0;
-		currentChunkRow = 0;
-		board = FindObjectOfType<BoardManager> ();
+
 		animBody = GetComponent<Animator>();
 		animFrontArm = transform.FindChild("Body").GetChild(0).GetComponent<Animator>();
 	}
@@ -96,9 +86,6 @@ public class playerController : MonoBehaviour {
 		if(other.gameObject.tag.Equals ("Enemy"))
 			playerHealth.p_Health.TakeDamage (0.05f);
 
-		if (other.gameObject.tag.Equals ("FinalRoom") && hasKey) {
-			endlevel = true;
-		}
 	}
 
 	void OnTriggerEnter(Collider other){
@@ -126,13 +113,18 @@ public class playerController : MonoBehaviour {
 			itemController i_control = other.gameObject.GetComponent<itemController>();
 			i_control.PlayerCollectItem(gameObject);
 		}
+
+		if (other.tag.Equals ("Finish") && hasDiamond) {
+			gameController.control.EnterState(GameStates.VICTORY);
+			Debug.Log("Diamond Dogs");
+		}
 	}
 
 	public void EnterRoom(){
 		if (!isInsideRoom) {
 			isInsideRoom = true;
 			p_camera.orthographicSize = cameraSizeinRoom;
-			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 200);
+			Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -200);
 			gameObject.transform.position = pos;
 
 		}

@@ -25,7 +25,8 @@ public class gameController : MonoBehaviour {
 
 	public List<int> spawnedRoomNumbers;
 
-	int destroyableCount;
+	bool isDiamondCollected = false;
+	public GameObject DiamondObject;
 
 	public Canvas vitoria;
 	public Canvas derrota;
@@ -64,8 +65,6 @@ public class gameController : MonoBehaviour {
 	}
 
 	void Start(){
-		//destroyableCount = boardScript.chunkSpecialRoomTiles.Count;
-		destroyableCount = boardScript.specialRoomsQuantity;
 		if (generateLevel)
 			boardScript.SetupScene (level);
 	}
@@ -120,7 +119,7 @@ public class gameController : MonoBehaviour {
 			VerifyPowerUpItemList();
 			OxygenDisplayFeedback ();
 
-			if (destroyableCount == 0)
+			if (isDiamondCollected)
 				EnterState(GameStates.VICTORY);
 
 			if(m_pHealth.IsDead())
@@ -182,11 +181,7 @@ public class gameController : MonoBehaviour {
 
 
 	}
-
-	public void UpdateDestroyablesCount(){
-		if(destroyableCount > 0)
-			destroyableCount--;
-	}
+	
 
 	public void AddItemToPowerUpItemList(GameObject item){
 		if (PowerUpItemList.Count == 3) {
@@ -336,5 +331,8 @@ public class gameController : MonoBehaviour {
 		playerHealth.p_Health.m_currentOxygenLossRate = playerHealth.p_Health.m_OxygenLossRate;
 		playerHealth.p_Health.damageReductionDivider = 1;
 	}
-	
+
+	public void Exitgame(){
+		Application.Quit ();
+	}
 }

@@ -25,9 +25,6 @@ public class itemController : MonoBehaviour {
 		case ItemType.OXYGEN:
 			m_oxygen = m_value;
 			break;
-		case ItemType.SCRAP1:
-			m_scrapQuantity = Mathf.RoundToInt(m_value);
-			break;
 		case ItemType.DAMAGE:
 			m_damageItemQuantity = Mathf.RoundToInt(m_value);
 			break;
@@ -47,11 +44,6 @@ public class itemController : MonoBehaviour {
 			playerHealth p_health = player.GetComponent<playerHealth>();
 			p_health.m_currentOxygenValue += m_oxygen;
 			Destroy (gameObject);
-			break;
-		case ItemType.SCRAP1:
-			p_control.scrap1Quantity++;
-			Destroy (gameObject);
-			//gameController.control.scrap1.text = p_control.scrap1Quantity.ToString();
 			break;
 		case ItemType.DAMAGE:
 			p_control.m_damageItemQuantity++;

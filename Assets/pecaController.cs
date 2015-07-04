@@ -21,8 +21,9 @@ public class pecaController : MonoBehaviour {
 		DamageFeedback ();
 		anim.SetFloat ("health", m_health);
 		if (IsDead ()) {
-			//gameController.control.UpdateDestroyablesCount ();
-			//Destroy (this.gameObject);
+			gameController.control.DiamondObject.SetActive(true);
+			playerController.p_controller.hasDiamond = true;
+			Destroy (this.gameObject);
 		}
 	}
 
