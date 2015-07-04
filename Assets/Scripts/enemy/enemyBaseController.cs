@@ -43,11 +43,14 @@ public class enemyBaseController : MonoBehaviour {
 		m_healthController = GetComponent<enemyHealth> ();
 		m_sightController = GetComponent<enemySight> ();
 		m_shootController = GetComponent<enemyShoot> ();
-		m_camera = FindObjectOfType<Camera> ();
+
 		player = GameObject.FindGameObjectWithTag ("Player");
 		anim = GetComponent<Animator>();
 	}
 
+	void Start(){
+		m_camera = playerController.p_controller.p_camera;
+	}
 	// Update is called once per frame
 	protected virtual void Update () {
 		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {

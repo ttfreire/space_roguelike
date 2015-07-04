@@ -19,10 +19,14 @@ public class playerHealth : MonoBehaviour {
 	void Awake () {
 		p_Health = this;
 		m_currentOxygenValue = m_playerTotalOxygen;
-		m_camera = FindObjectOfType<Camera> ();
+
 		p_control = GetComponent<playerController> ();
 		m_currentOxygenLossRate = m_OxygenLossRate;
 		damageReductionDivider = 1;
+	}
+
+	void Start(){
+		m_camera = playerController.p_controller.p_camera;
 	}
 	
 	// Update is called once per frame

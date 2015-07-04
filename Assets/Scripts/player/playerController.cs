@@ -52,7 +52,6 @@ public class playerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		scrap1Quantity = 0;
-		p_camera = transform.parent.FindChild("PlayerCamera").camera;
 		currentChunkColumn = 0;
 		currentChunkRow = 0;
 		board = FindObjectOfType<BoardManager> ();
