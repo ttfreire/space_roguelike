@@ -34,7 +34,8 @@ public class gameController : MonoBehaviour {
 	public Canvas bossCanvas;
 
 	public List<GameObject> PowerUpItemList = new List<GameObject>();
-	bool powerupOn = false;
+	public bool canActivatePowerup = false;
+	public bool powerupIsActive = false;
 
 	Animator powerupAnimator;
 	bool isEngaging = false;
@@ -49,6 +50,9 @@ public class gameController : MonoBehaviour {
 	public Image m_bossHealth;
 
 	public Canvas powerupAnimationCanvas;
+	public float m_powerupDurationSeconds;
+
+	public List<Canvas> powerupFeedbacks;
 
 	// Use this for initialization
 	void Awake () {
@@ -216,28 +220,28 @@ public class gameController : MonoBehaviour {
 			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
 			**/
 
-			if (!powerupOn)
+			if (!canActivatePowerup)
 				Removepowerups ();
 				
 		if (PowerUpItemList.Count == 3){
 			if (AllItensFromType (ItemType.DAMAGE)){
 				powerupNumber.Add(0);
-				powerupOn = true;
+				canActivatePowerup = true;
 				isEngaging = true;
 			}
 			if (AllItensFromType (ItemType.VELOCITY)){
 				powerupNumber.Add(1);
-				powerupOn = true;
+				canActivatePowerup = true;
 				isEngaging = true;
 			}
 			if (AllItensFromType (ItemType.PIERCING)){
 				powerupNumber.Add(2);
-				powerupOn = true;
+				canActivatePowerup = true;
 				isEngaging = true;
 			}
 			if (AllItensFromType (ItemType.AREA)){
 				powerupNumber.Add(3);
-				powerupOn = true;
+				canActivatePowerup = true;
 				isEngaging = true;
 			}
 		}
@@ -249,28 +253,28 @@ public class gameController : MonoBehaviour {
 		}
 		**/
 
-			if(!powerupOn){
+			if(!canActivatePowerup){
 				Removepowerups();
 			}
 		if (PowerUpItemList.Count == 3){
 			if (AllItensFromShape (ItemShape.TRIANGLE)){
 				powerupNumber.Add(4);
-				powerupOn = true;
+				canActivatePowerup = true;
 				isEngaging = true;
 			}
 			if (AllItensFromShape (ItemShape.SQUARE)){
 				powerupNumber.Add(5);
-				powerupOn = true;
+				canActivatePowerup = true;
 				isEngaging = true;
 			}
 			if (AllItensFromShape (ItemShape.PENTAGON)){
 				powerupNumber.Add(6);
-				powerupOn = true;
+				canActivatePowerup = true;
 				isEngaging = true;
 			}
 		}
 
-		if (powerupOn && PowerUpItemList.Count == 3 && Input.GetKey (KeyCode.E)) {
+		if (canActivatePowerup && PowerUpItemList.Count == 3 && Input.GetKey (KeyCode.E)) {
 			Removepowerups();
 			PowerUpItemList.Clear ();
 			ActivatePowerup(powerupNumber);
@@ -305,37 +309,49 @@ public class gameController : MonoBehaviour {
 	IEnumerator powerupOff ()
 	{
 		isEngaging = false;
-		yield return new WaitForSeconds (15.0f);
-		powerupOn = false;
+		yield return new WaitForSeconds (m_powerupDurationSeconds);
+		canActivatePowerup = false;
+		powerupIsActive = false;
 		playerController.p_controller.SelectCorrectArmFromPowerUp (0);
+
+		foreach (Canvas feedback in powerupFeedbacks)
+			feedback.gameObject.SetActive (false);
 	}
 
 	void ActivatePowerup(List<int> powerup){
 		powerupAnimationCanvas.gameObject.SetActive (true);
+		powerupIsActive = true;
 		for (int i = 0; i < powerup.Count; i++) {
 			switch (powerup[i]) {
 			case 0:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.DAMAGE;
+				powerupFeedbacks[0].gameObject.SetActive(true);
 				break;
 			case 1:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.VELOCITY;
+				powerupFeedbacks[1].gameObject.SetActive(true);
 				break;
 			case 2:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
+				powerupFeedbacks[2].gameObject.SetActive(true);
 				break;
 			case 3:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
+				powerupFeedbacks[3].gameObject.SetActive(true);
 				break;
 			case 4:
 				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed + 1.0f;
 				playerController.p_controller.SelectCorrectArmFromPowerUp (1);
+				powerupFeedbacks[4].gameObject.SetActive(true);
 				break;
 			case 5:
 				playerHealth.p_Health.m_currentOxygenLossRate = 0f;
+				powerupFeedbacks[5].gameObject.SetActive(true);
 				break;
 			case 6:
 				playerHealth.p_Health.damageReductionDivider = 2;
 				playerController.p_controller.SelectCorrectArmFromPowerUp (2);
+				powerupFeedbacks[6].gameObject.SetActive(true);
 				break;
 			}
 		}

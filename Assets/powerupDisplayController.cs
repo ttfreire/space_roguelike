@@ -10,6 +10,7 @@ public class powerupDisplayController : MonoBehaviour {
 	public List<Sprite> piercingSprites;
 	public List<Sprite> velocitySprites;
 	public List<Image> powerupDisplay;
+	float powerupCounter;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,15 @@ public class powerupDisplayController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(playerController.p_controller)
+		//if(playerController.p_controller)
+		if (gameController.control.powerupIsActive) {
+			transform.GetChild (1).GetComponent<Image>().enabled = true;
+			powerupCounter -= Time.deltaTime;
+			transform.GetChild (1).GetComponent<Image> ().fillAmount = powerupCounter / gameController.control.m_powerupDurationSeconds;
+		} else {
+			transform.GetChild (1).GetComponent<Image>().enabled = false;
+			powerupCounter = gameController.control.m_powerupDurationSeconds;
+		}
 		ClearPowerupListSprites ();
 		if (gameController.control.PowerUpItemList.Count > 0) {
 			for (int i = gameController.control.PowerUpItemList.Count-1; i >=0 ; i--) {
