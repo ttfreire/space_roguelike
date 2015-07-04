@@ -53,6 +53,7 @@ public class gameController : MonoBehaviour {
 	public float m_powerupDurationSeconds;
 
 	public List<Canvas> powerupFeedbacks;
+	List<int> powerupNumber;
 
 	// Use this for initialization
 	void Awake () {
@@ -214,7 +215,7 @@ public class gameController : MonoBehaviour {
 	}
 
 	void VerifyPowerUpItemList(){
-		List<int> powerupNumber = new List<int>();
+		powerupNumber = new List<int>();
 		/**
 		if ((PowerUpItemList.Count == 0 && !powerupOn) || PowerUpItemList.Count == 1 || PowerUpItemList.Count == 2)
 			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
@@ -223,7 +224,7 @@ public class gameController : MonoBehaviour {
 			if (!canActivatePowerup)
 				Removepowerups ();
 				
-		if (PowerUpItemList.Count == 3){
+		if (PowerUpItemList.Count == 3 && !powerupIsActive){
 			if (AllItensFromType (ItemType.DAMAGE)){
 				powerupNumber.Add(0);
 				canActivatePowerup = true;
@@ -256,7 +257,7 @@ public class gameController : MonoBehaviour {
 			if(!canActivatePowerup){
 				Removepowerups();
 			}
-		if (PowerUpItemList.Count == 3){
+		if (PowerUpItemList.Count == 3 && !powerupIsActive){
 			if (AllItensFromShape (ItemShape.TRIANGLE)){
 				powerupNumber.Add(4);
 				canActivatePowerup = true;
@@ -274,7 +275,7 @@ public class gameController : MonoBehaviour {
 			}
 		}
 
-		if (canActivatePowerup && PowerUpItemList.Count == 3 && Input.GetKey (KeyCode.E)) {
+		if (canActivatePowerup && PowerUpItemList.Count == 3 && Input.GetKey (KeyCode.E) && !powerupIsActive) {
 			Removepowerups();
 			PowerUpItemList.Clear ();
 			ActivatePowerup(powerupNumber);
