@@ -93,7 +93,7 @@ public class playerController : MonoBehaviour {
 			playerHealth.p_Health.TakeDamage (other.gameObject.GetComponent<projectileController>().m_damage);
 			Destroy(other.gameObject);
 		}
-		if (other.tag.Equals ("Door")) {
+		if (other.tag.Equals ("Door") || other.tag.Equals ("Porta")) {
 			this.collider.isTrigger = false;
 			if (!isInsideRoom) {
 				EnterRoom ();
@@ -101,7 +101,7 @@ public class playerController : MonoBehaviour {
 				room = (load.m_room < 10) ? "sala" + "0" + load.m_room.ToString() : "sala" + load.m_room.ToString();
 				if(!load.isLoaded)
 					StartCoroutine(load.loadRoomOnContainerPosition(room));
-			} else
+			} else if(other.isTrigger)
 				LeaveRoom ();
 
 			if (other.tag.Equals ("Space"))
