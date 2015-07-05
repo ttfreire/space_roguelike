@@ -216,6 +216,7 @@ public class gameController : MonoBehaviour {
 
 	void VerifyPowerUpItemList(){
 		powerupNumber = new List<int>();
+		isEngaging = false;
 		/**
 		if ((PowerUpItemList.Count == 0 && !powerupOn) || PowerUpItemList.Count == 1 || PowerUpItemList.Count == 2)
 			playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.NORMAL;
