@@ -78,7 +78,6 @@ public class loadRoom : MonoBehaviour {
 	}
 
 	void GetDoorsAnimators(GameObject parent){
-		Debug.Log ("So much recursion");
 		if (parent.transform.childCount > 0) {
 			for(int i = 0; i < parent.transform.childCount; i++)
 				GetDoorsAnimators(parent.transform.GetChild(i).gameObject);

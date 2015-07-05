@@ -52,7 +52,7 @@ public class gameController : MonoBehaviour {
 	public Canvas powerupAnimationCanvas;
 	public float m_powerupDurationSeconds;
 
-	public List<Canvas> powerupFeedbacks;
+	public List<Text> powerupFeedbacks;
 	List<int> powerupNumber;
 
 	// Use this for initialization
@@ -316,7 +316,7 @@ public class gameController : MonoBehaviour {
 		powerupIsActive = false;
 		playerController.p_controller.SelectCorrectArmFromPowerUp (0);
 
-		foreach (Canvas feedback in powerupFeedbacks)
+		foreach (Text feedback in powerupFeedbacks)
 			feedback.gameObject.SetActive (false);
 	}
 
