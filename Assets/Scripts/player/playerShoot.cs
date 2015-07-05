@@ -21,6 +21,7 @@ public class playerShoot : MonoBehaviour {
 	//public AudioClip shootSound;
 	AudioSource source;
 	Vector3 shootDirection;
+	public GameObject shooterObj;
 	float m_nextShot;
 	public Camera m_camera;
 	Rigidbody m_rigidbody;
@@ -107,7 +108,7 @@ public class playerShoot : MonoBehaviour {
 		}
 
 
-		Vector3 projSpawnPos =  transform.position + directionToShoot;
+		Vector3 projSpawnPos =  shooterObj.transform.position + directionToShoot;
 		GameObject proj = (GameObject)Instantiate (m_projectile, projSpawnPos, Quaternion.identity);
 		proj.layer = 14;
 		proj.GetComponent<projectileController>().SetTargetTag("Enemy");
