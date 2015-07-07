@@ -1,0 +1,1026 @@
+fileFormatVersion: 2
+guid: 4adfea8eac35c40c8be2f7cf3107a2da
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: space_anim_amb_sala-inicial_closure_0
+    21300002: space_anim_amb_sala-inicial_closure_1
+    21300004: space_anim_amb_sala-inicial_closure_2
+    21300006: space_anim_amb_sala-inicial_closure_3
+    21300008: space_anim_amb_sala-inicial_closure_4
+    21300010: space_anim_amb_sala-inicial_closure_5
+    21300012: space_anim_amb_sala-inicial_closure_6
+    21300014: space_anim_amb_sala-inicial_closure_7
+    21300016: space_anim_amb_sala-inicial_closure_8
+    21300018: space_anim_amb_sala-inicial_closure_9
+    21300020: space_anim_amb_sala-inicial_closure_10
+    21300022: space_anim_amb_sala-inicial_closure_11
+    21300024: space_anim_amb_sala-inicial_closure_12
+    21300026: space_anim_amb_sala-inicial_closure_13
+    21300028: space_anim_amb_sala-inicial_closure_14
+    21300030: space_anim_amb_sala-inicial_closure_15
+    21300032: space_anim_amb_sala-inicial_closure_16
+    21300034: space_anim_amb_sala-inicial_closure_17
+    21300036: space_anim_amb_sala-inicial_closure_18
+    21300038: space_anim_amb_sala-inicial_closure_19
+    21300040: space_anim_amb_sala-inicial_closure_20
+    21300042: space_anim_amb_sala-inicial_closure_21
+    21300044: space_anim_amb_sala-inicial_closure_22
+    21300046: space_anim_amb_sala-inicial_closure_23
+    21300048: space_anim_amb_sala-inicial_closure_24
+    21300050: space_anim_amb_sala-inicial_closure_25
+    21300052: space_anim_amb_sala-inicial_closure_26
+    21300054: space_anim_amb_sala-inicial_closure_27
+    21300056: space_anim_amb_sala-inicial_closure_28
+    21300058: space_anim_amb_sala-inicial_closure_29
+    21300060: space_anim_amb_sala-inicial_closure_30
+    21300062: space_anim_amb_sala-inicial_closure_31
+    21300064: space_anim_amb_sala-inicial_closure_32
+    21300066: space_anim_amb_sala-inicial_closure_33
+    21300068: space_anim_amb_sala-inicial_closure_34
+    21300070: space_anim_amb_sala-inicial_closure_35
+    21300072: space_anim_amb_sala-inicial_closure_36
+    21300074: space_anim_amb_sala-inicial_closure_37
+    21300076: space_anim_amb_sala-inicial_closure_38
+    21300078: space_anim_amb_sala-inicial_closure_39
+    21300080: space_anim_amb_sala-inicial_closure_40
+    21300082: space_anim_amb_sala-inicial_closure_41
+    21300084: space_anim_amb_sala-inicial_closure_42
+    21300086: space_anim_amb_sala-inicial_closure_43
+    21300088: space_anim_amb_sala-inicial_closure_44
+    21300090: space_anim_amb_sala-inicial_closure_45
+    21300092: space_anim_amb_sala-inicial_closure_46
+    21300094: space_anim_amb_sala-inicial_closure_47
+    21300096: space_anim_amb_sala-inicial_closure_48
+    21300098: space_anim_amb_sala-inicial_closure_49
+    21300100: space_anim_amb_sala-inicial_closure_50
+    21300102: space_anim_amb_sala-inicial_closure_51
+    21300104: space_anim_amb_sala-inicial_closure_52
+    21300106: space_anim_amb_sala-inicial_closure_53
+    21300108: space_anim_amb_sala-inicial_closure_54
+    21300110: space_anim_amb_sala-inicial_closure_55
+    21300112: space_anim_amb_sala-inicial_closure_56
+    21300114: space_anim_amb_sala-inicial_closure_57
+    21300116: space_anim_amb_sala-inicial_closure_58
+    21300118: space_anim_amb_sala-inicial_closure_59
+    21300120: space_anim_amb_sala-inicial_closure_60
+    21300122: space_anim_amb_sala-inicial_closure_61
+    21300124: space_anim_amb_sala-inicial_closure_62
+    21300126: space_anim_amb_sala-inicial_closure_63
+    21300128: space_anim_amb_sala-inicial_closure_64
+    21300130: space_anim_amb_sala-inicial_closure_65
+    21300132: space_anim_amb_sala-inicial_closure_66
+    21300134: space_anim_amb_sala-inicial_closure_67
+    21300136: space_anim_amb_sala-inicial_closure_68
+    21300138: space_anim_amb_sala-inicial_closure_69
+    21300140: space_anim_amb_sala-inicial_closure_70
+    21300142: space_anim_amb_sala-inicial_closure_71
+    21300144: space_anim_amb_sala-inicial_closure_72
+    21300146: space_anim_amb_sala-inicial_closure_73
+    21300148: space_anim_amb_sala-inicial_closure_74
+    21300150: space_anim_amb_sala-inicial_closure_75
+    21300152: space_anim_amb_sala-inicial_closure_76
+    21300154: space_anim_amb_sala-inicial_closure_77
+    21300156: space_anim_amb_sala-inicial_closure_78
+    21300158: space_anim_amb_sala-inicial_closure_79
+    21300160: space_anim_amb_sala-inicial_closure_80
+    21300162: space_anim_amb_sala-inicial_closure_81
+    21300164: space_anim_amb_sala-inicial_closure_82
+    21300166: space_anim_amb_sala-inicial_closure_83
+    21300168: space_anim_amb_sala-inicial_closure_84
+    21300170: space_anim_amb_sala-inicial_closure_85
+    21300172: space_anim_amb_sala-inicial_closure_86
+    21300174: space_anim_amb_sala-inicial_closure_87
+    21300176: space_anim_amb_sala-inicial_closure_88
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: space_anim_amb_sala-inicial_closure_0
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_1
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_2
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_3
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_4
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_5
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_6
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_7
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 4230
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_9
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_10
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_11
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_12
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_13
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_14
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_15
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_16
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 3760
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_18
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_19
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_20
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_21
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_22
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_23
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_24
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_25
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 3290
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_27
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_28
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_29
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_30
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_31
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_32
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_33
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_34
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 2820
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_36
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_37
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_38
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_39
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_40
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_41
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_42
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_43
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 2350
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_45
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_46
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_47
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_48
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_49
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_50
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_51
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_52
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1880
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_54
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_55
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_56
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_57
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_58
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_59
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_60
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_61
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1410
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_63
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_64
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_65
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_66
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_67
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_68
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_69
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_70
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 940
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_71
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_72
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_73
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_74
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_75
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_76
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_77
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_78
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_79
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 470
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_81
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_82
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_83
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_84
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_85
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_86
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_87
+      rect:
+        serializedVersion: 2
+        x: 2205
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: space_anim_amb_sala-inicial_closure_88
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 315
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

@@ -60,6 +60,8 @@ public class gameController : MonoBehaviour {
 	public Canvas menuMissao;
 	public Canvas menuGeral;
 
+	public bool canMove;
+	float timer;
 	// Use this for initialization
 	void Awake () {
 		//EnterState (GameStates.INTRO);
@@ -104,23 +106,28 @@ public class gameController : MonoBehaviour {
 		
 		switch (m_currentGameState) {
 		case GameStates.INTRO:
+			canMove = false;
 			body.enabled = false;
 			arm.enabled = false;
 			Time.timeScale = 1;
 			break;
 		case GameStates.RUNNING:
+			canMove = true;
 			Time.timeScale = 1;
 			break;
 		case GameStates.PAUSED:
 			Time.timeScale = 0;
 			break;
 		case GameStates.VICTORY:
-			Time.timeScale = 0;
+			//Time.timeScale = 0;
 			//DisplayEndGameFeedback(GameEndTypes.VICTORY);
+			timer = 3f;
+			canMove = false;
 			vitoria.gameObject.SetActive(true);
 			GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
 			break;
 		case GameStates.GAMEOVER:
+			canMove = false;
 			//Time.timeScale = 0;
 			//DisplayEndGameFeedback(GameEndTypes.DEFEAT);
 			derrota.gameObject.SetActive(true);
@@ -132,7 +139,7 @@ public class gameController : MonoBehaviour {
 	public void UpdateState(){
 		switch (m_currentGameState) {
 		case GameStates.INTRO:
-			if (teleportAnimator.GetCurrentAnimatorStateInfo (0).IsName ("End")) {
+			if (teleportAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Paused")) {
 				EnterState(GameStates.PAUSED);
 			}
 			break;
@@ -157,6 +164,14 @@ public class gameController : MonoBehaviour {
 		case GameStates.PAUSED:
 			break;
 		case GameStates.VICTORY:
+			teleportAnimator.SetBool("victory", true);
+			if (teleportAnimator.GetCurrentAnimatorStateInfo (0).IsName ("end")) {
+				while(timer > 0f)
+					timer -= Time.deltaTime;
+				DiamondObject.SetActive(false);
+				body.enabled = false;
+				arm.enabled = false;
+			}
 			break;
 		case GameStates.GAMEOVER:
 			break;

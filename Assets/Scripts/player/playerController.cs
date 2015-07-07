@@ -74,7 +74,7 @@ public class playerController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING))
+		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING) && gameController.control.canMove)
 			playerMovement.p_Movement.Move ();
 	}
 

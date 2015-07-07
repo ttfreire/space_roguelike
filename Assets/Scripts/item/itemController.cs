@@ -43,6 +43,8 @@ public class itemController : MonoBehaviour {
 		case ItemType.OXYGEN:
 			playerHealth p_health = player.GetComponent<playerHealth>();
 			p_health.m_currentOxygenValue += m_oxygen;
+			if(p_health.m_currentOxygenValue > p_health.m_playerTotalOxygen)
+				p_health.m_currentOxygenValue = p_health.m_playerTotalOxygen;
 			Destroy (gameObject);
 			break;
 		case ItemType.DAMAGE:
