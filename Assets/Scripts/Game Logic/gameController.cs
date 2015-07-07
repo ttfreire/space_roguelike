@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public enum GameStates {INTRO, RUNNING, PAUSED, VICTORY, GAMEOVER};
 
@@ -55,6 +56,10 @@ public class gameController : MonoBehaviour {
 	public List<Text> powerupFeedbacks;
 	List<int> powerupNumber;
 
+	uiController UIManager;
+	public Canvas menuMissao;
+	public Canvas menuGeral;
+
 	// Use this for initialization
 	void Awake () {
 		//EnterState (GameStates.INTRO);
@@ -72,9 +77,11 @@ public class gameController : MonoBehaviour {
 		arm = m_pControl.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer> ();
 		missao.gameObject.SetActive(false);
 		m_boss = null;
+
 	}
 
 	void Start(){
+		UIManager = GameObject.FindObjectOfType<uiController> ();
 		if (generateLevel)
 			boardScript.SetupScene (level);
 	}
@@ -84,6 +91,11 @@ public class gameController : MonoBehaviour {
 		powerupAnimator.SetBool ("isEngaging", isEngaging);
 		UpdateState ();
 		DebugAndTestShortcuts ();
+		if (Input.GetKeyUp (KeyCode.Escape)) {
+			UIManager.TurnMenuOnOff (menuGeral);
+			UIManager.TurnMenuOnOff (menuMissao);
+			PauseUnpauseGame();
+		}
 	}
 
 	public void EnterState(GameStates state){
