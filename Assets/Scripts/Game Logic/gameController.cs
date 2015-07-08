@@ -121,7 +121,7 @@ public class gameController : MonoBehaviour {
 		case GameStates.VICTORY:
 			//Time.timeScale = 0;
 			//DisplayEndGameFeedback(GameEndTypes.VICTORY);
-			timer = 3f;
+			timer = 2f;
 			canMove = false;
 			vitoria.gameObject.SetActive(true);
 			GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
@@ -166,11 +166,14 @@ public class gameController : MonoBehaviour {
 		case GameStates.VICTORY:
 			teleportAnimator.SetBool("victory", true);
 			if (teleportAnimator.GetCurrentAnimatorStateInfo (0).IsName ("end")) {
-				while(timer > 0f)
+				if(timer > 0f){
 					timer -= Time.deltaTime;
+				} 
+				else{
 				DiamondObject.SetActive(false);
 				body.enabled = false;
 				arm.enabled = false;
+				}
 			}
 			break;
 		case GameStates.GAMEOVER:
