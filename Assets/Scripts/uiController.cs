@@ -3,11 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class uiController : MonoBehaviour {
+	public static uiController uiControl; 
 	//public Canvas menu;
 	//string scene;
 
 	Color selectedColor = Color.white;
 	Color notSelectedColor = Color.gray;
+
+	void Awake(){
+		uiControl = this;
+	}
 
 	public void TurnMenuOnOff(Canvas menu){
 		menu.gameObject.SetActive (!menu.gameObject.activeSelf);
