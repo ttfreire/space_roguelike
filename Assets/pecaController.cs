@@ -10,7 +10,8 @@ public class pecaController : MonoBehaviour {
 	bool isTakingDamage = false;
 	Color m_materialColor;
 	Animator anim;
-
+	public GameObject explosionObject;
+	float explosionTime = 1;
 	// Use this for initialization
 	void Awake () {
 		m_materialColor = gameObject.renderer.material.color;
@@ -26,6 +27,8 @@ public class pecaController : MonoBehaviour {
 		if (IsDead ()) {
 			gameController.control.DiamondObject.SetActive(true);
 			playerController.p_controller.hasDiamond = true;
+			explosionTime -= Time.deltaTime;
+			Instantiate(explosionObject, this.transform.position, this.transform.rotation);
 			Destroy (this.gameObject);
 		}
 	}
