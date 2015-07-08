@@ -57,7 +57,8 @@ public class turretController : enemyBaseController {
 			rechargeTime = Time.deltaTime * 60 * secondsToRecharge;
 			break;
 		case EnemyState.DEAD:
-
+			isDead = true;
+			boomSource.Play();
 			break;
 		}
 	}
@@ -98,6 +99,7 @@ public class turretController : enemyBaseController {
 			explosionTime -= Time.deltaTime;
 			if(explosionTime < 0){
 				DropItems();
+				Instantiate(explosionObject, this.transform.position, this.transform.rotation);
 				Destroy(gameObject);
 			}
 			break;

@@ -14,6 +14,7 @@ public class enemyHealth : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		m_materialColor = gameObject.renderer.material.color;
+		hitSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
