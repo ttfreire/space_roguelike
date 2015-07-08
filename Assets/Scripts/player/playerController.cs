@@ -37,6 +37,7 @@ public class playerController : MonoBehaviour {
 	public bool BackToMainTree = false;
 	float health;
 	public bool hasDiamond = false;
+	GameObject rotatingAxis;
 	void Awake(){
 		p_controller = this;
 		body = transform.FindChild ("Body").gameObject;
@@ -47,11 +48,13 @@ public class playerController : MonoBehaviour {
 
 		animBody = GetComponent<Animator>();
 		animFrontArm = transform.FindChild("Body").GetChild(0).GetComponent<Animator>();
+		rotatingAxis = body.transform.GetChild (1).gameObject;
 	}
 	
 	void Update () {
 		//BackToMainTree = false;
 		if (gameController.control.m_currentGameState.Equals (GameStates.RUNNING)) {
+			rotatingAxis.transform.RotateAround(new Vector3(0,0,1), Time.deltaTime);
 			if (Input.GetButtonUp ("Fire1"))
 				playerShoot.p_Shoot.Shoot ();
 			AimAtMouse ();
