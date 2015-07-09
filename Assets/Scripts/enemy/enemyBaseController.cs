@@ -38,6 +38,7 @@ public class enemyBaseController : MonoBehaviour {
 	AudioSource[] audios;
 	AudioSource hitSource;
 	protected AudioSource detectSource;
+	protected AudioSource shootsound;
 	// Use this for initialization
 
 	protected virtual void Awake () {
@@ -50,6 +51,8 @@ public class enemyBaseController : MonoBehaviour {
 		audios = GetComponents<AudioSource> ();
 		detectSource = audios [0];
 		hitSource = audios [1];
+		if(audios.Length == 3)
+			shootsound = audios [2];
 	}
 
 	void Start(){

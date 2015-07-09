@@ -7,6 +7,10 @@ public class droidController : enemyBaseController {
 	protected override void Awake () {
 		base.Awake ();
 	}
+
+	void Start(){
+		GetComponent<enemyShoot> ().shotEnemySound = shootsound;
+	}
 	
 	// Update is called once per frame
 	protected override void Update () {

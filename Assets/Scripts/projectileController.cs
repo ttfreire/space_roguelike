@@ -16,7 +16,7 @@ public class projectileController : MonoBehaviour {
 	public AudioSource thud;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		m_rigidbody = GetComponent<Rigidbody> ();
 		audios = GetComponents<AudioSource> ();
 		hit = audios [0];

@@ -16,10 +16,11 @@ public class itemController : MonoBehaviour {
 	int m_velocityItemQuantity;
 	int m_volumeItemQuantity;
 	
-
+	AudioSource collectSound;
 
 	// Use this for initialization
 	void Awake () {
+
 		transform.rotation = Quaternion.identity;
 		switch (m_itemType) {
 		case ItemType.OXYGEN:
@@ -31,6 +32,10 @@ public class itemController : MonoBehaviour {
 		}
 	}
 
+	void Start(){
+		collectSound = GetComponent<AudioSource> ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 
@@ -38,6 +43,7 @@ public class itemController : MonoBehaviour {
 
 	public void PlayerCollectItem(GameObject player){
 		playerController p_control = player.GetComponent<playerController>();
+		collectSound.Play();
 		Vector3 newPos = new Vector3 (0, 0, 50);
 		switch (m_itemType) {
 		case ItemType.OXYGEN:

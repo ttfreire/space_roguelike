@@ -62,8 +62,10 @@ public class gameController : MonoBehaviour {
 
 	public bool canMove;
 	float timer;
-
+	AudioSource[] audios;
 	AudioSource teleportSound;
+	AudioSource weaponUpgradeSound;
+	AudioSource armorUpgradeSound;
 	// Use this for initialization
 	void Awake () {
 		//EnterState (GameStates.INTRO);
@@ -81,7 +83,10 @@ public class gameController : MonoBehaviour {
 		arm = m_pControl.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer> ();
 		missao.gameObject.SetActive(false);
 		m_boss = null;
-		teleportSound = GetComponent<AudioSource> ();
+		audios = GetComponents<AudioSource> ();
+		teleportSound = audios[0];
+		weaponUpgradeSound = audios[1];
+		armorUpgradeSound = audios[2];
 
 	}
 

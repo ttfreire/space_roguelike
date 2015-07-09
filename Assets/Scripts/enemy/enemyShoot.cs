@@ -13,7 +13,7 @@ public class enemyShoot : MonoBehaviour {
 	enemyHealth m_health;
 	float m_shootCooldown;
 	public float m_damage;
-
+	public AudioSource shotEnemySound;
 
 	void Awake () {
 		m_shootCooldown = 0f;
@@ -57,6 +57,7 @@ public class enemyShoot : MonoBehaviour {
 			m_shootCooldown = ResetShootCooldown();
 			m_targetToShoot = m_player.transform;
 			ShootTarget (m_targetToShoot);
+			shotEnemySound.Play ();
 		}
 	}
 }
