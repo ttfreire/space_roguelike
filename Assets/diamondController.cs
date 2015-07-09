@@ -4,9 +4,10 @@ using System.Collections;
 public class diamondController : MonoBehaviour {
 
 	public Transform target;
+	AudioSource sound;
 	// Use this for initialization
 	void Start () {
-
+		sound = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +21,8 @@ public class diamondController : MonoBehaviour {
 			transform.parent = target;
 			transform.localPosition = new Vector3(0, 3.5f, 0);
 			GetComponent<BoxCollider>().enabled = false;
+			sound.Play();
+			playerController.p_controller.hasDiamond = true;
 		}
 	}
 }

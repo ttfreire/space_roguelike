@@ -4,7 +4,7 @@ using System.Collections;
 public class enemySight : MonoBehaviour {
 	public bool m_isPlayerOnView = false;
 	GameObject m_player;
-	LayerMask ignoreLayerMask = (1 << 2 | 1 << 8 | 1 << 10 | 1 << 11 | 1 << 13 | 1 << 14 | 1 << 16) ;
+	LayerMask ignoreLayerMask = (1 << 2 | 1 << 8  | 1 << 11 | 1 << 13 | 1 << 14 | 1 << 16) ;
 	void Awake(){
 		m_player = FindObjectOfType<playerController> ().gameObject;
 	}

@@ -46,10 +46,32 @@ public class mineController : enemyBaseController {
 		case EnemyState.ATTACKING:
 			isAttacking = true;
 			isEngaging = false;
+			//pulseSound.Play();
 			break;
 		case EnemyState.DEAD:
 			isDead = true;
 			//boomSource.Play();
+			break;
+		}
+	}
+
+	protected override void ExitState(EnemyState state){
+		switch (m_currentState) {
+		case EnemyState.IDLE:
+			
+			break;
+		case EnemyState.ENGAGING:
+			
+			break;
+		case EnemyState.ATTACKING:
+			isAttacking = false;
+			//pulseSound.Stop();
+			break;
+		case EnemyState.MOVING:
+			isMoving = false;
+			
+			break;
+		case EnemyState.DEAD:
 			break;
 		}
 	}
@@ -80,7 +102,8 @@ public class mineController : enemyBaseController {
 			FollowTarget (player.transform.position, m_speed);
 			if(m_shootController != null)
 				m_shootController.Shoot();
-			pulseSound.Play();
+			if(!pulseSound.isPlaying)
+				pulseSound.Play();
 			break;
 			
 		case EnemyState.DEAD:

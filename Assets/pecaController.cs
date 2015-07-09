@@ -12,12 +12,14 @@ public class pecaController : MonoBehaviour {
 	Animator anim;
 	public GameObject explosionObject;
 	float explosionTime = 1;
+	AudioSource hitSource;
 	// Use this for initialization
 	void Awake () {
 		m_materialColor = gameObject.renderer.material.color;
 		anim = GetComponent<Animator> ();
 		m_currentHealth = m_health;
 		gameController.control.m_boss = this.gameObject;
+		hitSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -26,7 +28,7 @@ public class pecaController : MonoBehaviour {
 		anim.SetFloat ("health", m_currentHealth);
 		if (IsDead ()) {
 			gameController.control.DiamondObject.SetActive(true);
-			playerController.p_controller.hasDiamond = true;
+
 			explosionTime -= Time.deltaTime;
 			Instantiate(explosionObject, this.transform.position, this.transform.rotation);
 			Destroy (this.gameObject);
@@ -56,7 +58,7 @@ public class pecaController : MonoBehaviour {
 	public void TakeDamage(float damageTaken){
 		m_currentHealth -= damageTaken;
 		isTakingDamage = true;
-		
+		hitSource.Play ();
 	}
 	
 	public bool IsDead(){

@@ -238,7 +238,7 @@ public class gameController : MonoBehaviour {
 
 	public void DebugAndTestShortcuts(){
 		
-		if (Input.GetKeyUp (KeyCode.R))
+		if (Input.GetKeyUp (KeyCode.L))
 			Application.LoadLevel (Application.loadedLevel);
 
 
@@ -368,32 +368,39 @@ public class gameController : MonoBehaviour {
 			case 0:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.DAMAGE;
 				powerupFeedbacks[0].gameObject.SetActive(true);
+				weaponUpgradeSound.Play();
 				break;
 			case 1:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.VELOCITY;
 				powerupFeedbacks[1].gameObject.SetActive(true);
+				weaponUpgradeSound.Play();
 				break;
 			case 2:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.PIERCING;
 				powerupFeedbacks[2].gameObject.SetActive(true);
+				weaponUpgradeSound.Play();
 				break;
 			case 3:
 				playerShoot.p_Shoot.currentAmmoType = playerShoot.ProjectileType.AREA;
 				powerupFeedbacks[3].gameObject.SetActive(true);
+				weaponUpgradeSound.Play();
 				break;
 			case 4:
 				playerMovement.p_Movement.currentSpeed = playerMovement.p_Movement.m_speed + 1.0f;
 				playerController.p_controller.SelectCorrectArmFromPowerUp (1);
 				powerupFeedbacks[4].gameObject.SetActive(true);
+				armorUpgradeSound.Play();
 				break;
 			case 5:
 				playerHealth.p_Health.m_currentOxygenLossRate = 0f;
 				powerupFeedbacks[5].gameObject.SetActive(true);
+				armorUpgradeSound.Play();
 				break;
 			case 6:
 				playerHealth.p_Health.damageReductionDivider = 2;
 				playerController.p_controller.SelectCorrectArmFromPowerUp (2);
 				powerupFeedbacks[6].gameObject.SetActive(true);
+				armorUpgradeSound.Play();
 				break;
 			}
 		}

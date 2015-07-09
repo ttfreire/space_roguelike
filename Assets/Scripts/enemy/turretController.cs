@@ -17,6 +17,7 @@ public class turretController : enemyBaseController {
 		shootTime = Time.deltaTime * 60 * secondstoShoot;
 		baseAnimator = transform.FindChild("base").GetComponent<Animator>();
 		cannonAnimator = transform.FindChild("cannon").FindChild("Cannon_base").GetComponent<Animator>();
+		GetComponent<enemyShoot> ().shotEnemySound = shootsound;
 	}
 	
 	// Update is called once per frame
