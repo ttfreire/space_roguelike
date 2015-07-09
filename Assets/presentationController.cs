@@ -16,7 +16,6 @@ public class presentationController : MonoBehaviour {
 	void Update () {
 		if (timer > 0) {
 			timer -= Time.deltaTime;
-			Debug.Log("na");
 		}
 		if (timer < 0) {
 			Menu.SetActive (true);
