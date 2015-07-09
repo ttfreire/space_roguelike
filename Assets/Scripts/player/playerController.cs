@@ -44,6 +44,7 @@ public class playerController : MonoBehaviour {
 	public AudioSource shot;
 	public AudioSource lowOxy;
 	public AudioSource hit2;
+	public AudioSource death;
 
 	void Awake(){
 		p_controller = this;
@@ -52,6 +53,7 @@ public class playerController : MonoBehaviour {
 		shot = audios [0];
 		lowOxy = audios [1];
 		hit2 = audios [2];
+		death = audios [3];
 	}
 
 	// Use this for initialization
@@ -82,8 +84,10 @@ public class playerController : MonoBehaviour {
 				BackToMainTree = false;
 			}
 		
-			if (playerHealth.p_Health.IsDead ())
+			if (playerHealth.p_Health.IsDead ()) {
 				body.SetActive (false);
+				death.Play();
+			}
 		
 	}
 

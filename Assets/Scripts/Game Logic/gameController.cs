@@ -134,9 +134,13 @@ public class gameController : MonoBehaviour {
 			timer = 2f;
 			canMove = false;
 			vitoria.gameObject.SetActive(true);
-			GameObject.Find("PlayerCamera").GetComponent<CameraShake>().enabled = false;
+			GameObject myCam = GameObject.Find("PlayerCamera");
+			myCam.GetComponent<cameraController>().music.Stop();
+			myCam.GetComponent<cameraController>().completeAudio.Play();
+			myCam.GetComponent<CameraShake>().enabled = false;
 			break;
 		case GameStates.GAMEOVER:
+			 GameObject.Find("PlayerCamera").GetComponent<cameraController>().music.Stop();
 			canMove = false;
 			//Time.timeScale = 0;
 			//DisplayEndGameFeedback(GameEndTypes.DEFEAT);

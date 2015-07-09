@@ -5,9 +5,15 @@ public class cameraController : MonoBehaviour {
 	public GameObject player;
 	public float distance = -10;
 	GameObject room;
+	AudioSource[] audios;
+	public AudioSource music;
+	public AudioSource completeAudio;
 	// Use this for initialization
 	void Start () {
 		room = null;
+		audios = GetComponents<AudioSource> ();
+		music = audios [0];
+		completeAudio = audios [1];
 	}
 	
 	// Update is called once per frame
