@@ -52,6 +52,9 @@ public class uiController : MonoBehaviour {
 		Screen.fullScreen = isFullScreen;
 	}
 
+	public void Exitgame(){
+		Application.Quit ();
+	}
 
 
 }
