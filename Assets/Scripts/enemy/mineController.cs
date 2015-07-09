@@ -7,12 +7,14 @@ public class mineController : enemyBaseController {
 	public float explosionDamage;
 	float engagetime;
 	Animator pulseAnim;
+	AudioSource pulseSound;
 
 	// Use this for initialization
 	protected override void Awake () {
 		base.Awake ();
 		engagetime = 1;
 		pulseAnim = transform.FindChild("Pulse").GetComponent<Animator>();
+		pulseSound = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -78,6 +80,7 @@ public class mineController : enemyBaseController {
 			FollowTarget (player.transform.position, m_speed);
 			if(m_shootController != null)
 				m_shootController.Shoot();
+			pulseSound.Play();
 			break;
 			
 		case EnemyState.DEAD:

@@ -57,7 +57,8 @@ public class enemyShoot : MonoBehaviour {
 			m_shootCooldown = ResetShootCooldown();
 			m_targetToShoot = m_player.transform;
 			ShootTarget (m_targetToShoot);
-			shotEnemySound.Play ();
+			if(shotEnemySound!=null)
+				shotEnemySound.Play ();
 		}
 	}
 }
