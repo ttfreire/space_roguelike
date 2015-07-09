@@ -56,7 +56,7 @@ public class playerShoot : MonoBehaviour {
 		if (Time.time > m_nextShot && ShootingDistanceIsGreaterThanZero ()) {
 			m_nextShot = Time.time + ResetShootCooldown ();
 			//playerMovement.p_Movement.SetFacingDirection((shootDirection-this.transform.position).x);
-			source.Play();
+			playerController.p_controller.shot.Play();
 			ShootProjectile (shootDirection, currentAmmoType);
 			if(currentAmmoType.Equals(ProjectileType.AREA)){
 				Vector3 v = shootDirection;

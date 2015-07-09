@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class playerController : MonoBehaviour {
 	public static playerController p_controller;
@@ -38,9 +39,19 @@ public class playerController : MonoBehaviour {
 	float health;
 	public bool hasDiamond = false;
 	GameObject rotatingAxis;
+
+	AudioSource[] audios;
+	public AudioSource shot;
+	public AudioSource lowOxy;
+	public AudioSource hit2;
+
 	void Awake(){
 		p_controller = this;
 		body = transform.FindChild ("Body").gameObject;
+		audios = GetComponents<AudioSource> ();
+		shot = audios [0];
+		lowOxy = audios [1];
+		hit2 = audios [2];
 	}
 
 	// Use this for initialization
