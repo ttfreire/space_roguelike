@@ -14,7 +14,7 @@ public class playerController : MonoBehaviour {
 	public Camera p_camera;
 	float cameraSizeinRoom = 15;
 	float cameraSizeinSpace = 15;
-
+	bool paredetocar = false;
 
 	[HideInInspector] public int m_damageItemQuantity;
 	[HideInInspector] public int m_resistanceItemQuantity;
@@ -86,7 +86,10 @@ public class playerController : MonoBehaviour {
 		
 			if (playerHealth.p_Health.IsDead ()) {
 				body.SetActive (false);
-				death.Play();
+				if(!death.isPlaying && !paredetocar){
+					death.Play();
+					paredetocar = true;
+				}
 			}
 		
 	}
