@@ -19,7 +19,7 @@ public class playerShoot : MonoBehaviour {
 	public Sprite projectileSpriteArea;
 	public Sprite projectileSpritePiercing;
 	//public AudioClip shootSound;
-	AudioSource source;
+	//                                              AudioSource source;
 	Vector3 shootDirection;
 	public GameObject shooterObj;
 	float m_nextShot;
@@ -29,7 +29,7 @@ public class playerShoot : MonoBehaviour {
 	void Awake () {
 		p_Shoot = this;
 		m_rigidbody = rigidbody;
-		source = GetComponent <AudioSource>();
+		//source = GetComponent <AudioSource>();
 		projectileSprite = projectileSpriteNormal;
 		currentAmmoType = ProjectileType.NORMAL;
 	}

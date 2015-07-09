@@ -34,6 +34,7 @@ public class scavengerController : enemyBaseController {
 			break;
 		case EnemyState.ENGAGING:
 			engageTime = 1f;
+			detectSource.Play();
 			break;
 		case EnemyState.ATTACKING:
 			isMoving = true;
@@ -45,7 +46,7 @@ public class scavengerController : enemyBaseController {
 			transform.FindChild("FOV").collider.enabled = false;
 			transform.collider.enabled = false;
 			isDead = true;
-			boomSource.Play();
+			//boomSource.Play();
 			break;
 		}
 	}

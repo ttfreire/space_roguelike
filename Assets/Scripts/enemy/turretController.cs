@@ -58,7 +58,7 @@ public class turretController : enemyBaseController {
 			break;
 		case EnemyState.DEAD:
 			isDead = true;
-			boomSource.Play();
+			//boomSource.Play();
 			break;
 		}
 	}

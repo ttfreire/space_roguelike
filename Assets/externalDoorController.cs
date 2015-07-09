@@ -7,11 +7,13 @@ public class externalDoorController : MonoBehaviour {
 	public Sprite closedSprite;
 	public Sprite openedSprite;
 	SpriteRenderer doorSprite;
+	AudioSource source;
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
 		doorSprite = GetComponent<SpriteRenderer> ();
 		doorSprite.sprite = closedSprite;
+		source = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -26,6 +28,7 @@ public class externalDoorController : MonoBehaviour {
 		if (other.tag.Equals ("Player")) {
 			anim.SetBool ("closeToDoor", true);
 			isClosed = false;
+			source.Play();
 		}
 	}
 
@@ -33,6 +36,7 @@ public class externalDoorController : MonoBehaviour {
 		if (other.tag.Equals ("Player")) {
 			anim.SetBool ("closeToDoor", false);
 			isClosed = true;
+			source.Play();
 		}
 	}
 }

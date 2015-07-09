@@ -23,7 +23,6 @@ public class enemyBaseController : MonoBehaviour {
 	
 	
 	public List<GameObject> ItemsDrop;
-	public AudioSource boomSource;
 
 	protected float engageTime = 0.5f;
 	
@@ -36,7 +35,9 @@ public class enemyBaseController : MonoBehaviour {
 	protected float explosionTime = 1;
 	protected float timeToAttack;
 	protected float attackTime;
-
+	AudioSource[] audios;
+	AudioSource hitSource;
+	protected AudioSource detectSource;
 	// Use this for initialization
 
 	protected virtual void Awake () {
@@ -46,6 +47,9 @@ public class enemyBaseController : MonoBehaviour {
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 		anim = GetComponent<Animator>();
+		audios = GetComponents<AudioSource> ();
+		detectSource = audios [0];
+		hitSource = audios [1];
 	}
 
 	void Start(){
@@ -76,6 +80,7 @@ public class enemyBaseController : MonoBehaviour {
 			break;
 		case EnemyState.ENGAGING:
 			engageTime = 1f;
+			detectSource.Play();
 			break;
 		case EnemyState.ATTACKING:
 			isAttacking = true;
@@ -87,7 +92,7 @@ public class enemyBaseController : MonoBehaviour {
 			break;
 		case EnemyState.DEAD:
 			isDead = true;
-			boomSource.Play();
+			//boomSource.Play();
 			break;
 		}
 	}

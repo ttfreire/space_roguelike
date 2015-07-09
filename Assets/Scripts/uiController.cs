@@ -9,13 +9,15 @@ public class uiController : MonoBehaviour {
 
 	Color selectedColor = Color.white;
 	Color notSelectedColor = Color.gray;
-
+	AudioSource sound;
 	void Awake(){
 		uiControl = this;
+		sound = GetComponent<AudioSource> ();
 	}
 
 	public void TurnMenuOnOff(Canvas menu){
 		menu.gameObject.SetActive (!menu.gameObject.activeSelf);
+		sound.Play ();
 		/**
 		if(menu.gameObject.activeSelf)
 			Time.timeScale = 0;
@@ -26,10 +28,12 @@ public class uiController : MonoBehaviour {
 
 	public void TurnMenuOn(Canvas menu){
 		menu.gameObject.SetActive (true);
+		sound.Play ();
 	}
 
 	public void TurnMenuOff(Canvas menu){
 		menu.gameObject.SetActive (false);
+		sound.Play ();
 	}
 
 	public void LoadScene(string scene){
@@ -47,5 +51,7 @@ public class uiController : MonoBehaviour {
 	public void FullScreen(bool isFullScreen){
 		Screen.fullScreen = isFullScreen;
 	}
+
+
 
 }

@@ -10,9 +10,17 @@ public class projectileController : MonoBehaviour {
 	Rigidbody m_rigidbody;
 
 	public bool isPiercing = false;
+
+	AudioSource[] audios;
+	public AudioSource hit;
+	public AudioSource thud;
+
 	// Use this for initialization
 	void Start () {
 		m_rigidbody = GetComponent<Rigidbody> ();
+		audios = GetComponents<AudioSource> ();
+		hit = audios [0];
+		thud = audios [1];
 	}
 
 	public void SetTargetTag(string tag){
@@ -44,13 +52,18 @@ public class projectileController : MonoBehaviour {
 	}
 			
 	void OnTriggerEnter(Collider other){
+		hit.Play ();
 		Rigidbody r_body = other.gameObject.rigidbody;
 		if(r_body != null && !other.tag.Equals ("Player"))
 			r_body.AddForceAtPosition(5*(r_body.transform.position-m_shooter.transform.position), r_body.transform.position);
 		if (!other.tag.Equals ("Enemy") && !other.tag.Equals ("Player") && !other.tag.Equals ("Space")) {
-
 			if (!isPiercing)
 				Destroy (gameObject);
 		}
+
+		if (!other.tag.Equals ("Enemy") && !other.tag.Equals ("Player"))
+			thud.Play ();
+
 	}
+	
 }

@@ -47,7 +47,7 @@ public class mineController : enemyBaseController {
 			break;
 		case EnemyState.DEAD:
 			isDead = true;
-			boomSource.Play();
+			//boomSource.Play();
 			break;
 		}
 	}

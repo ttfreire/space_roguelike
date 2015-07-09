@@ -9,12 +9,14 @@ public class enemyHealth : MonoBehaviour {
 	bool isTakingDamage = false;
 	public float m_collisionDamageMultiplier;
 	public Color m_materialColor;
+
 	public AudioSource hitSource;
+
 
 	// Use this for initialization
 	void Awake () {
 		m_materialColor = gameObject.renderer.material.color;
-		hitSource = GetComponent<AudioSource> ();
+
 	}
 	
 	// Update is called once per frame

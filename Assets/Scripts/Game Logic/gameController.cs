@@ -62,6 +62,8 @@ public class gameController : MonoBehaviour {
 
 	public bool canMove;
 	float timer;
+
+	AudioSource teleportSound;
 	// Use this for initialization
 	void Awake () {
 		//EnterState (GameStates.INTRO);
@@ -79,6 +81,7 @@ public class gameController : MonoBehaviour {
 		arm = m_pControl.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer> ();
 		missao.gameObject.SetActive(false);
 		m_boss = null;
+		teleportSound = GetComponent<AudioSource> ();
 
 	}
 
@@ -110,6 +113,7 @@ public class gameController : MonoBehaviour {
 			body.enabled = false;
 			arm.enabled = false;
 			Time.timeScale = 1;
+			teleportSound.Play();
 			break;
 		case GameStates.RUNNING:
 			canMove = true;
@@ -121,6 +125,7 @@ public class gameController : MonoBehaviour {
 		case GameStates.VICTORY:
 			//Time.timeScale = 0;
 			//DisplayEndGameFeedback(GameEndTypes.VICTORY);
+			teleportSound.Play();
 			timer = 2f;
 			canMove = false;
 			vitoria.gameObject.SetActive(true);
