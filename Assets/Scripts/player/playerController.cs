@@ -98,7 +98,7 @@ public class playerController : MonoBehaviour {
 		//	Destroy (other.gameObject);
 		//}
 		if(other.gameObject.tag.Equals ("Enemy"))
-			playerHealth.p_Health.TakeDamage (0.05f);
+			playerHealth.p_Health.TakeDamage (0.1f);
 
 	}
 

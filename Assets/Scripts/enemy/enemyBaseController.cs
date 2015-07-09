@@ -198,8 +198,8 @@ public class enemyBaseController : MonoBehaviour {
 	
 
 	void RepelPlayer(Rigidbody player){
-		Vector3 repelVector = -(transform.position - player.transform.position) * m_repelForce;
-		player.AddForceAtPosition (repelVector, player.transform.position, ForceMode.Impulse);
+		Vector3 repelVector = -(transform.position - player.transform.position).normalized * m_repelForce;
+		player.AddForceAtPosition (repelVector, player.transform.position);
 	}
 	
 	void CameraShake(){

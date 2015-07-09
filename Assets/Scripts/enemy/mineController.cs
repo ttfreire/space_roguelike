@@ -113,7 +113,7 @@ public class mineController : enemyBaseController {
 	}
 
 	void pullTarget(Rigidbody target){
-		Vector3 pullVector = (transform.position - target.transform.position) * m_pullForce;
+		Vector3 pullVector = (transform.position - target.transform.position).normalized * m_pullForce;
 		target.AddForceAtPosition (pullVector, target.transform.position);
 	}
 
