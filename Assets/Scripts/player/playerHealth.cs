@@ -33,8 +33,10 @@ public class playerHealth : MonoBehaviour {
 	void Update () {
 		if(!p_control.isInsideRoom)
 			ConsumeOxygenperSecond (m_currentOxygenLossRate);
-		if (!playerController.p_controller.lowOxy.isPlaying && m_currentOxygenValue <= (m_playerTotalOxygen * 0.25f))
+		if (!playerController.p_controller.lowOxy.isPlaying && m_currentOxygenValue >= 0f && m_currentOxygenValue <= (m_playerTotalOxygen * 0.25f))
 			playerController.p_controller.lowOxy.Play ();
+		if(m_currentOxygenValue <= 0f || m_currentOxygenValue >= (m_playerTotalOxygen * 0.25f))
+			playerController.p_controller.lowOxy.Stop ();
 	}
 
 	public void ConsumeOxygenperSecond(float rate){
