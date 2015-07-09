@@ -51,7 +51,7 @@ public class itemController : MonoBehaviour {
 			p_health.m_currentOxygenValue += m_oxygen;
 			if(p_health.m_currentOxygenValue > p_health.m_playerTotalOxygen)
 				p_health.m_currentOxygenValue = p_health.m_playerTotalOxygen;
-			Destroy (gameObject);
+			this.gameObject.transform.position = (new Vector3(500, 500, 500));
 			break;
 		case ItemType.DAMAGE:
 			p_control.m_damageItemQuantity++;
